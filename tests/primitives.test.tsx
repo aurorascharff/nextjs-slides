@@ -1,3 +1,4 @@
+import React from 'react';
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import {
@@ -126,6 +127,21 @@ describe('SlideDemo', () => {
     expect(container.querySelector('[data-slide-interactive]')).toBeInTheDocument();
     expect(screen.getByText('Click')).toBeInTheDocument();
     expect(screen.getByText('Demo')).toBeInTheDocument();
+  });
+});
+
+describe('SlideStatementList', () => {
+  it('renders children with border separators', () => {
+    const { container } = render(
+      <SlideStatementList>
+        <SlideStatement title="A" description="Desc A" />
+        <SlideStatement title="B" description="Desc B" />
+      </SlideStatementList>,
+    );
+    expect(screen.getByText('A')).toBeInTheDocument();
+    expect(screen.getByText('Desc A')).toBeInTheDocument();
+    expect(screen.getByText('B')).toBeInTheDocument();
+    expect(container.querySelector('.border-t')).toBeInTheDocument();
   });
 });
 

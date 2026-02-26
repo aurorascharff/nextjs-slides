@@ -4,6 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "build": "cd ../.. && npm install --include=dev && npm run build && cd examples/demo && next build",
     "start": "next start"
   },
@@ -17,6 +19,8 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.0",
     "@types/node": "^22",
+    "eslint": "^9.39.3",
+    "eslint-config-next": "^16.1.6",
     "tailwindcss": "^4.0.0",
     "typescript": "^5"
   }
