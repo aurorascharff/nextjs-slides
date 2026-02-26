@@ -1,3 +1,10 @@
+## [0.1.6](https://github.com/aurorascharff/nextjs-slides/compare/v0.1.5...v0.1.6) (2026-02-26)
+
+
+### Bug Fixes
+
+* improve SlideCode highlighting and document customization ([75c7957](https://github.com/aurorascharff/nextjs-slides/commit/75c7957db7098c3393493e6c25e006c75547d5d8))
+
 ## [0.1.5](https://github.com/aurorascharff/nextjs-slides/compare/v0.1.4...v0.1.5) (2026-02-26)
 
 
