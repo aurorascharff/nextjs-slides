@@ -1,0 +1,37 @@
+name: Publish to GitHub Packages
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@aurorascharff'
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - run: npm run test
+
+      - name: Configure package for GitHub Packages
+        run: |
+          npm pkg set name=@aurorascharff/nextjs-slides
+          npm pkg set publishConfig.registry=https://npm.pkg.github.com
+
+      - name: Publish to GitHub Packages
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
