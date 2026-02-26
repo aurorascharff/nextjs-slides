@@ -31,26 +31,36 @@ Open http://localhost:3000 and click "Open slides".
 
 ## Release workflow
 
-Publishing goes to two registries: **npm** (manual, local) and **GitHub Packages** (automated on release).
+Releases are **fully automated** via [semantic-release](https://github.com/semantic-release/semantic-release) on push to `main`. Publishing goes to **npm** and **GitHub Packages**.
 
-### 1. Publish to npm (run locally from project root)
+### Conventional commits (required)
 
-```bash
-# Bump version in package.json, then:
-npm run build && npm run test
-npm publish
-```
+Use [Conventional Commits](https://www.conventionalcommits.org/) so semantic-release can determine the version bump:
 
-**Auth**: npm uses your terminal login (`npm login`) by default. Alternatively, use an **Automation** or **Granular** token with "Bypass 2FA" at [npmjs.com/settings/tokens](https://www.npmjs.com/settings/tokens) — add to `.npmrc` as `//registry.npmjs.org/:_authToken=YOUR_TOKEN` (`.npmrc` is gitignored).
+| Commit message | Version bump |
+|----------------|--------------|
+| `fix: ...` | Patch (0.1.4 → 0.1.5) |
+| `feat: ...` | Minor (0.1.4 → 0.2.0) |
+| `feat!: ...` or `BREAKING CHANGE:` in footer | Major (0.1.4 → 1.0.0) |
+| `chore:`, `docs:`, `style:`, etc. | No release |
 
-### 2. Tag and create GitHub release (triggers GitHub Packages)
+Examples: `fix: resolve demo flicker on re-render`, `feat: add SlideFooter primitive`, `feat!: drop support for React 18`.
 
-```bash
-git add -A && git commit -m "Release v0.1.4" && git push
-git tag v0.1.4 && git push origin v0.1.4
-```
+### CI flow
 
-Then create a release at [github.com/aurorascharff/nextjs-slides/releases/new](https://github.com/aurorascharff/nextjs-slides/releases/new) — choose the tag, add notes, publish. The workflow publishes `@aurorascharff/nextjs-slides` to GitHub Packages. Repository URL in `package.json` links npm to the repo automatically.
+1. **Push/PR to main** → CI runs lint, commitlint (PRs only), and tests.
+2. **Push to main** (with conventional commits) → Release workflow runs semantic-release:
+   - Analyzes commits since last release
+   - Bumps version (patch/minor/major)
+   - Updates `package.json` and `CHANGELOG.md`
+   - Publishes to **npm** (requires `NPM_TOKEN` secret)
+   - Creates Git tag and GitHub release
+   - Pushes commit back to repo
+3. **Release published** → Publish workflow publishes `@aurorascharff/nextjs-slides` to GitHub Packages.
+
+### Setup
+
+Add `NPM_TOKEN` as a repository secret at [github.com/aurorascharff/nextjs-slides/settings/secrets/actions](https://github.com/aurorascharff/nextjs-slides/settings/secrets/actions). Use an npm Automation or Granular token with "Bypass 2FA" from [npmjs.com/settings/tokens](https://www.npmjs.com/settings/tokens).
 
 ## Code style
 
