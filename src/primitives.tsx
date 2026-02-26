@@ -92,8 +92,16 @@ export function SlideHeaderBadge({ children, className }: { children: React.Reac
   );
 }
 
+/** sugar-high treats null as "class" and may miss some literals; reclass so they use keyword styling */
+function reclassLiterals(html: string): string {
+  return html.replace(
+    /(<span[^>]*class=")sh__token--(?:identifier|class)("[^>]*>)(null|false|true|undefined)(<\/span>)/g,
+    (_, before, after, literal, close) => `${before}sh__token--keyword${after}${literal}${close}`,
+  );
+}
+
 export function SlideCode({ children, className, title }: { children: string; className?: string; title?: string }) {
-  const html = highlight(children);
+  const html = reclassLiterals(highlight(children));
 
   return (
     <div className={cn('w-full max-w-2xl', className)}>

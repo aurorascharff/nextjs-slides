@@ -208,6 +208,8 @@ The library **inherits** your app's theme. Primitives use Tailwind utilities tha
 
 `nextjs-slides/styles.css` adds only code syntax highlighting (`--sh-*`) and slide transition animations. No scoping — slides inherit your global styles.
 
+**Customize code colors:** Override the `--sh-*` variables in your `:root` or `.dark` to change syntax highlighting. Variables: `--sh-keyword`, `--sh-string`, `--sh-property`, `--sh-entity`, `--sh-class`, `--sh-identifier`, `--sh-comment`, `--sh-sign`, `--sh-jsxliterals`.
+
 ### Geist fonts (optional)
 
 Install `geist`, wire the fonts in your layout, and add the theme variables:
