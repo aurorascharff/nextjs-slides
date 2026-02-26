@@ -93,7 +93,7 @@ export function SlideHeaderBadge({ children, className }: { children: React.Reac
   );
 }
 
-const SLIDE_CODE_ALLOWED = { ALLOWED_TAGS: ['span', 'code'], ALLOWED_ATTR: ['class'] };
+const SLIDE_CODE_ALLOWED = { ALLOWED_TAGS: ['span', 'code'], ALLOWED_ATTR: ['class', 'style'] };
 
 export function SlideCode({ children, className, title }: { children: string; className?: string; title?: string }) {
   const highlighted = highlight(children);

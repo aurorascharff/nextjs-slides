@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "geist": "^1.7.0",
     "next": "^16.0.0",
     "nextjs-slides": "file:../..",
     "react": "^19.0.0",

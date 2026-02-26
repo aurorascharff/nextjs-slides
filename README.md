@@ -206,6 +206,34 @@ The library **inherits** your app's theme. Primitives use Tailwind utilities tha
 
 `nextjs-slides/styles.css` adds only code syntax highlighting (`--sh-*`) and slide transition animations. No scoping — slides inherit your global styles.
 
+### Geist fonts (optional)
+
+Install `geist`, wire the fonts in your layout, and add the theme variables:
+
+```tsx
+// app/layout.tsx
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import { GeistPixelSquare } from "geist/font/pixel";
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelSquare.variable}`}>
+      <body className={GeistSans.className}>{children}</body>
+    </html>
+  );
+}
+```
+
+```css
+/* globals.css @theme inline */
+--font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+--font-mono: var(--font-geist-mono), ui-monospace, monospace;
+--font-pixel: var(--font-geist-pixel-square), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+```
+
+Use `className="font-pixel"` on primitives where you want the pixel display font.
+
 ## Animations
 
 Slide transitions use the React 19 `<ViewTransition>` component with `addTransitionType()`. The CSS in `nextjs-slides/styles.css` defines the `::view-transition-*` animations. Override them in your own CSS to customize.

@@ -11,6 +11,7 @@
   --sh-jsxliterals: #171717;
   --sh-sign: #666;
   --sh-comment: #666666;
+  --sh-space: #171717;
 }
 
 /* sugar-high code theme — dark */
@@ -24,6 +25,7 @@
   --sh-jsxliterals: #ededed;
   --sh-sign: #a1a1a1;
   --sh-comment: #a1a1a1;
+  --sh-space: #ededed;
 }
 
 /* Slide transition keyframes */
