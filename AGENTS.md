@@ -33,7 +33,7 @@ Open http://localhost:3000 and click "Open slides".
 
 Publishing goes to two registries: **npm** (manual, local) and **GitHub Packages** (automated on release).
 
-### 1. Publish to npm (run locally)
+### 1. Publish to npm (run locally from project root)
 
 ```bash
 # Bump version in package.json, then:
@@ -41,7 +41,7 @@ npm run build && npm run test
 npm publish
 ```
 
-**2FA**: Use an **Automation** or **Granular** token with "Bypass 2FA" enabled. Create at [npmjs.com/settings/tokens](https://www.npmjs.com/settings/tokens). With token: `npm publish --token YOUR_TOKEN` or add to `.npmrc` (do not commit).
+**Auth**: npm uses your terminal login (`npm login`) by default. Alternatively, use an **Automation** or **Granular** token with "Bypass 2FA" at [npmjs.com/settings/tokens](https://www.npmjs.com/settings/tokens) — add to `.npmrc` as `//registry.npmjs.org/:_authToken=YOUR_TOKEN` (`.npmrc` is gitignored).
 
 ### 2. Tag and create GitHub release (triggers GitHub Packages)
 

@@ -74,7 +74,7 @@ export function SlideDeck({
   }, []);
 
   return (
-    <ViewTransition exit="deck-unveil">
+    <ViewTransition default="none" exit="deck-unveil">
       <div
         id="slide-deck"
         className={cn(
@@ -85,6 +85,7 @@ export function SlideDeck({
       >
         <ViewTransition
           key={pathname}
+          default="none"
           enter={{
             default: 'slide-from-right',
             'slide-back': 'slide-from-left',
