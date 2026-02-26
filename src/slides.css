@@ -1,6 +1,6 @@
 /* nextjs-slides — Slide transition animations and code theme tokens */
 
-/* sugar-high code theme — light */
+/* sugar-high code theme — light (SlideCode requires nextjs-slides/styles.css import) */
 :root {
   --sh-class: #7200c4;
   --sh-identifier: #171717;
@@ -12,6 +12,7 @@
   --sh-sign: #666;
   --sh-comment: #666666;
   --sh-space: #171717;
+  --sh-break: #171717;
 }
 
 /* sugar-high code theme — dark */
@@ -26,7 +27,9 @@
   --sh-sign: #a1a1a1;
   --sh-comment: #a1a1a1;
   --sh-space: #ededed;
+  --sh-break: #ededed;
 }
+
 
 /* Slide transition keyframes */
 @keyframes nxs-fade {

@@ -242,6 +242,12 @@ Slide transitions use the React 19 `<ViewTransition>` component with `addTransit
 
 **Required:** Enable `experimental.viewTransition: true` in your Next.js config (see Install section above). Without it, transitions may not animate correctly.
 
+## Troubleshooting
+
+**SlideCode syntax highlighting looks broken or colorless** — Ensure you import `nextjs-slides/styles.css` in your root layout or global CSS (see Quick Start). The `--sh-*` variables must be in scope for sugar-high tokens to display correctly.
+
+**`@source` path not found** — The `@source "../node_modules/nextjs-slides/dist"` path is relative to your CSS file. If your `globals.css` lives in `app/`, use `../node_modules/...`. If it lives in the project root, use `./node_modules/nextjs-slides/dist`.
+
 ## License
 
 MIT

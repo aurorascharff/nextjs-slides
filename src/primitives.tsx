@@ -75,7 +75,7 @@ export function SlideBadge({ children, className }: { children: React.ReactNode;
   return (
     <span
       className={cn(
-        'bg-foreground text-background inline-block rounded-full px-4 py-1.5 text-sm font-semibold tracking-wide',
+        'bg-foreground text-background inline-block w-fit shrink-0 rounded-full px-4 py-1.5 text-sm font-semibold tracking-wide',
         className,
       )}
     >
