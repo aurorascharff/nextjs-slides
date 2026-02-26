@@ -248,6 +248,10 @@ Slide transitions use the React 19 `<ViewTransition>` component with `addTransit
 
 **`@source` path not found** — The `@source "../node_modules/nextjs-slides/dist"` path is relative to your CSS file. If your `globals.css` lives in `app/`, use `../node_modules/...`. If it lives in the project root, use `./node_modules/nextjs-slides/dist`.
 
+## For maintainers
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for Vercel deployment and release workflow.
+
 ## License
 
 MIT

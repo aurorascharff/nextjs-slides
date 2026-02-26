@@ -23,44 +23,9 @@ Open http://localhost:3000 and click "Open slides".
 
 **Demo build** (used by Vercel): The demo's `build` script builds the library first (`cd ../.. && npm install --include=dev && npm run build`), then runs `next build`. This is required because `dist/` is gitignored and the library must be built before the demo can use it.
 
-## Vercel deployment
+## Deployment & release
 
-- **Root directory**: `examples/demo` (type manually; the picker may not show it)
-- **Output directory**: `.next` (default)
-- **Build command**: Uses the demo's `build` script (builds library, then Next.js)
-
-## Release workflow
-
-Releases are **fully automated** via [semantic-release](https://github.com/semantic-release/semantic-release) on push to `main`. Publishing goes to **npm** and **GitHub Packages**.
-
-### Conventional commits (required)
-
-Use [Conventional Commits](https://www.conventionalcommits.org/) so semantic-release can determine the version bump:
-
-| Commit message | Version bump |
-|----------------|--------------|
-| `fix: ...` | Patch (0.1.4 → 0.1.5) |
-| `feat: ...` | Minor (0.1.4 → 0.2.0) |
-| `feat!: ...` or `BREAKING CHANGE:` in footer | Major (0.1.4 → 1.0.0) |
-| `chore:`, `docs:`, `style:`, etc. | No release |
-
-Examples: `fix: resolve demo flicker on re-render`, `feat: add SlideFooter primitive`, `feat!: drop support for React 18`.
-
-### CI flow
-
-1. **Push/PR to main** → CI runs lint, commitlint (PRs only), and tests.
-2. **Push to main** (with conventional commits) → Release workflow runs semantic-release:
-   - Analyzes commits since last release
-   - Bumps version (patch/minor/major)
-   - Updates `package.json` and `CHANGELOG.md`
-   - Publishes to **npm** (requires `NPM_TOKEN` secret)
-   - Creates Git tag and GitHub release
-   - Pushes commit back to repo
-3. **Release published** → Publish workflow publishes `@aurorascharff/nextjs-slides` to GitHub Packages.
-
-### Setup
-
-Add `NPM_TOKEN` as a repository secret at [github.com/aurorascharff/nextjs-slides/settings/secrets/actions](https://github.com/aurorascharff/nextjs-slides/settings/secrets/actions). Use an npm Automation or Granular token with "Bypass 2FA" from [npmjs.com/settings/tokens](https://www.npmjs.com/settings/tokens).
+See **[DEPLOYMENT.md](DEPLOYMENT.md)** for Vercel deployment, release workflow (semantic-release), conventional commits, manual release trigger, and `NPM_TOKEN` setup.
 
 ## Code style
 
