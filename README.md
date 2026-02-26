@@ -10,7 +10,29 @@ Build full presentations from React components with URL-based routing, keyboard 
 npm install nextjs-slides
 ```
 
+## Demo
+
+A minimal demo app lives in `examples/demo`. From the repo root:
+
+```bash
+npm run build && cd examples/demo && npm install && npm run dev
+```
+
+Open http://localhost:3000 and click "Open slides".
+
 Peer dependencies: `next >=15`, `react >=19`, `tailwindcss >=4`.
+
+### Enable View Transitions
+
+Add to your `next.config.ts` (merge with existing config) for slide transition animations:
+
+```ts
+const nextConfig = {
+  experimental: {
+    viewTransition: true,
+  },
+};
+```
 
 ## Quick Start
 
@@ -19,8 +41,13 @@ Peer dependencies: `next >=15`, `react >=19`, `tailwindcss >=4`.
 In your root layout or global CSS:
 
 ```css
+@import "tailwindcss";
 @import "nextjs-slides/styles.css";
+
+@source "../node_modules/nextjs-slides/dist";
 ```
+
+The `@source` directive tells Tailwind v4 to scan the library for class names — without it, slide styles won't apply.
 
 ### 2. Define your slides
 
@@ -53,8 +80,6 @@ console.log(greeting);`}</SlideCode>
 
 ```tsx
 // app/slides/layout.tsx
-"use client";
-
 import { SlideDeck } from "nextjs-slides";
 import { slides } from "./slides";
 
@@ -66,6 +91,8 @@ export default function SlidesLayout({
   return <SlideDeck slides={slides}>{children}</SlideDeck>;
 }
 ```
+
+`SlideDeck` is a client component, so your layout can stay a server component — no `"use client"` needed.
 
 ### 4. Add the routes
 
@@ -180,6 +207,8 @@ The library **inherits** your app's theme. Primitives use Tailwind utilities tha
 ## Animations
 
 Slide transitions use the React 19 `<ViewTransition>` component with `addTransitionType()`. The CSS in `nextjs-slides/styles.css` defines the `::view-transition-*` animations. Override them in your own CSS to customize.
+
+**Required:** Enable `experimental.viewTransition: true` in your Next.js config (see Install section above). Without it, transitions may not animate correctly.
 
 ## License
 
