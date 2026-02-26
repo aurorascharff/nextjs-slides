@@ -28,7 +28,7 @@ Open http://localhost:3000 and click "Open slides".
 
 ## Package releases
 
-Releases are automated via [semantic-release](https://github.com/semantic-release/semantic-release). The package is published to **npm** (as `nextjs-slides`) and **GitHub Packages** (as `@aurorascharff/nextjs-slides`).
+Releases are automated via [semantic-release](https://github.com/semantic-release/semantic-release). The package is published to **npm** (as `nextjs-slides`).
 
 ### Conventional commits
 
@@ -43,16 +43,13 @@ Use [Conventional Commits](https://www.conventionalcommits.org/) so semantic-rel
 
 ### Release flow
 
-1. **Push to main** (with conventional commits) → Release workflow runs:
+**Push to main** (with conventional commits) → Release workflow runs:
    - Analyzes commits since last release
    - Bumps version in `package.json`
    - Updates `CHANGELOG.md`
    - Publishes to npm
    - Creates Git tag and GitHub release
    - Pushes commit back to repo
-
-2. **Release published** → Publish workflow runs:
-   - Publishes `@aurorascharff/nextjs-slides` to GitHub Packages
 
 ### Manual release
 
@@ -75,5 +72,4 @@ Add **`NPM_TOKEN`** as a repository secret:
 | Workflow | Trigger | Purpose |
 |----------|---------|---------|
 | **Release** | Push to main, or manual | semantic-release: version bump, npm publish, GitHub release |
-| **Publish to GitHub Packages** | Release published, or manual | Publish scoped package to GitHub Packages |
 | **CI** | Push/PR to main | Lint, commitlint (PRs), tests |
