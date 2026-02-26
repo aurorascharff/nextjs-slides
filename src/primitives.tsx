@@ -1,3 +1,4 @@
+import DOMPurify from 'isomorphic-dompurify';
 import { highlight } from 'sugar-high';
 import { cn } from './cn';
 import { SlideDemoContent } from './slide-demo-content';
@@ -92,8 +93,11 @@ export function SlideHeaderBadge({ children, className }: { children: React.Reac
   );
 }
 
+const SLIDE_CODE_ALLOWED = { ALLOWED_TAGS: ['span', 'code'], ALLOWED_ATTR: ['class'] };
+
 export function SlideCode({ children, className, title }: { children: string; className?: string; title?: string }) {
-  const html = highlight(children);
+  const highlighted = highlight(children);
+  const html = DOMPurify.sanitize(highlighted, SLIDE_CODE_ALLOWED);
 
   return (
     <div className={cn('w-full max-w-2xl', className)}>
