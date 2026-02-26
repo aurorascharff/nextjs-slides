@@ -1,5 +1,7 @@
 # nextjs-slides
 
+[![npm version](https://img.shields.io/npm/v/nextjs-slides.svg)](https://www.npmjs.com/package/nextjs-slides)
+
 Composable slide deck primitives for Next.js — powered by React 19 ViewTransitions, Tailwind CSS v4, and sugar-high syntax highlighting.
 
 Build full presentations from React components with URL-based routing, keyboard navigation, progress indicators, and smooth slide transitions — all declarative.
