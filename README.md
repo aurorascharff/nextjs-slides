@@ -155,7 +155,7 @@ That's it. Navigate to `/slides` and you have a full slide deck.
 
 - **`<SlideCode>`** — Syntax-highlighted code block (sugar-high). Props: `title`, `className`. Pass code as `children` string.
 - **`<SlideList>`** / **`<SlideListItem>`** — Bullet list.
-- **`<SlideDemo>`** — Interactive component container. Keyboard/click navigation is disabled inside. Props: `label`, `className`.
+- **`<SlideDemo>`** — Interactive component container. Keyboard navigation is disabled inside so you can use inputs and buttons. Props: `label`, `className`.
 
 ### Structured
 
@@ -175,7 +175,7 @@ That's it. Navigate to `/slides` and you have a full slide deck.
 | `→` or Space | Next slide     |
 | `←`          | Previous slide |
 
-Interactive areas (`<SlideDemo>`, inputs, textareas) don't trigger navigation.
+Keyboard events are ignored inside `<SlideDemo>`, inputs, and textareas so you can interact without advancing slides.
 
 ## Custom Base Path
 

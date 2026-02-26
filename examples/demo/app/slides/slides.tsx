@@ -99,7 +99,7 @@ export const slides: React.ReactNode[] = [
   <Slide key="demo">
     <SlideBadge>SlideDemo</SlideBadge>
     <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">Interactive components</SlideTitle>
-    <SlideSubtitle>Embed live React components — clicks and keys won&apos;t trigger navigation</SlideSubtitle>
+    <SlideSubtitle>Embed live React components — keyboard navigation is disabled inside</SlideSubtitle>
     <SlideDemo label="Live counter">
       <Counter />
     </SlideDemo>
