@@ -1,0 +1,105 @@
+/* nextjs-slides — Slide transition animations and code theme tokens */
+
+/* sugar-high code theme — light */
+:root {
+  --sh-class: #7200c4;
+  --sh-identifier: #171717;
+  --sh-keyword: #b32c62;
+  --sh-string: #397c3b;
+  --sh-property: #005ee9;
+  --sh-entity: #005ee9;
+  --sh-jsxliterals: #171717;
+  --sh-sign: #666;
+  --sh-comment: #666666;
+}
+
+/* sugar-high code theme — dark */
+.dark {
+  --sh-class: #b675f1;
+  --sh-identifier: #ededed;
+  --sh-keyword: #f05b8d;
+  --sh-string: #58c760;
+  --sh-property: #62a6ff;
+  --sh-entity: #62a6ff;
+  --sh-jsxliterals: #ededed;
+  --sh-sign: #a1a1a1;
+  --sh-comment: #a1a1a1;
+}
+
+/* Slide transition keyframes */
+@keyframes nxs-fade {
+  from {
+    filter: blur(3px);
+    opacity: 0;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+  }
+}
+
+@keyframes nxs-slide {
+  from {
+    translate: var(--nxs-slide-offset);
+  }
+  to {
+    translate: 0;
+  }
+}
+
+@keyframes nxs-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(var(--nxs-slide-offset, 60px));
+  }
+}
+
+@keyframes nxs-slide-out {
+  to {
+    opacity: 0;
+    transform: translateX(var(--nxs-slide-offset, -60px));
+  }
+}
+
+@keyframes nxs-deck-unveil {
+  to {
+    opacity: 0;
+    transform: scale(1.03);
+  }
+}
+
+/* Reset default view transition animations */
+::view-transition-old(*) {
+  animation: none;
+}
+::view-transition-new(*) {
+  animation: none;
+}
+
+/* Slide forward */
+::view-transition-new(.slide-from-right) {
+  --nxs-slide-offset: 60px;
+  animation: nxs-slide-in 200ms ease-out both;
+}
+::view-transition-old(.slide-to-left) {
+  --nxs-slide-offset: -60px;
+  animation: nxs-slide-out 200ms ease-out both;
+}
+
+/* Slide backward */
+::view-transition-new(.slide-from-left) {
+  --nxs-slide-offset: -60px;
+  animation: nxs-slide-in 200ms ease-out both;
+}
+::view-transition-old(.slide-to-right) {
+  --nxs-slide-offset: 60px;
+  animation: nxs-slide-out 200ms ease-out both;
+}
+
+/* Deck exit (leaving slide deck) */
+::view-transition-old(.deck-unveil) {
+  animation: nxs-deck-unveil 300ms ease-out both;
+}
+::view-transition-new(.deck-unveil) {
+  animation: none;
+}

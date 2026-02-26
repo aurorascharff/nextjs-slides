@@ -1,0 +1,60 @@
+{
+  "name": "nextjs-slides",
+  "version": "0.1.0",
+  "description": "Composable slide deck primitives for Next.js — powered by React 19 ViewTransitions, Tailwind CSS, and sugar-high syntax highlighting.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/slides.css"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "next": ">=15.0.0",
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0",
+    "tailwindcss": ">=4.0.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "sugar-high": "^0.9.5",
+    "tailwind-merge": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5"
+  },
+  "keywords": [
+    "nextjs",
+    "slides",
+    "presentation",
+    "slide-deck",
+    "react",
+    "tailwind",
+    "view-transitions",
+    "sugar-high"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aurorascharff/nextjs-slides"
+  }
+}
