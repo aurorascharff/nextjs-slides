@@ -12,6 +12,8 @@ npm install nextjs-slides
 
 ## Demo
 
+**[Live demo →](https://nextjs-slides.vercel.app/)**
+
 A minimal demo app lives in `examples/demo`. From the repo root:
 
 ```bash
