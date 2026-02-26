@@ -1,6 +1,6 @@
 {
   "name": "nextjs-slides",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Composable slide deck primitives for Next.js — powered by React 19 ViewTransitions, Tailwind CSS, and sugar-high syntax highlighting.",
   "license": "MIT",
   "type": "module",
