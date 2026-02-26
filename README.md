@@ -171,9 +171,11 @@ app/slides/
   demo/page.tsx       ← Breakout page (no deck chrome)
 ```
 
-## Tailwind CSS
+## Styling & CSS
 
-The primitives use Tailwind utility classes with standard CSS variable tokens (`--foreground`, `--background`, `--muted-foreground`, `--primary`, etc.). These are compatible with shadcn/ui themes or any Tailwind v4 setup that defines these variables.
+The library **inherits** your app's theme. Primitives use Tailwind utilities that resolve to CSS variables: `--foreground`, `--background`, `--muted-foreground`, `--primary`, `--primary-foreground`, `--border`, `--muted`. Compatible with shadcn/ui and any Tailwind v4 setup that defines these.
+
+`nextjs-slides/styles.css` adds only code syntax highlighting (`--sh-*`) and slide transition animations. No scoping — slides inherit your global styles.
 
 ## Animations
 
