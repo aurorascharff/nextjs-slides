@@ -40,7 +40,27 @@
 
 .nxs-slide-split-col {
   min-width: 0;
+  width: 50%;
   overflow-x: auto;
+}
+
+/* Split layout: stack columns below 1024px */
+@media (max-width: 1023px) {
+  .nxs-slide-split {
+    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .nxs-slide-split .nxs-slide-split-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: 1 1 auto;
+  }
+
+  .nxs-slide-split .nxs-slide-split-divider {
+    display: none;
+  }
 }
 
 /* Code block wrapper — constrains width so code doesn't blow out the slide */

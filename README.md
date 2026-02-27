@@ -137,7 +137,7 @@ That's it. Navigate to `/slides` and you have a full slide deck.
 ### Layout
 
 - **`<Slide>`** — Full-screen slide container with decorative border. Props: `align` (`"center"` | `"left"`), `className`.
-- **`<SlideSplitLayout>`** — Two-column layout with vertical divider. Props: `left`, `right`, `className`.
+- **`<SlideSplitLayout>`** — Two-column layout with vertical divider. Stacks vertically below 1024px. Props: `left`, `right`, `className`.
 
 ### Typography
 

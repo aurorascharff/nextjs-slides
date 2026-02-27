@@ -60,12 +60,12 @@ export function SlideSplitLayout({
   className?: string;
 }) {
   return (
-    <div className={cn('nxs-slide relative flex h-dvh w-dvw', className)}>
+    <div className={cn('nxs-slide nxs-slide-split relative flex h-dvh w-dvw', className)}>
       <div className="border-foreground/10 pointer-events-none absolute inset-4 border sm:inset-6" aria-hidden />
       <div className="nxs-slide-split-col relative z-10 flex w-1/2 flex-col justify-center px-12 py-20 sm:px-16 md:px-20 lg:px-24">
         {left}
       </div>
-      <div className="bg-foreground/10 absolute top-4 bottom-4 left-1/2 z-10 w-px sm:top-6 sm:bottom-6" aria-hidden />
+      <div className="nxs-slide-split-divider bg-foreground/10 absolute top-4 bottom-4 left-1/2 z-10 w-px sm:top-6 sm:bottom-6" aria-hidden />
       <div className="nxs-slide-split-col relative z-10 flex w-1/2 flex-col justify-center px-12 py-20 sm:px-16 md:px-20 lg:px-24">{right}</div>
     </div>
   );
