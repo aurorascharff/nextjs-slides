@@ -1,3 +1,10 @@
+# [0.2.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.1.7...v0.2.0) (2026-02-27)
+
+
+### Features
+
+* add exitUrl prop for SlideDeck exit button ([e0663a0](https://github.com/aurorascharff/nextjs-slides/commit/e0663a08250386a1276af1b28b60ff8567b39f32))
+
 ## [0.1.7](https://github.com/aurorascharff/nextjs-slides/compare/v0.1.6...v0.1.7) (2026-02-27)
 
 
