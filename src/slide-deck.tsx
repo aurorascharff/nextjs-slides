@@ -13,6 +13,7 @@ export function SlideDeck({
   exitUrl,
   showProgress = true,
   showCounter = true,
+  syncEndpoint,
   className,
 }: SlideDeckConfig & { children: React.ReactNode }) {
   const router = useRouter();
@@ -75,16 +76,26 @@ export function SlideDeck({
     };
   }, []);
 
+  useEffect(() => {
+    if (!syncEndpoint || !isSlideRoute) return;
+    fetch(syncEndpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slide: current + 1, total }),
+    }).catch(() => {});
+  }, [syncEndpoint, current, total, isSlideRoute]);
+
   return (
     <ViewTransition default="none" exit="deck-unveil">
       <div
         id="slide-deck"
         className={cn(
-          'bg-background text-foreground fixed inset-0 z-50 overflow-hidden font-sans select-none',
+          'bg-background text-foreground fixed inset-0 z-50 flex flex-col overflow-hidden font-sans select-none',
           className,
         )}
         data-pending={isPending ? '' : undefined}
       >
+        <div className="flex-1 overflow-hidden">
         <ViewTransition
           key={pathname}
           default="none"
@@ -101,6 +112,7 @@ export function SlideDeck({
         >
           <div>{children}</div>
         </ViewTransition>
+        </div>
 
         {isSlideRoute && showProgress && (
           <div

@@ -22,5 +22,11 @@ export { SlideSpeaker, SlideSpeakerGrid, SlideSpeakerList } from './primitives';
 // Navigation
 export { SlideLink } from './slide-link';
 
+// Utilities
+export { parseSpeakerNotes } from './parse-speaker-notes';
+
+// Speaker notes
+export { SlideNotesView } from './slide-notes-view';
+
 // Types
 export type { SlideAlign, SlideLinkVariant, SlideDeckConfig } from './types';

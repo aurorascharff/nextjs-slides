@@ -40,6 +40,7 @@ See **[DEPLOYMENT.md](DEPLOYMENT.md)** for Vercel deployment, release workflow (
 - **Geist fonts**: Optional. Use `font-pixel` via `className` only on specific slides (e.g. title, closing). Body uses Geist Sans; apply `GeistSans.className` to `<body>` in layout.
 - **Breakout pages**: "Back to slides" from breakout pages (e.g. `demo1`) should link to the slide that links to the breakout (e.g. `/slides/12` for the SlideLink slide).
 - **Alternate deck** (`/slides-alt`): Demonstrates multiple decks with different fonts and syntax themes. Uses `basePath`, `exitUrl`, `className` for scoped overrides. `SlideDeck` must be the direct layout child (no wrapper div) for the deck-unveil exit animation to work.
+- **Speaker notes**: Parsed from a markdown file (`notes.md`) using `parseSpeakerNotes()`. Phone sync uses an in-memory API route (`/api/nxs-sync`) — the deck POSTs slide state on navigation, `SlideNotesView` polls it. The notes page lives at `/notes` (outside the slides layout). Sync state is in-memory (works in dev / single-server).
 
 ## Before committing
 

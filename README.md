@@ -120,15 +120,17 @@ That's it. Navigate to `/slides` and you have a full slide deck.
 
 ## `<SlideDeck>` Props
 
-| Prop           | Type              | Default      | Description                                             |
-| -------------- | ----------------- | ------------ | ------------------------------------------------------- |
-| `slides`       | `ReactNode[]`     | **required** | Your slides array                                       |
-| `basePath`     | `string`          | `"/slides"`  | URL prefix for slide routes                             |
-| `exitUrl`      | `string`          | —            | URL for exit button (×). Shows in top-right when set.   |
-| `showProgress` | `boolean`         | `true`       | Show dot progress indicator                             |
-| `showCounter`  | `boolean`         | `true`       | Show "3 / 10" counter                                   |
-| `className`    | `string`          | —            | Additional class for the deck container                 |
-| `children`     | `React.ReactNode` | **required** | Route content (from Next.js)                            |
+| Prop           | Type                              | Default      | Description                                             |
+| -------------- | --------------------------------- | ------------ | ------------------------------------------------------- |
+| `slides`       | `ReactNode[]`                     | **required** | Your slides array                                       |
+| `speakerNotes` | `(string \| ReactNode \| null)[]` | —            | Notes per slide (same index). See Speaker Notes below.  |
+| `syncEndpoint` | `string`                          | —            | API route for presenter ↔ phone sync.                   |
+| `basePath`     | `string`                          | `"/slides"`  | URL prefix for slide routes                             |
+| `exitUrl`      | `string`                          | —            | URL for exit button (×). Shows in top-right when set.   |
+| `showProgress` | `boolean`                         | `true`       | Show dot progress indicator                             |
+| `showCounter`  | `boolean`                         | `true`       | Show "3 / 10" counter                                   |
+| `className`    | `string`                          | —            | Additional class for the deck container                 |
+| `children`     | `React.ReactNode`                 | **required** | Route content (from Next.js)                            |
 
 ## Primitives
 
@@ -170,6 +172,82 @@ That's it. Navigate to `/slides` and you have a full slide deck.
 | `←`          | Previous slide |
 
 Keyboard events are ignored inside `<SlideDemo>`, inputs, and textareas so you can interact without advancing slides.
+
+## Speaker Notes
+
+Write notes in a markdown file — one section per slide, separated by `---`. Empty sections mean no notes for that slide:
+
+```md
+Welcome everyone. This is the opening slide.
+
+---
+
+Talk about the base container here.
+
+---
+
+---
+
+Slide 4 notes. Slide 3 had none.
+```
+
+Parse the file and pass it to `SlideDeck`:
+
+```tsx
+// app/slides/layout.tsx
+import fs from "fs";
+import path from "path";
+import { SlideDeck, parseSpeakerNotes } from "nextjs-slides";
+import { slides } from "./slides";
+
+const notes = parseSpeakerNotes(
+  fs.readFileSync(path.join(process.cwd(), "app/slides/notes.md"), "utf-8")
+);
+
+export default function SlidesLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <SlideDeck slides={slides} speakerNotes={notes} syncEndpoint="/api/nxs-sync">
+      {children}
+    </SlideDeck>
+  );
+}
+```
+
+### Phone sync (presenter notes on your phone)
+
+Open `/notes` on your phone while presenting on your laptop. The phone shows the current slide's notes and follows along as you navigate with the keyboard.
+
+**1. Create the sync API route:**
+
+```ts
+// app/api/nxs-sync/route.ts
+export { GET, POST } from "nextjs-slides/sync";
+```
+
+**2. Create the notes page:**
+
+```tsx
+// app/notes/page.tsx
+import fs from "fs";
+import path from "path";
+import { parseSpeakerNotes, SlideNotesView } from "nextjs-slides";
+
+const notes = parseSpeakerNotes(
+  fs.readFileSync(path.join(process.cwd(), "app/slides/notes.md"), "utf-8")
+);
+
+export default function NotesPage() {
+  return <SlideNotesView notes={notes} syncEndpoint="/api/nxs-sync" />;
+}
+```
+
+Open your phone on `http://<your-ip>:3000/notes` (same network). The deck POSTs the current slide to the sync endpoint on every navigation; the notes view polls it every 500ms.
+
+> **Note:** The sync state lives in server memory — designed for `next dev` or single-server deployments. It won't persist across serverless function invocations.
 
 ## Custom Base Path & Multiple Decks
 
