@@ -15,7 +15,9 @@ export function SlideDeck({
   showCounter = true,
   syncEndpoint,
   className,
+  ...rest
 }: SlideDeckConfig & { children: React.ReactNode }) {
+  void rest; // accepts speakerNotes and other optional config
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();

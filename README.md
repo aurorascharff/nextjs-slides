@@ -346,6 +346,8 @@ Slide transitions use the React 19 `<ViewTransition>` component with `addTransit
 
 **SlideCode syntax highlighting looks broken or colorless** — Ensure you import `nextjs-slides/styles.css` in your root layout or global CSS (see Quick Start). The `--sh-*` variables must be in scope for highlight.js tokens to display correctly.
 
+**Split layout not stacking on small screens** — Import `nextjs-slides/styles.css` without a layer: `@import "nextjs-slides/styles.css"` (not `layer(base)`). Layered imports can be overridden by Tailwind utilities. Also ensure the library CSS loads after Tailwind.
+
 **`@source` path not found** — The `@source "../node_modules/nextjs-slides/dist"` path is relative to your CSS file. If your `globals.css` lives in `app/`, use `../node_modules/...`. If it lives in the project root, use `./node_modules/nextjs-slides/dist`.
 
 **SlideCode error "Could not find the language '…'"** — Only JavaScript, TypeScript, and HTML/XML are registered. Unrecognized file extensions in the `title` prop (e.g. `.terminal`, `.sh`, `.py`) will fall back to TypeScript highlighting. If you previously saw this error, update the package — the fix gracefully handles unknown languages instead of throwing.
