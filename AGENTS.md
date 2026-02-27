@@ -38,7 +38,7 @@ See **[DEPLOYMENT.md](DEPLOYMENT.md)** for Vercel deployment, release workflow (
 
 - **SlideCode**: Uses highlight.js for syntax highlighting. Supports JavaScript, TypeScript, JSX, TSX (xml sublanguage for tags/attributes). Output is safe HTML (`<span>` with `class`).
 - **Geist fonts**: Optional. Use `font-pixel` via `className` only on specific slides (e.g. title, closing). Body uses Geist Sans; apply `GeistSans.className` to `<body>` in layout.
-- **Breakout pages**: "Back to slides" from breakout pages (e.g. `demo1`) should link to the slide that links to the breakout (e.g. `/slides/11` for the SlideLink slide).
+- **Breakout pages**: "Back to slides" from breakout pages (e.g. `demo1`) should link to the slide that links to the breakout (e.g. `/slides/12` for the SlideLink slide).
 - **Alternate deck** (`/slides-alt`): Demonstrates multiple decks with different fonts and syntax themes. Uses `basePath`, `exitUrl`, `className` for scoped overrides. `SlideDeck` must be the direct layout child (no wrapper div) for the deck-unveil exit animation to work.
 
 ## Before committing
