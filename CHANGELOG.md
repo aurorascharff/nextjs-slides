@@ -1,3 +1,10 @@
+# [0.3.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.2.0...v0.3.0) (2026-02-27)
+
+
+### Features
+
+* add prefers-color-scheme dark mode with Vercel-like theme ([189a176](https://github.com/aurorascharff/nextjs-slides/commit/189a176be670657bf73223919d246c98220f58e5))
+
 # [0.2.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.1.7...v0.2.0) (2026-02-27)
 
 
