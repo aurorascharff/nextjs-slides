@@ -1,3 +1,10 @@
+## [0.4.1](https://github.com/aurorascharff/nextjs-slides/compare/v0.4.0...v0.4.1) (2026-02-27)
+
+
+### Bug Fixes
+
+* improve slide spacing and code block zoom responsiveness ([66d3107](https://github.com/aurorascharff/nextjs-slides/commit/66d31078c2ef5c9fd8b77a21941cb13051724a48))
+
 # [0.4.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.3.3...v0.4.0) (2026-02-27)
 
 
