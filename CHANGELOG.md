@@ -1,3 +1,10 @@
+## [0.3.1](https://github.com/aurorascharff/nextjs-slides/compare/v0.3.0...v0.3.1) (2026-02-27)
+
+
+### Bug Fixes
+
+* gracefully handle unsupported languages in SlideCode ([1ee2828](https://github.com/aurorascharff/nextjs-slides/commit/1ee282891c8611ab7576a679ad4a820b5359f7a1))
+
 # [0.3.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.2.0...v0.3.0) (2026-02-27)
 
 
