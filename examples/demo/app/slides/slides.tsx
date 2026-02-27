@@ -105,7 +105,36 @@ export const slides: React.ReactNode[] = [
     </SlideDemo>
   </Slide>,
 
-  // 8. SlideStatement
+  // 8. Split: demo + code side by side
+  <SlideSplitLayout
+    key="demo-code"
+    left={
+      <>
+        <SlideBadge>Demo + Code</SlideBadge>
+        <SlideTitle className="mt-6 text-3xl sm:text-4xl md:text-5xl">Side by side</SlideTitle>
+        <SlideSubtitle className="mt-4">Pair a live component with its source using SlideSplitLayout</SlideSubtitle>
+        <SlideDemo label="Try it" className="mt-6">
+          <Counter />
+        </SlideDemo>
+      </>
+    }
+    right={
+      <SlideCode title="Counter.tsx">{`'use client';
+import { useState } from 'react';
+
+export function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <button onClick={() => setCount(c => c + 1)}>
+      Count: {count}
+    </button>
+  );
+}`}</SlideCode>
+    }
+  />,
+
+  // 9. SlideStatement
   <SlideSplitLayout
     key="statements"
     left={
@@ -124,7 +153,7 @@ export const slides: React.ReactNode[] = [
     }
   />,
 
-  // 9. SlideSpeaker
+  // 10. SlideSpeaker
   <Slide key="speakers">
     <SlideBadge>SlideSpeaker</SlideBadge>
     <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">Speaker components</SlideTitle>
@@ -147,7 +176,7 @@ export const slides: React.ReactNode[] = [
     </div>
   </Slide>,
 
-  // 10. Navigation
+  // 11. Navigation
   <SlideSplitLayout
     key="navigation"
     left={
@@ -167,7 +196,7 @@ export const slides: React.ReactNode[] = [
     }
   />,
 
-  // 11. SlideLink and routing
+  // 12. SlideLink and routing
   <Slide key="links" align="left">
     <SlideBadge>SlideLink</SlideBadge>
     <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">Links and routing</SlideTitle>
@@ -179,7 +208,7 @@ export const slides: React.ReactNode[] = [
     <SlideNote>Breakout routes live inside /slides but render without the deck chrome</SlideNote>
   </Slide>,
 
-  // 12. Closing
+  // 13. Closing
   <Slide key="end">
     <SlideTitle className="font-pixel">That&apos;s the slide system.</SlideTitle>
     <SlideSubtitle>Compose these primitives to build any presentation</SlideSubtitle>

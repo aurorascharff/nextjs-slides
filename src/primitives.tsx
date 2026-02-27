@@ -66,7 +66,7 @@ export function SlideSplitLayout({
         {left}
       </div>
       <div className="bg-foreground/10 absolute top-4 bottom-4 left-1/2 z-10 w-px sm:top-6 sm:bottom-6" aria-hidden />
-      <div className="relative z-10 flex w-1/2 flex-col justify-center">{right}</div>
+      <div className="relative z-10 flex w-1/2 flex-col justify-center px-12 py-20 sm:px-16 md:px-20 lg:px-24">{right}</div>
     </div>
   );
 }
