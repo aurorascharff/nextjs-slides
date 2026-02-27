@@ -1,3 +1,10 @@
+## [0.6.1](https://github.com/aurorascharff/nextjs-slides/compare/v0.6.0...v0.6.1) (2026-02-27)
+
+
+### Bug Fixes
+
+* responsive split layout using grid below 1024px ([5609bc0](https://github.com/aurorascharff/nextjs-slides/commit/5609bc06303afc6a214cad12bfb0ecfcc5d70191))
+
 # [0.6.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.5.3...v0.6.0) (2026-02-27)
 
 
