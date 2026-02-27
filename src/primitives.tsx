@@ -9,7 +9,10 @@ hljs.registerLanguage('typescript', typescript);
 hljs.registerLanguage('xml', xml);
 
 function highlightCode(code: string, lang?: string): string {
-  const language = lang === 'ts' || lang === 'tsx' ? 'typescript' : lang ?? 'typescript';
+  if (!lang) return hljs.highlight(code, { language: 'typescript' }).value;
+  const language = lang === 'ts' || lang === 'tsx' ? 'typescript' : lang;
+  const registered = hljs.getLanguage(language);
+  if (!registered) return hljs.highlight(code, { language: 'typescript' }).value;
   return hljs.highlight(code, { language }).value;
 }
 import { SlideDemoContent } from './slide-demo-content';

@@ -156,7 +156,7 @@ That's it. Navigate to `/slides` and you have a full slide deck.
 
 ### Content
 
-- **`<SlideCode>`** — Syntax-highlighted code block (highlight.js). Props: `title`, `className`. Pass code as `children` string. Supports JS, TS, JSX, TSX (language inferred from `title`, e.g. `example.tsx`).
+- **`<SlideCode>`** — Syntax-highlighted code block (highlight.js). Props: `title`, `className`. Pass code as `children` string. Language is inferred from the file extension in `title` (e.g. `example.tsx`). Supported languages: **JavaScript** (`.js`, `.jsx`), **TypeScript** (`.ts`, `.tsx`), **HTML/XML** (`.html`, `.xml`). Unrecognized extensions fall back to TypeScript highlighting.
 - **`<SlideList>`** / **`<SlideListItem>`** — Bullet list.
 - **`<SlideDemo>`** — Interactive component container. Keyboard navigation is disabled inside so you can use inputs and buttons. Props: `label`, `className`.
 
@@ -250,6 +250,8 @@ Slide transitions use the React 19 `<ViewTransition>` component with `addTransit
 **SlideCode syntax highlighting looks broken or colorless** — Ensure you import `nextjs-slides/styles.css` in your root layout or global CSS (see Quick Start). The `--sh-*` variables must be in scope for highlight.js tokens to display correctly.
 
 **`@source` path not found** — The `@source "../node_modules/nextjs-slides/dist"` path is relative to your CSS file. If your `globals.css` lives in `app/`, use `../node_modules/...`. If it lives in the project root, use `./node_modules/nextjs-slides/dist`.
+
+**SlideCode error "Could not find the language '…'"** — Only JavaScript, TypeScript, and HTML/XML are registered. Unrecognized file extensions in the `title` prop (e.g. `.terminal`, `.sh`, `.py`) will fall back to TypeScript highlighting. If you previously saw this error, update the package — the fix gracefully handles unknown languages instead of throwing.
 
 **Exit animation (deck-unveil) not running** — Ensure `SlideDeck` is the direct child of the layout. Wrapping it in a `<div>` can prevent the ViewTransition exit from firing. Use the `className` prop for scoped styling instead.
 
