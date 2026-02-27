@@ -10,10 +10,12 @@ export function SlideDemoContent({ children }: { children: React.ReactNode }) {
     const el = ref.current;
     if (!el) return;
 
-    const observer = new ResizeObserver(entries => {
+    const observer = new ResizeObserver((entries) => {
       for (const entry of entries) {
         const height = entry.borderBoxSize[0].blockSize;
-        setMinHeight(prev => (prev === undefined ? height : Math.max(prev, height)));
+        setMinHeight((prev) =>
+          prev === undefined ? height : Math.max(prev, height)
+        );
       }
     });
     observer.observe(el);

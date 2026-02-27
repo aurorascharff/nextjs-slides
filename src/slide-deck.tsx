@@ -2,7 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { addTransitionType, useCallback, useEffect, useTransition, ViewTransition } from 'react';
+import {
+  addTransitionType,
+  useCallback,
+  useEffect,
+  useTransition,
+  ViewTransition,
+} from 'react';
 import { cn } from './cn';
 import type { SlideDeckConfig } from './types';
 
@@ -47,7 +53,7 @@ export function SlideDeck({
         router.push(`${basePath}/${targetSlide}`);
       });
     },
-    [basePath, current, router, startTransition, syncEndpoint, total],
+    [basePath, current, router, startTransition, syncEndpoint, total]
   );
 
   useEffect(() => {
@@ -101,27 +107,27 @@ export function SlideDeck({
         id="slide-deck"
         className={cn(
           'bg-background text-foreground fixed inset-0 z-50 flex flex-col overflow-hidden font-sans select-none',
-          className,
+          className
         )}
         data-pending={isPending ? '' : undefined}
       >
         <div className="flex-1 overflow-hidden">
-        <ViewTransition
-          key={pathname}
-          default="none"
-          enter={{
-            default: 'slide-from-right',
-            'slide-back': 'slide-from-left',
-            'slide-forward': 'slide-from-right',
-          }}
-          exit={{
-            default: 'slide-to-left',
-            'slide-back': 'slide-to-right',
-            'slide-forward': 'slide-to-left',
-          }}
-        >
-          <div>{children}</div>
-        </ViewTransition>
+          <ViewTransition
+            key={pathname}
+            default="none"
+            enter={{
+              default: 'slide-from-right',
+              'slide-back': 'slide-from-left',
+              'slide-forward': 'slide-from-right',
+            }}
+            exit={{
+              default: 'slide-to-left',
+              'slide-back': 'slide-to-right',
+              'slide-forward': 'slide-to-left',
+            }}
+          >
+            <div>{children}</div>
+          </ViewTransition>
         </div>
 
         {isSlideRoute && showProgress && (
@@ -134,7 +140,7 @@ export function SlideDeck({
                 key={i}
                 className={cn(
                   'h-1 transition-all duration-300',
-                  i === current ? 'bg-foreground w-6' : 'bg-foreground/20 w-1',
+                  i === current ? 'bg-foreground w-6' : 'bg-foreground/20 w-1'
                 )}
               />
             ))}
@@ -153,7 +159,17 @@ export function SlideDeck({
             className="text-foreground/50 hover:text-foreground fixed top-6 right-8 z-50 flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-foreground/10"
             aria-label="Exit presentation"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
               <path d="M18 6 6 18" />
               <path d="m6 6 12 12" />
             </svg>

@@ -4,7 +4,11 @@ import { parseSpeakerNotes } from '../src/parse-speaker-notes';
 describe('parseSpeakerNotes', () => {
   it('splits on --- separator', () => {
     const md = `Note one\n\n---\n\nNote two\n\n---\n\nNote three`;
-    expect(parseSpeakerNotes(md)).toEqual(['Note one', 'Note two', 'Note three']);
+    expect(parseSpeakerNotes(md)).toEqual([
+      'Note one',
+      'Note two',
+      'Note three',
+    ]);
   });
 
   it('returns null for empty sections', () => {
@@ -70,6 +74,9 @@ Slide 2 notes`;
 
   it('stripLeadingTitle does not strip when first section is not a heading', () => {
     const md = `Welcome, this is slide 1\n\n---\n\nSlide 2`;
-    expect(parseSpeakerNotes(md, { stripLeadingTitle: true })).toEqual(['Welcome, this is slide 1', 'Slide 2']);
+    expect(parseSpeakerNotes(md, { stripLeadingTitle: true })).toEqual([
+      'Welcome, this is slide 1',
+      'Slide 2',
+    ]);
   });
 });

@@ -55,7 +55,9 @@
   background: var(--nxs-code-bg);
   border: 1px solid var(--nxs-code-border);
   color: var(--nxs-code-text);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
   font-size: clamp(0.75rem, 1.5vw + 0.5rem, 0.875rem);
   line-height: 1.7;
   text-align: left;
@@ -72,23 +74,44 @@
   }
 }
 .nxs-code-block .hljs-keyword,
-.nxs-code-block .hljs-literal { color: var(--sh-keyword); }
-.nxs-code-block .hljs-string { color: var(--sh-string); }
-.nxs-code-block .hljs-number { color: var(--sh-literal); }
-.nxs-code-block .hljs-comment { color: var(--sh-comment); }
-.nxs-code-block .hljs-title.class_ { color: var(--sh-class); }
-.nxs-code-block .hljs-title.function_ { color: var(--sh-entity); }
+.nxs-code-block .hljs-literal {
+  color: var(--sh-keyword);
+}
+.nxs-code-block .hljs-string {
+  color: var(--sh-string);
+}
+.nxs-code-block .hljs-number {
+  color: var(--sh-literal);
+}
+.nxs-code-block .hljs-comment {
+  color: var(--sh-comment);
+}
+.nxs-code-block .hljs-title.class_ {
+  color: var(--sh-class);
+}
+.nxs-code-block .hljs-title.function_ {
+  color: var(--sh-entity);
+}
 .nxs-code-block .hljs-attr,
 .nxs-code-block .hljs-attribute,
-.nxs-code-block .hljs-params { color: var(--sh-property); }
+.nxs-code-block .hljs-params {
+  color: var(--sh-property);
+}
 .nxs-code-block .hljs-built_in,
-.nxs-code-block .hljs-variable { color: var(--sh-identifier); }
+.nxs-code-block .hljs-variable {
+  color: var(--sh-identifier);
+}
 .nxs-code-block .hljs-name,
-.nxs-code-block .hljs-tag .hljs-name { color: var(--sh-tag); }
-.nxs-code-block .hljs-tag { color: var(--sh-sign); }
+.nxs-code-block .hljs-tag .hljs-name {
+  color: var(--sh-tag);
+}
+.nxs-code-block .hljs-tag {
+  color: var(--sh-sign);
+}
 .nxs-code-block .hljs-punctuation,
-.nxs-code-block .hljs-operator { color: var(--sh-sign); }
-
+.nxs-code-block .hljs-operator {
+  color: var(--sh-sign);
+}
 
 /* Slide transition keyframes */
 @keyframes nxs-fade {

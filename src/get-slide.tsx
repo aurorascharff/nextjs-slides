@@ -14,7 +14,10 @@ import { notFound } from 'next/navigation';
  * }
  * ```
  */
-export function getSlide(params: { page: string }, slides: React.ReactNode[]): React.ReactNode {
+export function getSlide(
+  params: { page: string },
+  slides: React.ReactNode[]
+): React.ReactNode {
   const index = Number(params.page) - 1;
 
   if (isNaN(index) || index < 0 || index >= slides.length) {

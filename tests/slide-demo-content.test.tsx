@@ -7,7 +7,7 @@ describe('SlideDemoContent', () => {
     render(
       <SlideDemoContent>
         <span>Demo content</span>
-      </SlideDemoContent>,
+      </SlideDemoContent>
     );
     expect(screen.getByText('Demo content')).toBeInTheDocument();
   });
@@ -16,7 +16,7 @@ describe('SlideDemoContent', () => {
     const { container } = render(
       <SlideDemoContent>
         <span>Content</span>
-      </SlideDemoContent>,
+      </SlideDemoContent>
     );
     const wrapper = container.firstChild as HTMLDivElement;
     expect(wrapper.tagName).toBe('DIV');

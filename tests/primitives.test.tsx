@@ -47,7 +47,7 @@ describe('Slide', () => {
 describe('SlideSplitLayout', () => {
   it('renders left and right content', () => {
     render(
-      <SlideSplitLayout left={<span>Left</span>} right={<span>Right</span>} />,
+      <SlideSplitLayout left={<span>Left</span>} right={<span>Right</span>} />
     );
     expect(screen.getByText('Left')).toBeInTheDocument();
     expect(screen.getByText('Right')).toBeInTheDocument();
@@ -103,7 +103,7 @@ describe('SlideList', () => {
       <SlideList>
         <SlideListItem>Item 1</SlideListItem>
         <SlideListItem>Item 2</SlideListItem>
-      </SlideList>,
+      </SlideList>
     );
     expect(screen.getByText('Item 1')).toBeInTheDocument();
     expect(screen.getByText('Item 2')).toBeInTheDocument();
@@ -122,9 +122,11 @@ describe('SlideDemo', () => {
     const { container } = render(
       <SlideDemo label="Demo">
         <button>Click</button>
-      </SlideDemo>,
+      </SlideDemo>
     );
-    expect(container.querySelector('[data-slide-interactive]')).toBeInTheDocument();
+    expect(
+      container.querySelector('[data-slide-interactive]')
+    ).toBeInTheDocument();
     expect(screen.getByText('Click')).toBeInTheDocument();
     expect(screen.getByText('Demo')).toBeInTheDocument();
   });
@@ -136,7 +138,7 @@ describe('SlideStatementList', () => {
       <SlideStatementList>
         <SlideStatement title="A" description="Desc A" />
         <SlideStatement title="B" description="Desc B" />
-      </SlideStatementList>,
+      </SlideStatementList>
     );
     expect(screen.getByText('A')).toBeInTheDocument();
     expect(screen.getByText('Desc A')).toBeInTheDocument();
@@ -172,7 +174,7 @@ describe('SlideSpeakerGrid', () => {
       <SlideSpeakerGrid>
         <SlideSpeaker name="A" title="T1" />
         <SlideSpeaker name="B" title="T2" />
-      </SlideSpeakerGrid>,
+      </SlideSpeakerGrid>
     );
     expect(screen.getByText('A')).toBeInTheDocument();
     expect(screen.getByText('B')).toBeInTheDocument();
@@ -184,7 +186,7 @@ describe('SlideSpeakerList', () => {
     render(
       <SlideSpeakerList>
         <SlideSpeaker name="A" title="T1" />
-      </SlideSpeakerList>,
+      </SlideSpeakerList>
     );
     expect(screen.getByText('A')).toBeInTheDocument();
   });

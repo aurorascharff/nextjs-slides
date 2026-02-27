@@ -22,7 +22,7 @@ describe('SlideDeck', () => {
     render(
       <SlideDeck slides={slides}>
         <div>Current slide content</div>
-      </SlideDeck>,
+      </SlideDeck>
     );
     expect(screen.getByText('Current slide content')).toBeInTheDocument();
   });
@@ -31,7 +31,7 @@ describe('SlideDeck', () => {
     const { container } = render(
       <SlideDeck slides={slides}>
         <div>Content</div>
-      </SlideDeck>,
+      </SlideDeck>
     );
     expect(container.querySelector('#slide-deck')).toBeInTheDocument();
   });
@@ -40,7 +40,7 @@ describe('SlideDeck', () => {
     render(
       <SlideDeck slides={slides}>
         <div>Content</div>
-      </SlideDeck>,
+      </SlideDeck>
     );
     expect(screen.getByLabelText('Slide progress')).toBeInTheDocument();
   });
@@ -49,7 +49,7 @@ describe('SlideDeck', () => {
     render(
       <SlideDeck slides={slides}>
         <div>Content</div>
-      </SlideDeck>,
+      </SlideDeck>
     );
     expect(screen.getByText('1 / 2')).toBeInTheDocument();
   });
@@ -58,7 +58,7 @@ describe('SlideDeck', () => {
     render(
       <SlideDeck slides={slides} showProgress={false}>
         <div>Content</div>
-      </SlideDeck>,
+      </SlideDeck>
     );
     expect(screen.queryByLabelText('Slide progress')).not.toBeInTheDocument();
   });
@@ -67,7 +67,7 @@ describe('SlideDeck', () => {
     render(
       <SlideDeck slides={slides} showCounter={false}>
         <div>Content</div>
-      </SlideDeck>,
+      </SlideDeck>
     );
     expect(screen.queryByText('1 / 2')).not.toBeInTheDocument();
   });
@@ -77,7 +77,7 @@ describe('SlideDeck', () => {
     render(
       <SlideDeck slides={slides} basePath="/deck">
         <div>Content</div>
-      </SlideDeck>,
+      </SlideDeck>
     );
     expect(screen.getByText('1 / 2')).toBeInTheDocument();
   });

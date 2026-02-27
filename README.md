@@ -28,7 +28,6 @@ Open http://localhost:3000 — choose "Geist deck" or "Alternate deck" (Playfair
 
 Peer dependencies: `next >=15`, `react >=19`, `tailwindcss >=4`.
 
-
 ## Quick Start
 
 ### 1. Import the stylesheet
@@ -36,8 +35,8 @@ Peer dependencies: `next >=15`, `react >=19`, `tailwindcss >=4`.
 In your root layout or global CSS:
 
 ```css
-@import "tailwindcss";
-@import "nextjs-slides/styles.css";
+@import 'tailwindcss';
+@import 'nextjs-slides/styles.css';
 
 @source "../node_modules/nextjs-slides/dist";
 ```
@@ -54,7 +53,7 @@ import {
   SlideSubtitle,
   SlideBadge,
   SlideCode,
-} from "nextjs-slides";
+} from 'nextjs-slides';
 
 export const slides = [
   <Slide key="intro">
@@ -75,8 +74,8 @@ console.log(greeting);`}</SlideCode>
 
 ```tsx
 // app/slides/layout.tsx
-import { SlideDeck } from "nextjs-slides";
-import { slides } from "./slides";
+import { SlideDeck } from 'nextjs-slides';
+import { slides } from './slides';
 
 export default function SlidesLayout({
   children,
@@ -93,17 +92,17 @@ export default function SlidesLayout({
 
 ```tsx
 // app/slides/page.tsx
-import { redirect } from "next/navigation";
+import { redirect } from 'next/navigation';
 
 export default function SlidesPage() {
-  redirect("/slides/1");
+  redirect('/slides/1');
 }
 ```
 
 ```tsx
 // app/slides/[page]/page.tsx
-import { getSlide, generateSlideParams } from "nextjs-slides";
-import { slides } from "../slides";
+import { getSlide, generateSlideParams } from 'nextjs-slides';
+import { slides } from '../slides';
 
 export const generateStaticParams = () => generateSlideParams(slides);
 
@@ -120,17 +119,17 @@ That's it. Navigate to `/slides` and you have a full slide deck.
 
 ## `<SlideDeck>` Props
 
-| Prop           | Type                              | Default      | Description                                             |
-| -------------- | --------------------------------- | ------------ | ------------------------------------------------------- |
-| `slides`       | `ReactNode[]`                     | **required** | Your slides array                                       |
-| `speakerNotes` | `(string \| ReactNode \| null)[]` | —            | Notes per slide (same index). See Speaker Notes below.  |
-| `syncEndpoint` | `string`                          | —            | API route for presenter ↔ phone sync.                   |
-| `basePath`     | `string`                          | `"/slides"`  | URL prefix for slide routes                             |
-| `exitUrl`      | `string`                          | —            | URL for exit button (×). Shows in top-right when set.   |
-| `showProgress` | `boolean`                         | `true`       | Show dot progress indicator                             |
-| `showCounter`  | `boolean`                         | `true`       | Show "3 / 10" counter                                   |
-| `className`    | `string`                          | —            | Additional class for the deck container                 |
-| `children`     | `React.ReactNode`                 | **required** | Route content (from Next.js)                            |
+| Prop           | Type                              | Default      | Description                                            |
+| -------------- | --------------------------------- | ------------ | ------------------------------------------------------ |
+| `slides`       | `ReactNode[]`                     | **required** | Your slides array                                      |
+| `speakerNotes` | `(string \| ReactNode \| null)[]` | —            | Notes per slide (same index). See Speaker Notes below. |
+| `syncEndpoint` | `string`                          | —            | API route for presenter ↔ phone sync.                  |
+| `basePath`     | `string`                          | `"/slides"`  | URL prefix for slide routes                            |
+| `exitUrl`      | `string`                          | —            | URL for exit button (×). Shows in top-right when set.  |
+| `showProgress` | `boolean`                         | `true`       | Show dot progress indicator                            |
+| `showCounter`  | `boolean`                         | `true`       | Show "3 / 10" counter                                  |
+| `className`    | `string`                          | —            | Additional class for the deck container                |
+| `children`     | `React.ReactNode`                 | **required** | Route content (from Next.js)                           |
 
 ## Primitives
 
@@ -196,20 +195,20 @@ Slide 4 notes. Slide 3 had none.
 **Leading document title:** If the file starts with `# My Title` (a single heading line), use `stripLeadingTitle: true` so that block isn't treated as slide 1:
 
 ```ts
-parseSpeakerNotes(markdown, { stripLeadingTitle: true })
+parseSpeakerNotes(markdown, { stripLeadingTitle: true });
 ```
 
 Parse the file and pass it to `SlideDeck`. Include `syncEndpoint` so the phone can follow along:
 
 ```tsx
 // app/slides/layout.tsx
-import fs from "fs";
-import path from "path";
-import { SlideDeck, parseSpeakerNotes } from "nextjs-slides";
-import { slides } from "./slides";
+import fs from 'fs';
+import path from 'path';
+import { SlideDeck, parseSpeakerNotes } from 'nextjs-slides';
+import { slides } from './slides';
 
 const notes = parseSpeakerNotes(
-  fs.readFileSync(path.join(process.cwd(), "app/slides/notes.md"), "utf-8")
+  fs.readFileSync(path.join(process.cwd(), 'app/slides/notes.md'), 'utf-8')
 );
 
 export default function SlidesLayout({
@@ -218,7 +217,11 @@ export default function SlidesLayout({
   children: React.ReactNode;
 }) {
   return (
-    <SlideDeck slides={slides} speakerNotes={notes} syncEndpoint="/api/nxs-sync">
+    <SlideDeck
+      slides={slides}
+      speakerNotes={notes}
+      syncEndpoint="/api/nxs-sync"
+    >
       {children}
     </SlideDeck>
   );
@@ -237,19 +240,19 @@ Open `/notes` on your phone while presenting on your laptop. The phone shows the
 
 ```ts
 // app/api/nxs-sync/route.ts
-export { GET, POST } from "nextjs-slides/sync";
+export { GET, POST } from 'nextjs-slides/sync';
 ```
 
 **2. Create the notes page** (same `notes.md`, same `parseSpeakerNotes` — indices must match slides):
 
 ```tsx
 // app/notes/page.tsx
-import fs from "fs";
-import path from "path";
-import { parseSpeakerNotes, SlideNotesView } from "nextjs-slides";
+import fs from 'fs';
+import path from 'path';
+import { parseSpeakerNotes, SlideNotesView } from 'nextjs-slides';
 
 const notes = parseSpeakerNotes(
-  fs.readFileSync(path.join(process.cwd(), "app/slides/notes.md"), "utf-8")
+  fs.readFileSync(path.join(process.cwd(), 'app/slides/notes.md'), 'utf-8')
 );
 
 export default function NotesPage() {
@@ -284,7 +287,12 @@ The notes view auto-follows the deck during slides. Once you tap "Next" past the
 Use `basePath` for a different URL, `exitUrl` for an exit button (×), and `className` for scoped font/syntax overrides:
 
 ```tsx
-<SlideDeck slides={slides} basePath="/slides-alt" exitUrl="/" className="slides-alt-deck">
+<SlideDeck
+  slides={slides}
+  basePath="/slides-alt"
+  exitUrl="/"
+  className="slides-alt-deck"
+>
   {children}
 </SlideDeck>
 ```
@@ -316,13 +324,16 @@ Install `geist`, wire the fonts in your layout, and add the theme variables:
 
 ```tsx
 // app/layout.tsx
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
-import { GeistPixelSquare } from "geist/font/pixel";
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
+import { GeistPixelSquare } from 'geist/font/pixel';
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelSquare.variable}`}>
+    <html
+      lang="en"
+      className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelSquare.variable}`}
+    >
       <body className={GeistSans.className}>{children}</body>
     </html>
   );
@@ -333,7 +344,9 @@ export default function RootLayout({ children }) {
 /* globals.css @theme inline */
 --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
 --font-mono: var(--font-geist-mono), ui-monospace, monospace;
---font-pixel: var(--font-geist-pixel-square), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+--font-pixel:
+  var(--font-geist-pixel-square), var(--font-geist-sans), ui-sans-serif,
+  system-ui, sans-serif;
 ```
 
 Use `className="font-pixel"` on primitives where you want the pixel display font.

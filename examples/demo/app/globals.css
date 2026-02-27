@@ -13,7 +13,9 @@
   --color-border: var(--border);
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --font-pixel: var(--font-geist-pixel-square), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-pixel:
+    var(--font-geist-pixel-square), var(--font-geist-sans), ui-sans-serif,
+    system-ui, sans-serif;
 }
 
 :root {

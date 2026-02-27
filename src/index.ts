@@ -8,7 +8,13 @@ export { getSlide, generateSlideParams } from './get-slide';
 export { Slide, SlideSplitLayout } from './primitives';
 
 // Primitives — Typography
-export { SlideTitle, SlideSubtitle, SlideBadge, SlideHeaderBadge, SlideNote } from './primitives';
+export {
+  SlideTitle,
+  SlideSubtitle,
+  SlideBadge,
+  SlideHeaderBadge,
+  SlideNote,
+} from './primitives';
 
 // Primitives — Content
 export { SlideCode, SlideList, SlideListItem, SlideDemo } from './primitives';

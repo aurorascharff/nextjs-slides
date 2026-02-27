@@ -33,9 +33,16 @@ export const slides: React.ReactNode[] = [
   // 2. Slide component
   <Slide key="slide-component">
     <SlideBadge>Slide</SlideBadge>
-    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">The base container</SlideTitle>
-    <SlideSubtitle>Full-screen layout with automatic centering and a decorative border frame</SlideSubtitle>
-    <SlideNote>This slide uses align=&quot;center&quot; (default) · Set align=&quot;left&quot; for left-aligned content</SlideNote>
+    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
+      The base container
+    </SlideTitle>
+    <SlideSubtitle>
+      Full-screen layout with automatic centering and a decorative border frame
+    </SlideSubtitle>
+    <SlideNote>
+      This slide uses align=&quot;center&quot; (default) · Set
+      align=&quot;left&quot; for left-aligned content
+    </SlideNote>
   </Slide>,
 
   // 3. SlideSplitLayout
@@ -44,15 +51,28 @@ export const slides: React.ReactNode[] = [
     left={
       <>
         <SlideBadge>SlideSplitLayout</SlideBadge>
-        <SlideTitle className="mt-6 text-3xl sm:text-4xl md:text-5xl">Two-column layout</SlideTitle>
-        <SlideSubtitle className="mt-4">Perfect for comparing concepts or pairing visuals with text</SlideSubtitle>
+        <SlideTitle className="mt-6 text-3xl sm:text-4xl md:text-5xl">
+          Two-column layout
+        </SlideTitle>
+        <SlideSubtitle className="mt-4">
+          Perfect for comparing concepts or pairing visuals with text
+        </SlideSubtitle>
       </>
     }
     right={
       <SlideStatementList>
-        <SlideStatement title="left prop" description="Content for the left column" />
-        <SlideStatement title="right prop" description="Content for the right column" />
-        <SlideStatement title="Divider" description="Automatic vertical separator" />
+        <SlideStatement
+          title="left prop"
+          description="Content for the left column"
+        />
+        <SlideStatement
+          title="right prop"
+          description="Content for the right column"
+        />
+        <SlideStatement
+          title="Divider"
+          description="Automatic vertical separator"
+        />
       </SlideStatementList>
     }
   />,
@@ -60,20 +80,30 @@ export const slides: React.ReactNode[] = [
   // 4. SlideList
   <Slide key="list" align="left">
     <SlideBadge>SlideList</SlideBadge>
-    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">Bullet lists</SlideTitle>
-    <SlideSubtitle>SlideList and SlideListItem for structured bullet points</SlideSubtitle>
+    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
+      Bullet lists
+    </SlideTitle>
+    <SlideSubtitle>
+      SlideList and SlideListItem for structured bullet points
+    </SlideSubtitle>
     <SlideList className="mt-6">
       <SlideListItem>First item with consistent spacing</SlideListItem>
       <SlideListItem>Second item — supports any content</SlideListItem>
-      <SlideListItem>Third item with custom styling via className</SlideListItem>
+      <SlideListItem>
+        Third item with custom styling via className
+      </SlideListItem>
     </SlideList>
   </Slide>,
 
   // 5. Typography primitives
   <Slide key="typography" align="left">
     <SlideBadge>Typography</SlideBadge>
-    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">SlideTitle</SlideTitle>
-    <SlideSubtitle>SlideSubtitle for secondary text with muted styling</SlideSubtitle>
+    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
+      SlideTitle
+    </SlideTitle>
+    <SlideSubtitle>
+      SlideSubtitle for secondary text with muted styling
+    </SlideSubtitle>
     <SlideHeaderBadge>SlideHeaderBadge for italic accent text</SlideHeaderBadge>
     <SlideNote>SlideNote for small footnotes and annotations</SlideNote>
   </Slide>,
@@ -81,7 +111,9 @@ export const slides: React.ReactNode[] = [
   // 6. SlideCode
   <Slide key="code">
     <SlideBadge>SlideCode</SlideBadge>
-    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">Syntax highlighting</SlideTitle>
+    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
+      Syntax highlighting
+    </SlideTitle>
     <SlideCode title="example.tsx">{`export function Button({ children, onClick }: ButtonProps) {
   return (
     <button
@@ -92,14 +124,20 @@ export const slides: React.ReactNode[] = [
     </button>
   );
 }`}</SlideCode>
-    <SlideNote>Powered by highlight.js · Automatically adapts to light and dark themes</SlideNote>
+    <SlideNote>
+      Powered by highlight.js · Automatically adapts to light and dark themes
+    </SlideNote>
   </Slide>,
 
   // 7. SlideDemo
   <Slide key="demo">
     <SlideBadge>SlideDemo</SlideBadge>
-    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">Interactive components</SlideTitle>
-    <SlideSubtitle>Embed live React components — keyboard navigation is disabled inside</SlideSubtitle>
+    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
+      Interactive components
+    </SlideTitle>
+    <SlideSubtitle>
+      Embed live React components — keyboard navigation is disabled inside
+    </SlideSubtitle>
     <SlideDemo label="Live counter">
       <Counter />
     </SlideDemo>
@@ -111,8 +149,12 @@ export const slides: React.ReactNode[] = [
     left={
       <>
         <SlideBadge>Demo + Code</SlideBadge>
-        <SlideTitle className="mt-6 text-3xl sm:text-4xl md:text-5xl">Side by side</SlideTitle>
-        <SlideSubtitle className="mt-4">Pair a live component with its source using SlideSplitLayout</SlideSubtitle>
+        <SlideTitle className="mt-6 text-3xl sm:text-4xl md:text-5xl">
+          Side by side
+        </SlideTitle>
+        <SlideSubtitle className="mt-4">
+          Pair a live component with its source using SlideSplitLayout
+        </SlideSubtitle>
         <SlideDemo label="Try it" className="mt-6">
           <Counter />
         </SlideDemo>
@@ -140,15 +182,28 @@ export function Counter() {
     left={
       <>
         <SlideBadge>SlideStatement</SlideBadge>
-        <SlideTitle className="mt-6 text-3xl sm:text-4xl md:text-5xl">Structured content blocks</SlideTitle>
-        <SlideSubtitle className="mt-4">Title and description pairs with consistent styling</SlideSubtitle>
+        <SlideTitle className="mt-6 text-3xl sm:text-4xl md:text-5xl">
+          Structured content blocks
+        </SlideTitle>
+        <SlideSubtitle className="mt-4">
+          Title and description pairs with consistent styling
+        </SlideSubtitle>
       </>
     }
     right={
       <SlideStatementList>
-        <SlideStatement title="title prop" description="Bold heading for the statement" />
-        <SlideStatement title="description prop" description="Optional muted text below" />
-        <SlideStatement title="SlideStatementList" description="Wrapper with border separators" />
+        <SlideStatement
+          title="title prop"
+          description="Bold heading for the statement"
+        />
+        <SlideStatement
+          title="description prop"
+          description="Optional muted text below"
+        />
+        <SlideStatement
+          title="SlideStatementList"
+          description="Wrapper with border separators"
+        />
       </SlideStatementList>
     }
   />,
@@ -156,18 +211,26 @@ export function Counter() {
   // 10. SlideSpeaker
   <Slide key="speakers">
     <SlideBadge>SlideSpeaker</SlideBadge>
-    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">Speaker components</SlideTitle>
-    <SlideSubtitle>SlideSpeakerGrid for side-by-side · SlideSpeakerList for vertical stacking</SlideSubtitle>
+    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
+      Speaker components
+    </SlideTitle>
+    <SlideSubtitle>
+      SlideSpeakerGrid for side-by-side · SlideSpeakerList for vertical stacking
+    </SlideSubtitle>
     <div className="mt-8 flex flex-wrap items-start justify-center gap-12">
       <div>
-        <p className="text-muted-foreground mb-4 text-center text-xs font-medium uppercase tracking-wider">SlideSpeakerGrid</p>
+        <p className="text-muted-foreground mb-4 text-center text-xs font-medium uppercase tracking-wider">
+          SlideSpeakerGrid
+        </p>
         <SlideSpeakerGrid>
           <SlideSpeaker name="Speaker One" title="Role / Company" />
           <SlideSpeaker name="Speaker Two" title="Role / Company" />
         </SlideSpeakerGrid>
       </div>
       <div>
-        <p className="text-muted-foreground mb-4 text-center text-xs font-medium uppercase tracking-wider">SlideSpeakerList</p>
+        <p className="text-muted-foreground mb-4 text-center text-xs font-medium uppercase tracking-wider">
+          SlideSpeakerList
+        </p>
         <SlideSpeakerList>
           <SlideSpeaker name="Speaker One" title="Role / Company" />
           <SlideSpeaker name="Speaker Two" title="Role / Company" />
@@ -182,16 +245,26 @@ export function Counter() {
     left={
       <>
         <SlideBadge>Navigation</SlideBadge>
-        <SlideTitle className="mt-6 text-3xl sm:text-4xl md:text-5xl">Keyboard controls</SlideTitle>
-        <SlideSubtitle className="mt-4">Built-in navigation with ViewTransition animations</SlideSubtitle>
+        <SlideTitle className="mt-6 text-3xl sm:text-4xl md:text-5xl">
+          Keyboard controls
+        </SlideTitle>
+        <SlideSubtitle className="mt-4">
+          Built-in navigation with ViewTransition animations
+        </SlideSubtitle>
       </>
     }
     right={
       <SlideStatementList>
         <SlideStatement title="→ or Space" description="Go to next slide" />
         <SlideStatement title="←" description="Go to previous slide" />
-        <SlideStatement title="Progress dots" description="Visual indicator at the bottom" />
-        <SlideStatement title="Slide counter" description="Current / total in bottom right" />
+        <SlideStatement
+          title="Progress dots"
+          description="Visual indicator at the bottom"
+        />
+        <SlideStatement
+          title="Slide counter"
+          description="Current / total in bottom right"
+        />
       </SlideStatementList>
     }
   />,
@@ -199,19 +272,31 @@ export function Counter() {
   // 12. SlideLink and routing
   <Slide key="links" align="left">
     <SlideBadge>SlideLink</SlideBadge>
-    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">Links and routing</SlideTitle>
-    <SlideSubtitle>Navigate between slides, to breakout pages, or external URLs</SlideSubtitle>
+    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
+      Links and routing
+    </SlideTitle>
+    <SlideSubtitle>
+      Navigate between slides, to breakout pages, or external URLs
+    </SlideSubtitle>
     <div className="mt-6 flex flex-wrap items-center gap-4">
       <SlideLink href="/slides/demo1">Breakout page →</SlideLink>
-      <SlideLink href="/" variant="ghost">Exit deck</SlideLink>
+      <SlideLink href="/" variant="ghost">
+        Exit deck
+      </SlideLink>
     </div>
-    <SlideNote>Breakout routes live inside /slides but render without the deck chrome</SlideNote>
+    <SlideNote>
+      Breakout routes live inside /slides but render without the deck chrome
+    </SlideNote>
   </Slide>,
 
   // 13. Closing
   <Slide key="end">
-    <SlideTitle className="font-pixel">That&apos;s the slide system.</SlideTitle>
-    <SlideSubtitle>Compose these primitives to build any presentation</SlideSubtitle>
+    <SlideTitle className="font-pixel">
+      That&apos;s the slide system.
+    </SlideTitle>
+    <SlideSubtitle>
+      Compose these primitives to build any presentation
+    </SlideSubtitle>
     <div className="mt-6 flex items-center gap-4">
       <SlideLink href="/">Back to app →</SlideLink>
     </div>

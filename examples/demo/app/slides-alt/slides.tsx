@@ -17,20 +17,29 @@ export const slides: React.ReactNode[] = [
   <Slide key="title" align="left">
     <SlideBadge>Alternate Deck</SlideBadge>
     <SlideTitle>Different fonts & syntax theme</SlideTitle>
-    <SlideSubtitle>Playfair Display · JetBrains Mono · Dracula-inspired palette</SlideSubtitle>
+    <SlideSubtitle>
+      Playfair Display · JetBrains Mono · Dracula-inspired palette
+    </SlideSubtitle>
   </Slide>,
 
   <Slide key="typography" align="left">
     <SlideBadge>Typography</SlideBadge>
     <SlideTitle>Serif headings, monospace code</SlideTitle>
-    <SlideSubtitle>This deck uses Playfair Display for titles and JetBrains Mono for code blocks</SlideSubtitle>
-    <SlideNote>Override --font-sans and --font-mono via CSS to customize</SlideNote>
+    <SlideSubtitle>
+      This deck uses Playfair Display for titles and JetBrains Mono for code
+      blocks
+    </SlideSubtitle>
+    <SlideNote>
+      Override --font-sans and --font-mono via CSS to customize
+    </SlideNote>
   </Slide>,
 
   <Slide key="code" align="left">
     <SlideBadge>SlideCode</SlideBadge>
     <SlideTitle>Custom syntax highlighting</SlideTitle>
-    <SlideSubtitle>Dracula-inspired theme — purple, cyan, green, orange</SlideSubtitle>
+    <SlideSubtitle>
+      Dracula-inspired theme — purple, cyan, green, orange
+    </SlideSubtitle>
     <SlideCode title="example.tsx">{`function Greeting({ name }: Props) {
   return (
     <div className="greeting">
@@ -50,14 +59,22 @@ export const slides: React.ReactNode[] = [
       <>
         <SlideBadge>Split layout</SlideBadge>
         <SlideTitle className="mt-6">Same primitives</SlideTitle>
-        <SlideSubtitle className="mt-4">SlideSplitLayout, SlideStatement — all work the same</SlideSubtitle>
+        <SlideSubtitle className="mt-4">
+          SlideSplitLayout, SlideStatement — all work the same
+        </SlideSubtitle>
       </>
     }
     right={
       <SlideStatementList>
-        <SlideStatement title="Fonts" description="Playfair Display + JetBrains Mono" />
+        <SlideStatement
+          title="Fonts"
+          description="Playfair Display + JetBrains Mono"
+        />
         <SlideStatement title="Syntax" description="Dracula-inspired palette" />
-        <SlideStatement title="Routing" description="Separate /slides-alt route" />
+        <SlideStatement
+          title="Routing"
+          description="Separate /slides-alt route"
+        />
       </SlideStatementList>
     }
   />,

@@ -30,14 +30,18 @@
  */
 export function parseSpeakerNotes(
   markdown: string,
-  options?: { stripLeadingTitle?: boolean },
+  options?: { stripLeadingTitle?: boolean }
 ): (string | null)[] {
   let sections = markdown.split(/^---$/m).map((section) => {
     const trimmed = section.trim();
     return trimmed.length > 0 ? trimmed : null;
   });
 
-  if (options?.stripLeadingTitle && sections[0] && /^#+\s+.+$/.test(sections[0].replace(/\n.*/s, ''))) {
+  if (
+    options?.stripLeadingTitle &&
+    sections[0] &&
+    /^#+\s+.+$/.test(sections[0].replace(/\n.*/s, ''))
+  ) {
     sections = sections.slice(1);
   }
 

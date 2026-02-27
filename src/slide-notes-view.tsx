@@ -51,7 +51,7 @@ export function SlideNotesView({
       setTotalSlides(data.total);
       setConnected(true);
 
-      setNoteIndex(prev => {
+      setNoteIndex((prev) => {
         if (manualOverride.current && prev >= data.total) return prev;
         manualOverride.current = false;
         return syncIndex;
@@ -68,7 +68,7 @@ export function SlideNotesView({
   }, [poll, pollInterval]);
 
   const goNext = useCallback(() => {
-    setNoteIndex(prev => {
+    setNoteIndex((prev) => {
       if (prev >= notes.length - 1) return prev;
       manualOverride.current = true;
       return prev + 1;
@@ -76,14 +76,15 @@ export function SlideNotesView({
   }, [notes.length]);
 
   const goPrev = useCallback(() => {
-    setNoteIndex(prev => {
+    setNoteIndex((prev) => {
       if (prev <= 0) return prev;
       manualOverride.current = true;
       return prev - 1;
     });
   }, []);
 
-  const currentNote = noteIndex >= 0 && noteIndex < notes.length ? notes[noteIndex] : null;
+  const currentNote =
+    noteIndex >= 0 && noteIndex < notes.length ? notes[noteIndex] : null;
   const inDemoNotes = noteIndex >= totalSlides;
   const displayNumber = noteIndex + 1;
 
@@ -145,7 +146,9 @@ export function SlideNotesView({
             {currentNote}
           </p>
         ) : (
-          <p style={{ fontSize: '18px', color: '#525252', fontStyle: 'italic' }}>
+          <p
+            style={{ fontSize: '18px', color: '#525252', fontStyle: 'italic' }}
+          >
             No notes for this slide.
           </p>
         )}

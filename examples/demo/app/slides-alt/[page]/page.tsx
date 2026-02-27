@@ -5,6 +5,10 @@ export function generateStaticParams() {
   return generateSlideParams(slides);
 }
 
-export default async function SlideAltPage({ params }: { params: Promise<{ page: string }> }) {
+export default async function SlideAltPage({
+  params,
+}: {
+  params: Promise<{ page: string }>;
+}) {
   return getSlide(await params, slides);
 }

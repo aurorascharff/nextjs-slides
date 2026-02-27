@@ -19,7 +19,7 @@ describe('SlideLink', () => {
     render(
       <SlideLink href="/" variant="ghost">
         Link
-      </SlideLink>,
+      </SlideLink>
     );
     const link = screen.getByRole('link');
     expect(link).toHaveClass('border', 'bg-transparent');
@@ -29,7 +29,7 @@ describe('SlideLink', () => {
     render(
       <SlideLink href="/" className="custom-class">
         Link
-      </SlideLink>,
+      </SlideLink>
     );
     expect(screen.getByRole('link')).toHaveClass('custom-class');
   });

@@ -53,6 +53,8 @@ describe('generateSlideParams', () => {
   });
 
   it('returns correct page numbers for single slide', () => {
-    expect(generateSlideParams([React.createElement('div', { key: '1' }, 'Only')])).toEqual([{ page: '1' }]);
+    expect(
+      generateSlideParams([React.createElement('div', { key: '1' }, 'Only')])
+    ).toEqual([{ page: '1' }]);
   });
 });
