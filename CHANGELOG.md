@@ -1,3 +1,10 @@
+## [0.3.2](https://github.com/aurorascharff/nextjs-slides/compare/v0.3.1...v0.3.2) (2026-02-27)
+
+
+### Bug Fixes
+
+* remove prefers-color-scheme from library CSS to prevent forced dark code blocks ([f5d2d2b](https://github.com/aurorascharff/nextjs-slides/commit/f5d2d2b1659d6331ce283928fdcbc6bb495e2c72))
+
 ## [0.3.1](https://github.com/aurorascharff/nextjs-slides/compare/v0.3.0...v0.3.1) (2026-02-27)
 
 
