@@ -1,3 +1,10 @@
+## [0.3.3](https://github.com/aurorascharff/nextjs-slides/compare/v0.3.2...v0.3.3) (2026-02-27)
+
+
+### Bug Fixes
+
+* add padding to SlideSplitLayout right column ([f4ffc22](https://github.com/aurorascharff/nextjs-slides/commit/f4ffc2282aef88ce7c72355b697c61202d9fd57c))
+
 ## [0.3.2](https://github.com/aurorascharff/nextjs-slides/compare/v0.3.1...v0.3.2) (2026-02-27)
 
 
