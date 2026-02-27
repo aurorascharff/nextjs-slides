@@ -30,7 +30,7 @@ export function Slide({
   return (
     <div
       className={cn(
-        'nxs-slide relative flex h-dvh w-dvw flex-col justify-center gap-8 px-12 py-20 sm:px-24 md:px-32 lg:px-40',
+        'nxs-slide relative flex h-dvh w-dvw flex-col justify-center gap-8 overflow-hidden px-12 py-20 sm:px-24 md:px-32 lg:px-40',
         align === 'center' && 'items-center text-center',
         align === 'left' && 'items-start text-left',
         className,
@@ -39,7 +39,7 @@ export function Slide({
       <div className="border-foreground/10 pointer-events-none absolute inset-4 border sm:inset-6" aria-hidden />
       <div
         className={cn(
-          'relative z-10 flex max-w-4xl flex-col gap-6',
+          'relative z-10 flex min-w-0 max-w-4xl flex-col gap-6',
           align === 'center' && 'items-center',
           align === 'left' && 'items-start',
         )}
@@ -60,13 +60,13 @@ export function SlideSplitLayout({
   className?: string;
 }) {
   return (
-    <div className={cn('nxs-slide relative flex h-dvh w-dvw', className)}>
+    <div className={cn('nxs-slide relative flex h-dvh w-dvw overflow-hidden', className)}>
       <div className="border-foreground/10 pointer-events-none absolute inset-4 border sm:inset-6" aria-hidden />
-      <div className="relative z-10 flex w-1/2 flex-col justify-center px-12 py-20 sm:px-16 md:px-20 lg:px-24">
+      <div className="relative z-10 flex min-w-0 w-1/2 flex-col justify-center overflow-x-auto px-12 py-20 sm:px-16 md:px-20 lg:px-24">
         {left}
       </div>
       <div className="bg-foreground/10 absolute top-4 bottom-4 left-1/2 z-10 w-px sm:top-6 sm:bottom-6" aria-hidden />
-      <div className="relative z-10 flex w-1/2 flex-col justify-center px-12 py-20 sm:px-16 md:px-20 lg:px-24">{right}</div>
+      <div className="relative z-10 flex min-w-0 w-1/2 flex-col justify-center overflow-x-auto px-12 py-20 sm:px-16 md:px-20 lg:px-24">{right}</div>
     </div>
   );
 }
@@ -112,9 +112,9 @@ export function SlideCode({ children, className, title }: { children: string; cl
   const html = highlightCode(children, lang);
 
   return (
-    <div className={cn('w-full max-w-2xl', className)}>
+    <div className={cn('min-w-0 w-full max-w-2xl', className)}>
       {title && <div className="text-muted-foreground mb-2 text-xs font-medium tracking-wider uppercase">{title}</div>}
-      <pre className="nxs-code-block overflow-x-auto border p-6 text-left font-mono text-[13px] leading-[1.7] sm:text-sm">
+      <pre className="nxs-code-block min-w-0 overflow-x-auto border p-6 text-left font-mono text-[13px] leading-[1.7] sm:text-sm">
         <code dangerouslySetInnerHTML={{ __html: html }} />
       </pre>
     </div>
@@ -148,7 +148,7 @@ export function SlideDemo({
   label?: string;
 }) {
   return (
-    <div data-slide-interactive className={cn('w-full max-w-2xl', className)}>
+    <div data-slide-interactive className={cn('min-w-0 w-full max-w-2xl', className)}>
       {label && <div className="text-muted-foreground mb-2 text-xs font-medium tracking-wider uppercase">{label}</div>}
       <div className="border-foreground/10 bg-foreground/[0.03] border p-6">
         <SlideDemoContent>{children}</SlideDemoContent>
@@ -158,7 +158,7 @@ export function SlideDemo({
 }
 
 export function SlideStatementList({ children, className }: { children: React.ReactNode; className?: string }) {
-  return <div className={cn('flex w-full flex-col', className)}>{children}</div>;
+  return <div className={cn('flex min-w-0 w-full flex-col', className)}>{children}</div>;
 }
 
 export function SlideStatement({
@@ -178,10 +178,31 @@ export function SlideStatement({
   );
 }
 
-export function SlideSpeaker({ name, title, className }: { name: string; title: string; className?: string }) {
+export function SlideSpeaker({
+  name,
+  title,
+  avatar,
+  className,
+}: {
+  name: string;
+  title: string;
+  /** Image URL or path for the speaker avatar. Falls back to placeholder when omitted. */
+  avatar?: string;
+  className?: string;
+}) {
   return (
     <div className={cn('flex items-center gap-4', className)}>
-      <div className="bg-muted h-12 w-12 shrink-0 rounded-full" aria-hidden />
+      <div
+        className={cn(
+          'h-12 w-12 shrink-0 overflow-hidden rounded-full',
+          avatar ? 'relative' : 'bg-foreground/15 border-foreground/20 border',
+        )}
+        aria-hidden
+      >
+        {avatar ? (
+          <img src={avatar} alt="" className="h-full w-full object-cover" />
+        ) : null}
+      </div>
       <div>
         <p className="text-foreground/90 text-sm font-medium tracking-widest uppercase">{name}</p>
         <p className="text-muted-foreground text-sm tracking-wider uppercase">{title}</p>

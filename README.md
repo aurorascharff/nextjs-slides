@@ -154,7 +154,7 @@ That's it. Navigate to `/slides` and you have a full slide deck.
 ### Structured
 
 - **`<SlideStatementList>`** / **`<SlideStatement>`** — Title + description pairs with border separators.
-- **`<SlideSpeaker>`** — Avatar + name + title row.
+- **`<SlideSpeaker>`** — Avatar + name + title row. Props: `name`, `title`, `avatar` (optional image URL).
 - **`<SlideSpeakerGrid>`** — 2-column speaker grid.
 - **`<SlideSpeakerList>`** — Vertical speaker stack.
 
