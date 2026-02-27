@@ -1,3 +1,10 @@
+## [0.5.1](https://github.com/aurorascharff/nextjs-slides/compare/v0.5.0...v0.5.1) (2026-02-27)
+
+
+### Bug Fixes
+
+* move code block responsive styles to CSS for reliable consumer support ([749c8f4](https://github.com/aurorascharff/nextjs-slides/commit/749c8f40731721ae695016cd522df7e63e84e8ed))
+
 # [0.5.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.4.1...v0.5.0) (2026-02-27)
 
 
