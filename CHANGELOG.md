@@ -1,3 +1,10 @@
+## [0.5.3](https://github.com/aurorascharff/nextjs-slides/compare/v0.5.2...v0.5.3) (2026-02-27)
+
+
+### Bug Fixes
+
+* speaker notes sync and leading title handling ([eb88e7c](https://github.com/aurorascharff/nextjs-slides/commit/eb88e7c209d336dc82b3ebc458e04ca24ed2dfd2))
+
 ## [0.5.2](https://github.com/aurorascharff/nextjs-slides/compare/v0.5.1...v0.5.2) (2026-02-27)
 
 
