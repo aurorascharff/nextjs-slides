@@ -92,7 +92,7 @@ export const slides: React.ReactNode[] = [
     </button>
   );
 }`}</SlideCode>
-    <SlideNote>Powered by sugar-high · Automatically adapts to light and dark themes</SlideNote>
+    <SlideNote>Powered by highlight.js · Automatically adapts to light and dark themes</SlideNote>
   </Slide>,
 
   // 7. SlideDemo
