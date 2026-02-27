@@ -1,6 +1,6 @@
 /* nextjs-slides — Slide transition animations and code theme tokens */
 
-/* GitHub-style theme (Vercel/docs) — override --sh-* and --nxs-code-* in :root / .dark */
+/* Default code theme — override --sh-* and --nxs-code-* in :root or .dark */
 :root {
   --nxs-code-bg: #ffffff;
   --nxs-code-border: #eaeaea;
@@ -17,20 +17,38 @@
   --sh-sign: #24292e;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --nxs-code-bg: #0a0a0a;
+    --nxs-code-border: #262626;
+    --nxs-code-text: #ededed;
+    --sh-keyword: #ff7b72;
+    --sh-string: #a5d6ff;
+    --sh-property: #79c0ff;
+    --sh-class: #d2a8ff;
+    --sh-entity: #d2a8ff;
+    --sh-tag: #7ee787;
+    --sh-identifier: #ededed;
+    --sh-literal: #79c0ff;
+    --sh-comment: #7a7a7a;
+    --sh-sign: #ededed;
+  }
+}
+
 .dark {
-  --nxs-code-bg: #0d1117;
-  --nxs-code-border: #30363d;
-  --nxs-code-text: #c9d1d9;
+  --nxs-code-bg: #0a0a0a;
+  --nxs-code-border: #262626;
+  --nxs-code-text: #ededed;
   --sh-keyword: #ff7b72;
   --sh-string: #a5d6ff;
   --sh-property: #79c0ff;
   --sh-class: #d2a8ff;
   --sh-entity: #d2a8ff;
   --sh-tag: #7ee787;
-  --sh-identifier: #c9d1d9;
+  --sh-identifier: #ededed;
   --sh-literal: #79c0ff;
-  --sh-comment: #8b949e;
-  --sh-sign: #c9d1d9;
+  --sh-comment: #7a7a7a;
+  --sh-sign: #ededed;
 }
 
 /* Map highlight.js to theme variables (all overwritable via --sh-*) */
