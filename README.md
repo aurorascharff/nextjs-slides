@@ -175,7 +175,7 @@ Keyboard events are ignored inside `<SlideDemo>`, inputs, and textareas so you c
 
 ## Speaker Notes
 
-Write notes in a markdown file — one section per slide, separated by `---`. Empty sections mean no notes for that slide:
+Write notes in a markdown file — one section per slide, separated by `---` on its own line. Sections are matched to slides by **position**: the first section = slide 1, the second = slide 2, and so on. Empty sections mean no notes for that slide.
 
 ```md
 Welcome everyone. This is the opening slide.
@@ -191,7 +191,9 @@ Talk about the base container here.
 Slide 4 notes. Slide 3 had none.
 ```
 
-Parse the file and pass it to `SlideDeck`:
+**Keep the number of sections in sync with your slides** — if you have 12 slides, you need 12 sections (empty is fine).
+
+Parse the file and pass it to `SlideDeck`. Include `syncEndpoint` so the phone can follow along:
 
 ```tsx
 // app/slides/layout.tsx
@@ -217,9 +219,13 @@ export default function SlidesLayout({
 }
 ```
 
+Without `syncEndpoint`, the deck won't broadcast slide changes and the phone will stay on the first note.
+
 ### Phone sync (presenter notes on your phone)
 
 Open `/notes` on your phone while presenting on your laptop. The phone shows the current slide's notes and follows along as you navigate with the keyboard.
+
+**How sync works:** When you navigate with arrow keys or spacebar, the deck POSTs `{ slide, total }` to the sync endpoint. The notes page polls that endpoint every 500ms and displays `notes[slide - 1]` — so the notes array index must match slide order. Use the same `notes.md` file in both the layout and the notes page.
 
 **1. Create the sync API route:**
 
@@ -228,7 +234,7 @@ Open `/notes` on your phone while presenting on your laptop. The phone shows the
 export { GET, POST } from "nextjs-slides/sync";
 ```
 
-**2. Create the notes page:**
+**2. Create the notes page** (same `notes.md`, same `parseSpeakerNotes` — indices must match slides):
 
 ```tsx
 // app/notes/page.tsx
@@ -245,7 +251,7 @@ export default function NotesPage() {
 }
 ```
 
-Open your phone on `http://<your-ip>:3000/notes` (same network). The deck POSTs the current slide to the sync endpoint on every navigation; the notes view polls it every 500ms.
+Open your phone on `http://<your-ip>:3000/notes` (same network).
 
 ### Demo notes (extra sections after the slides)
 
