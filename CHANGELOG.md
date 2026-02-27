@@ -1,3 +1,10 @@
+## [0.1.7](https://github.com/aurorascharff/nextjs-slides/compare/v0.1.6...v0.1.7) (2026-02-27)
+
+
+### Bug Fixes
+
+* update syntax highlighting to use highlight.js for proper tokens ([d08fcc5](https://github.com/aurorascharff/nextjs-slides/commit/d08fcc5d93e6a8dc0c054dfbe54534ba73f8fd73))
+
 ## [0.1.6](https://github.com/aurorascharff/nextjs-slides/compare/v0.1.5...v0.1.6) (2026-02-26)
 
 
