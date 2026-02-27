@@ -39,7 +39,7 @@ export function Slide({
       <div className="border-foreground/10 pointer-events-none absolute inset-4 border sm:inset-6" aria-hidden />
       <div
         className={cn(
-          'relative z-10 flex min-w-0 max-w-4xl flex-col gap-6',
+          'relative z-10 flex min-w-0 max-w-4xl flex-col gap-10',
           align === 'center' && 'items-center',
           align === 'left' && 'items-start',
         )}
@@ -114,7 +114,7 @@ export function SlideCode({ children, className, title }: { children: string; cl
   return (
     <div className={cn('min-w-0 w-full max-w-2xl', className)}>
       {title && <div className="text-muted-foreground mb-2 text-xs font-medium tracking-wider uppercase">{title}</div>}
-      <pre className="nxs-code-block min-w-0 overflow-x-auto border p-6 text-left font-mono text-[13px] leading-[1.7] sm:text-sm">
+      <pre className="nxs-code-block min-w-0 w-full max-w-full overflow-x-auto border p-4 text-left font-mono leading-[1.7] sm:p-6" style={{ fontSize: 'clamp(0.75rem, 1.5vw + 0.5rem, 0.875rem)' }}>
         <code dangerouslySetInnerHTML={{ __html: html }} />
       </pre>
     </div>
@@ -150,7 +150,7 @@ export function SlideDemo({
   return (
     <div data-slide-interactive className={cn('min-w-0 w-full max-w-2xl', className)}>
       {label && <div className="text-muted-foreground mb-2 text-xs font-medium tracking-wider uppercase">{label}</div>}
-      <div className="border-foreground/10 bg-foreground/[0.03] border p-6">
+      <div className="border-foreground/10 bg-foreground/[0.03] min-w-0 w-full max-w-full border p-4 sm:p-6">
         <SlideDemoContent>{children}</SlideDemoContent>
       </div>
     </div>
