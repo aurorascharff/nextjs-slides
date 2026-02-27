@@ -6,6 +6,8 @@ Composable slide deck primitives for Next.js — powered by React 19 ViewTransit
 
 Build full presentations from React components with URL-based routing, keyboard navigation, progress indicators, and smooth slide transitions — all declarative.
 
+> **Note:** I'm not experienced with publishing libraries — I built this for my own presentations. That said, feel free to try it out!
+
 ## Install
 
 ```bash
