@@ -114,7 +114,7 @@ export function SlideCode({ children, className, title }: { children: string; cl
   return (
     <div className={cn('min-w-0 w-full max-w-2xl', className)}>
       {title && <div className="text-muted-foreground mb-2 text-xs font-medium tracking-wider uppercase">{title}</div>}
-      <pre className="nxs-code-block min-w-0 w-full max-w-full overflow-x-auto border p-4 text-left font-mono leading-[1.7] sm:p-6" style={{ fontSize: 'clamp(0.75rem, 1.5vw + 0.5rem, 0.875rem)' }}>
+      <pre className="nxs-code-block">
         <code dangerouslySetInnerHTML={{ __html: html }} />
       </pre>
     </div>

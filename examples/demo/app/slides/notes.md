@@ -47,3 +47,15 @@ SlideLink works for internal slide navigation, breakout pages, and external URLs
 ---
 
 Thanks for watching! Compose these primitives however you like.
+
+---
+
+Open the counter demo. Show how useState drives the count and how the button re-renders.
+
+---
+
+Switch to the code editor. Walk through adding a new slide with SlideSplitLayout.
+
+---
+
+Show the notes.md file — explain the --- separator format and how parseSpeakerNotes works.

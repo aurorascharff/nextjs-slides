@@ -37,10 +37,8 @@
  * ```
  */
 export function parseSpeakerNotes(markdown: string): (string | null)[] {
-  return markdown
-    .split(/^---$/m)
-    .map(section => {
-      const trimmed = section.trim();
-      return trimmed.length > 0 ? trimmed : null;
-    });
+  return markdown.split(/^---$/m).map((section) => {
+    const trimmed = section.trim();
+    return trimmed.length > 0 ? trimmed : null;
+  });
 }

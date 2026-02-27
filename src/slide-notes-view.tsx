@@ -1,16 +1,17 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 /**
  * Phone-friendly speaker notes view that stays in sync with the presenter.
  *
  * Polls the sync endpoint to track the current slide and displays the
- * corresponding note. Open this page on your phone while presenting.
+ * corresponding note. Notes beyond the slide count are treated as "demo notes"
+ * — advance through them manually using the on-screen buttons.
  *
  * @example
  * ```tsx
- * // app/slides/notes/page.tsx
+ * // app/notes/page.tsx
  * import fs from 'fs';
  * import path from 'path';
  * import { parseSpeakerNotes, SlideNotesView } from 'nextjs-slides';
@@ -29,25 +30,32 @@ export function SlideNotesView({
   syncEndpoint,
   pollInterval = 500,
 }: {
-  /** Speaker notes array (same index as slides). Typically from `parseSpeakerNotes()`. */
+  /** Speaker notes array. Indices 0…slides-1 match slides; extras are demo notes. */
   notes: (string | null)[];
   /** API endpoint created with the sync route handlers. */
   syncEndpoint: string;
   /** Polling interval in ms. Defaults to 500. */
   pollInterval?: number;
 }) {
-  const [currentSlide, setCurrentSlide] = useState(1);
+  const [noteIndex, setNoteIndex] = useState(0);
   const [totalSlides, setTotalSlides] = useState(1);
   const [connected, setConnected] = useState(false);
+  const manualOverride = useRef(false);
 
   const poll = useCallback(async () => {
     try {
       const res = await fetch(syncEndpoint, { cache: 'no-store' });
       if (!res.ok) return;
       const data = await res.json();
-      setCurrentSlide(data.slide);
+      const syncIndex = (data.slide as number) - 1;
       setTotalSlides(data.total);
       setConnected(true);
+
+      setNoteIndex(prev => {
+        if (manualOverride.current && prev >= data.total) return prev;
+        manualOverride.current = false;
+        return syncIndex;
+      });
     } catch {
       setConnected(false);
     }
@@ -59,8 +67,29 @@ export function SlideNotesView({
     return () => clearInterval(id);
   }, [poll, pollInterval]);
 
-  const noteIndex = currentSlide - 1;
+  const goNext = useCallback(() => {
+    setNoteIndex(prev => {
+      if (prev >= notes.length - 1) return prev;
+      manualOverride.current = true;
+      return prev + 1;
+    });
+  }, [notes.length]);
+
+  const goPrev = useCallback(() => {
+    setNoteIndex(prev => {
+      if (prev <= 0) return prev;
+      manualOverride.current = true;
+      return prev - 1;
+    });
+  }, []);
+
   const currentNote = noteIndex >= 0 && noteIndex < notes.length ? notes[noteIndex] : null;
+  const inDemoNotes = noteIndex >= totalSlides;
+  const displayNumber = noteIndex + 1;
+
+  const label = inDemoNotes
+    ? `Demo ${displayNumber - totalSlides} / ${notes.length - totalSlides}`
+    : `Slide ${displayNumber} / ${totalSlides}`;
 
   return (
     <div
@@ -84,9 +113,7 @@ export function SlideNotesView({
           color: '#737373',
         }}
       >
-        <span>
-          Slide {currentSlide} / {totalSlides}
-        </span>
+        <span>{label}</span>
         <span
           style={{
             width: 8,
@@ -122,6 +149,52 @@ export function SlideNotesView({
             No notes for this slide.
           </p>
         )}
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          gap: '12px',
+          padding: '16px 20px',
+          borderTop: '1px solid #262626',
+        }}
+      >
+        <button
+          onClick={goPrev}
+          disabled={noteIndex <= 0}
+          style={{
+            flex: 1,
+            padding: '14px',
+            fontSize: '16px',
+            fontWeight: 500,
+            border: '1px solid #333',
+            borderRadius: '10px',
+            backgroundColor: noteIndex <= 0 ? '#111' : '#1a1a1a',
+            color: noteIndex <= 0 ? '#444' : '#e5e5e5',
+            cursor: noteIndex <= 0 ? 'default' : 'pointer',
+            WebkitTapHighlightColor: 'transparent',
+          }}
+        >
+          ← Prev
+        </button>
+        <button
+          onClick={goNext}
+          disabled={noteIndex >= notes.length - 1}
+          style={{
+            flex: 1,
+            padding: '14px',
+            fontSize: '16px',
+            fontWeight: 500,
+            border: '1px solid #333',
+            borderRadius: '10px',
+            backgroundColor: noteIndex >= notes.length - 1 ? '#111' : '#1a1a1a',
+            color: noteIndex >= notes.length - 1 ? '#444' : '#e5e5e5',
+            cursor: noteIndex >= notes.length - 1 ? 'default' : 'pointer',
+            WebkitTapHighlightColor: 'transparent',
+          }}
+        >
+          Next →
+        </button>
       </div>
     </div>
   );
