@@ -2,7 +2,7 @@
 
 [![npm version](https://img.shields.io/npm/v/nextjs-slides.svg)](https://www.npmjs.com/package/nextjs-slides)
 
-Composable slide deck primitives for Next.js — powered by React 19 ViewTransitions, Tailwind CSS v4, and sugar-high syntax highlighting.
+Composable slide deck primitives for Next.js — powered by React 19 ViewTransitions, Tailwind CSS v4, and highlight.js syntax highlighting.
 
 Build full presentations from React components with URL-based routing, keyboard navigation, progress indicators, and smooth slide transitions — all declarative.
 
@@ -155,7 +155,7 @@ That's it. Navigate to `/slides` and you have a full slide deck.
 
 ### Content
 
-- **`<SlideCode>`** — Syntax-highlighted code block (sugar-high). Props: `title`, `className`. Pass code as `children` string.
+- **`<SlideCode>`** — Syntax-highlighted code block (highlight.js). Props: `title`, `className`. Pass code as `children` string. Supports JS, TS, JSX, TSX (language inferred from `title`, e.g. `example.tsx`).
 - **`<SlideList>`** / **`<SlideListItem>`** — Bullet list.
 - **`<SlideDemo>`** — Interactive component container. Keyboard navigation is disabled inside so you can use inputs and buttons. Props: `label`, `className`.
 
@@ -206,9 +206,9 @@ app/slides/
 
 The library **inherits** your app's theme. Primitives use Tailwind utilities that resolve to CSS variables: `--foreground`, `--background`, `--muted-foreground`, `--primary`, `--primary-foreground`, `--border`, `--muted`. Compatible with shadcn/ui and any Tailwind v4 setup that defines these.
 
-`nextjs-slides/styles.css` adds only code syntax highlighting (`--sh-*`) and slide transition animations. No scoping — slides inherit your global styles.
+`nextjs-slides/styles.css` adds the Vercel-inspired code theme (`--nxs-code-*`, `--sh-*`) and slide transition animations. No scoping — slides inherit your global styles.
 
-**Customize code colors:** Override the `--sh-*` variables in your `:root` or `.dark` to change syntax highlighting. Variables: `--sh-keyword`, `--sh-string`, `--sh-property`, `--sh-entity`, `--sh-class`, `--sh-identifier`, `--sh-comment`, `--sh-sign`, `--sh-jsxliterals`.
+**Customize code block:** Override `--nxs-code-bg`, `--nxs-code-border`, `--nxs-code-text` for block styling. Override `--sh-*` for syntax highlighting: `--sh-keyword`, `--sh-string`, `--sh-property`, `--sh-entity`, `--sh-class`, `--sh-tag` (JSX/HTML tags), `--sh-identifier`, `--sh-literal`, `--sh-comment`, `--sh-sign`.
 
 ### Geist fonts (optional)
 
@@ -246,7 +246,7 @@ Slide transitions use the React 19 `<ViewTransition>` component with `addTransit
 
 ## Troubleshooting
 
-**SlideCode syntax highlighting looks broken or colorless** — Ensure you import `nextjs-slides/styles.css` in your root layout or global CSS (see Quick Start). The `--sh-*` variables must be in scope for sugar-high tokens to display correctly.
+**SlideCode syntax highlighting looks broken or colorless** — Ensure you import `nextjs-slides/styles.css` in your root layout or global CSS (see Quick Start). The `--sh-*` variables must be in scope for highlight.js tokens to display correctly.
 
 **`@source` path not found** — The `@source "../node_modules/nextjs-slides/dist"` path is relative to your CSS file. If your `globals.css` lives in `app/`, use `../node_modules/...`. If it lives in the project root, use `./node_modules/nextjs-slides/dist`.
 

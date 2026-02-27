@@ -1,5 +1,17 @@
-import { highlight } from 'sugar-high';
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+import typescript from 'highlight.js/lib/languages/typescript';
+import xml from 'highlight.js/lib/languages/xml';
 import { cn } from './cn';
+
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('typescript', typescript);
+hljs.registerLanguage('xml', xml);
+
+function highlightCode(code: string, lang?: string): string {
+  const language = lang === 'ts' || lang === 'tsx' ? 'typescript' : lang ?? 'typescript';
+  return hljs.highlight(code, { language }).value;
+}
 import { SlideDemoContent } from './slide-demo-content';
 import type { SlideAlign } from './types';
 
@@ -92,21 +104,14 @@ export function SlideHeaderBadge({ children, className }: { children: React.Reac
   );
 }
 
-/** sugar-high treats null as "class" and may miss some literals; reclass so they use keyword styling */
-function reclassLiterals(html: string): string {
-  return html.replace(
-    /(<span[^>]*class=")sh__token--(?:identifier|class)("[^>]*>)(null|false|true|undefined)(<\/span>)/g,
-    (_, before, after, literal, close) => `${before}sh__token--keyword${after}${literal}${close}`,
-  );
-}
-
 export function SlideCode({ children, className, title }: { children: string; className?: string; title?: string }) {
-  const html = reclassLiterals(highlight(children));
+  const lang = title?.split('.').pop();
+  const html = highlightCode(children, lang);
 
   return (
     <div className={cn('w-full max-w-2xl', className)}>
       {title && <div className="text-muted-foreground mb-2 text-xs font-medium tracking-wider uppercase">{title}</div>}
-      <pre className="nxs-code-block border-foreground/10 bg-foreground/[0.03] overflow-x-auto border p-6 text-left font-mono text-[13px] leading-[1.7] sm:text-sm">
+      <pre className="nxs-code-block overflow-x-auto border p-6 text-left font-mono text-[13px] leading-[1.7] sm:text-sm">
         <code dangerouslySetInnerHTML={{ __html: html }} />
       </pre>
     </div>

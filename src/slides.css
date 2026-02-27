@@ -1,35 +1,61 @@
 /* nextjs-slides — Slide transition animations and code theme tokens */
 
-/* sugar-high code theme — Vercel-inspired defaults (SlideCode requires nextjs-slides/styles.css import).
-   Override these --sh-* variables in your :root / .dark to customize. */
+/* GitHub-style theme (Vercel/docs) — override --sh-* and --nxs-code-* in :root / .dark */
 :root {
-  --sh-class: #6d28d9;
-  --sh-identifier: #171717;
-  --sh-keyword: #db2777;
-  --sh-string: #0958d9;
-  --sh-property: #0958d9;
-  --sh-entity: #6d28d9;
-  --sh-jsxliterals: #171717;
-  --sh-sign: #525252;
-  --sh-comment: #6b7280;
-  --sh-space: #171717;
-  --sh-break: #171717;
+  --nxs-code-bg: #ffffff;
+  --nxs-code-border: #eaeaea;
+  --nxs-code-text: #24292e;
+  --sh-keyword: #d73a49;
+  --sh-string: #032f62;
+  --sh-property: #005cc5;
+  --sh-class: #6f42c1;
+  --sh-entity: #6f42c1;
+  --sh-tag: #22863a;
+  --sh-identifier: #24292e;
+  --sh-literal: #005cc5;
+  --sh-comment: #6a737d;
+  --sh-sign: #24292e;
 }
 
-/* sugar-high code theme — dark (Vercel) */
 .dark {
-  --sh-class: #ff0080;
-  --sh-identifier: #fafafa;
-  --sh-keyword: #ff0080;
-  --sh-string: #79ffe1;
-  --sh-property: #79ffe1;
-  --sh-entity: #a855f7;
-  --sh-jsxliterals: #fafafa;
-  --sh-sign: #888;
-  --sh-comment: #666;
-  --sh-space: #fafafa;
-  --sh-break: #fafafa;
+  --nxs-code-bg: #0d1117;
+  --nxs-code-border: #30363d;
+  --nxs-code-text: #c9d1d9;
+  --sh-keyword: #ff7b72;
+  --sh-string: #a5d6ff;
+  --sh-property: #79c0ff;
+  --sh-class: #d2a8ff;
+  --sh-entity: #d2a8ff;
+  --sh-tag: #7ee787;
+  --sh-identifier: #c9d1d9;
+  --sh-literal: #79c0ff;
+  --sh-comment: #8b949e;
+  --sh-sign: #c9d1d9;
 }
+
+/* Map highlight.js to theme variables (all overwritable via --sh-*) */
+.nxs-code-block {
+  background: var(--nxs-code-bg);
+  border-color: var(--nxs-code-border);
+  color: var(--nxs-code-text);
+}
+.nxs-code-block .hljs-keyword,
+.nxs-code-block .hljs-literal { color: var(--sh-keyword); }
+.nxs-code-block .hljs-string { color: var(--sh-string); }
+.nxs-code-block .hljs-number { color: var(--sh-literal); }
+.nxs-code-block .hljs-comment { color: var(--sh-comment); }
+.nxs-code-block .hljs-title.class_ { color: var(--sh-class); }
+.nxs-code-block .hljs-title.function_ { color: var(--sh-entity); }
+.nxs-code-block .hljs-attr,
+.nxs-code-block .hljs-attribute,
+.nxs-code-block .hljs-params { color: var(--sh-property); }
+.nxs-code-block .hljs-built_in,
+.nxs-code-block .hljs-variable { color: var(--sh-identifier); }
+.nxs-code-block .hljs-name,
+.nxs-code-block .hljs-tag .hljs-name { color: var(--sh-tag); }
+.nxs-code-block .hljs-tag { color: var(--sh-sign); }
+.nxs-code-block .hljs-punctuation,
+.nxs-code-block .hljs-operator { color: var(--sh-sign); }
 
 
 /* Slide transition keyframes */

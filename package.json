@@ -1,7 +1,7 @@
 {
   "name": "nextjs-slides",
   "version": "0.1.6",
-  "description": "Composable slide deck primitives for Next.js — powered by React 19 ViewTransitions, Tailwind CSS, and sugar-high syntax highlighting.",
+  "description": "Composable slide deck primitives for Next.js — powered by React 19 ViewTransitions, Tailwind CSS, and highlight.js syntax highlighting.",
   "license": "MIT",
   "type": "module",
   "exports": {
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "clsx": "^2.1.1",
-    "sugar-high": "^0.9.5",
+    "highlight.js": "^11.11.1",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
@@ -67,7 +67,7 @@
     "react",
     "tailwind",
     "view-transitions",
-    "sugar-high"
+    "highlight.js"
   ],
   "repository": {
     "type": "git",
