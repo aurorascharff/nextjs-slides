@@ -1,3 +1,10 @@
+# [0.6.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.5.3...v0.6.0) (2026-02-27)
+
+
+### Features
+
+* responsive split layout — stack columns below 1024px ([828cbd7](https://github.com/aurorascharff/nextjs-slides/commit/828cbd7d178250273de0152b071333d00fe18bbf))
+
 ## [0.5.3](https://github.com/aurorascharff/nextjs-slides/compare/v0.5.2...v0.5.3) (2026-02-27)
 
 
