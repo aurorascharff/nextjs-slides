@@ -2,7 +2,11 @@
  * Parse speaker notes from a markdown string.
  *
  * Format: one section per slide, separated by `---` on its own line.
+ * Sections map to slides by position: notes[0] = slide 1, notes[1] = slide 2, etc.
  * Empty sections produce `null` (no notes for that slide).
+ *
+ * @param stripLeadingTitle - If true, removes a leading section that is a single
+ *   markdown heading (# Title). Use when the file starts with a document title.
  *
  * @example
  * ```md
@@ -21,24 +25,21 @@
  *
  * @example
  * ```tsx
- * // slides/layout.tsx (server component — can use fs)
- * import fs from 'fs';
- * import path from 'path';
- * import { SlideDeck, parseSpeakerNotes } from 'nextjs-slides';
- * import { slides } from './slides';
- *
- * const notes = parseSpeakerNotes(
- *   fs.readFileSync(path.join(process.cwd(), 'app/slides/notes.md'), 'utf-8'),
- * );
- *
- * export default function SlidesLayout({ children }: { children: React.ReactNode }) {
- *   return <SlideDeck slides={slides} speakerNotes={notes}>{children}</SlideDeck>;
- * }
+ * const notes = parseSpeakerNotes(markdown, { stripLeadingTitle: true });
  * ```
  */
-export function parseSpeakerNotes(markdown: string): (string | null)[] {
-  return markdown.split(/^---$/m).map((section) => {
+export function parseSpeakerNotes(
+  markdown: string,
+  options?: { stripLeadingTitle?: boolean },
+): (string | null)[] {
+  let sections = markdown.split(/^---$/m).map((section) => {
     const trimmed = section.trim();
     return trimmed.length > 0 ? trimmed : null;
   });
+
+  if (options?.stripLeadingTitle && sections[0] && /^#+\s+.+$/.test(sections[0].replace(/\n.*/s, ''))) {
+    sections = sections.slice(1);
+  }
+
+  return sections;
 }

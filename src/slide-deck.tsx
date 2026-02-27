@@ -32,12 +32,20 @@ export function SlideDeck({
     (index: number) => {
       const clamped = Math.max(0, Math.min(index, total - 1));
       if (clamped === current) return;
+      const targetSlide = clamped + 1; // 1-based for sync API
+      if (syncEndpoint) {
+        fetch(syncEndpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ slide: targetSlide, total }),
+        }).catch(() => {});
+      }
       startTransition(() => {
         addTransitionType(clamped > current ? 'slide-forward' : 'slide-back');
-        router.push(`${basePath}/${clamped + 1}`);
+        router.push(`${basePath}/${targetSlide}`);
       });
     },
-    [basePath, current, router, startTransition, total],
+    [basePath, current, router, startTransition, syncEndpoint, total],
   );
 
   useEffect(() => {
@@ -77,13 +85,13 @@ export function SlideDeck({
   }, []);
 
   useEffect(() => {
-    if (!syncEndpoint || !isSlideRoute) return;
+    if (!syncEndpoint || !isSlideRoute || isPending) return;
     fetch(syncEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ slide: current + 1, total }),
     }).catch(() => {});
-  }, [syncEndpoint, current, total, isSlideRoute]);
+  }, [syncEndpoint, current, total, isSlideRoute, isPending]);
 
   return (
     <ViewTransition default="none" exit="deck-unveil">

@@ -51,4 +51,25 @@ describe('parseSpeakerNotes', () => {
     const md = `Note one\n\n---\n\nNote two\n\n---`;
     expect(parseSpeakerNotes(md)).toEqual(['Note one', 'Note two', null]);
   });
+
+  it('stripLeadingTitle removes a leading # heading section', () => {
+    const md = `# Next.js Demo Kit - Speaker Notes
+
+---
+
+Slide 1 actual notes
+
+---
+
+Slide 2 notes`;
+    expect(parseSpeakerNotes(md, { stripLeadingTitle: true })).toEqual([
+      'Slide 1 actual notes',
+      'Slide 2 notes',
+    ]);
+  });
+
+  it('stripLeadingTitle does not strip when first section is not a heading', () => {
+    const md = `Welcome, this is slide 1\n\n---\n\nSlide 2`;
+    expect(parseSpeakerNotes(md, { stripLeadingTitle: true })).toEqual(['Welcome, this is slide 1', 'Slide 2']);
+  });
 });

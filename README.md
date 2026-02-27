@@ -191,7 +191,13 @@ Talk about the base container here.
 Slide 4 notes. Slide 3 had none.
 ```
 
-**Keep the number of sections in sync with your slides** — if you have 12 slides, you need 12 sections (empty is fine).
+**Keep the number of sections in sync with your slides** — if you have 12 slides, you need 12 sections (empty is fine). Don't start the file with `---`; the first block of text (before any `---`) is for slide 1.
+
+**Leading document title:** If the file starts with `# My Title` (a single heading line), use `stripLeadingTitle: true` so that block isn't treated as slide 1:
+
+```ts
+parseSpeakerNotes(markdown, { stripLeadingTitle: true })
+```
 
 Parse the file and pass it to `SlideDeck`. Include `syncEndpoint` so the phone can follow along:
 
@@ -345,6 +351,10 @@ Slide transitions use the React 19 `<ViewTransition>` component with `addTransit
 **SlideCode error "Could not find the language '…'"** — Only JavaScript, TypeScript, and HTML/XML are registered. Unrecognized file extensions in the `title` prop (e.g. `.terminal`, `.sh`, `.py`) will fall back to TypeScript highlighting. If you previously saw this error, update the package — the fix gracefully handles unknown languages instead of throwing.
 
 **Exit animation (deck-unveil) not running** — Ensure `SlideDeck` is the direct child of the layout. Wrapping it in a `<div>` can prevent the ViewTransition exit from firing. Use the `className` prop for scoped styling instead.
+
+**Notes out of sync** — Ensure `syncEndpoint` is set and both layout and notes page use the same `notes.md`. On serverless (Vercel), in-memory sync can hit different instances; use a shared store for production.
+
+**Notes show a document title instead of slide 1** — If the file starts with `# My Title` before the first `---`, use `parseSpeakerNotes(markdown, { stripLeadingTitle: true })`.
 
 ## For maintainers
 
