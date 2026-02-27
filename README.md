@@ -247,6 +247,24 @@ export default function NotesPage() {
 
 Open your phone on `http://<your-ip>:3000/notes` (same network). The deck POSTs the current slide to the sync endpoint on every navigation; the notes view polls it every 500ms.
 
+### Demo notes (extra sections after the slides)
+
+Add more `---` sections after the last slide's notes — these become demo notes you can step through on your phone after the presentation ends:
+
+```md
+...last slide notes
+
+---
+
+Open the counter demo. Show how useState drives the count.
+
+---
+
+Switch to the editor. Walk through adding a new slide.
+```
+
+The notes view auto-follows the deck during slides. Once you tap "Next" past the last slide, you enter demo notes territory (the header switches to "Demo 1 / 2") and the phone stops auto-syncing so you control it manually.
+
 > **Note:** The sync state lives in server memory — designed for `next dev` or single-server deployments. It won't persist across serverless function invocations.
 
 ## Custom Base Path & Multiple Decks
