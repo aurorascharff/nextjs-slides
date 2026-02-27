@@ -1,3 +1,10 @@
+# [0.5.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.4.1...v0.5.0) (2026-02-27)
+
+
+### Features
+
+* add speaker notes with phone sync ([be83f6d](https://github.com/aurorascharff/nextjs-slides/commit/be83f6d2de26048e6aba84239a6e09a332d84d07))
+
 ## [0.4.1](https://github.com/aurorascharff/nextjs-slides/compare/v0.4.0...v0.4.1) (2026-02-27)
 
 
