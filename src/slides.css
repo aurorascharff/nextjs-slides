@@ -40,28 +40,7 @@
 
 .nxs-slide-split-col {
   min-width: 0;
-  width: 50%;
   overflow-x: auto;
-}
-
-/* Split layout: stack columns below 1024px — use grid to bypass flex overrides */
-@media (max-width: 1023px) {
-  #slide-deck .nxs-slide-split {
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-
-  #slide-deck .nxs-slide-split .nxs-slide-split-col {
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-  }
-
-  #slide-deck .nxs-slide-split .nxs-slide-split-divider {
-    display: none !important;
-  }
 }
 
 /* Code block wrapper — constrains width so code doesn't blow out the slide */
