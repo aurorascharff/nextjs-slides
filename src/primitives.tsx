@@ -30,7 +30,7 @@ export function Slide({
   return (
     <div
       className={cn(
-        'nxs-slide relative flex h-dvh w-dvw flex-col justify-center gap-8 overflow-hidden px-12 py-20 sm:px-24 md:px-32 lg:px-40',
+        'nxs-slide relative flex h-dvh w-dvw flex-col justify-center gap-8 px-12 py-20 sm:px-24 md:px-32 lg:px-40',
         align === 'center' && 'items-center text-center',
         align === 'left' && 'items-start text-left',
         className,
@@ -39,7 +39,7 @@ export function Slide({
       <div className="border-foreground/10 pointer-events-none absolute inset-4 border sm:inset-6" aria-hidden />
       <div
         className={cn(
-          'relative z-10 flex min-w-0 max-w-4xl flex-col gap-10',
+          'relative z-10 flex max-w-4xl flex-col gap-10',
           align === 'center' && 'items-center',
           align === 'left' && 'items-start',
         )}
@@ -60,13 +60,13 @@ export function SlideSplitLayout({
   className?: string;
 }) {
   return (
-    <div className={cn('nxs-slide relative flex h-dvh w-dvw overflow-hidden', className)}>
+    <div className={cn('nxs-slide relative flex h-dvh w-dvw', className)}>
       <div className="border-foreground/10 pointer-events-none absolute inset-4 border sm:inset-6" aria-hidden />
-      <div className="relative z-10 flex min-w-0 w-1/2 flex-col justify-center overflow-x-auto px-12 py-20 sm:px-16 md:px-20 lg:px-24">
+      <div className="nxs-slide-split-col relative z-10 flex w-1/2 flex-col justify-center px-12 py-20 sm:px-16 md:px-20 lg:px-24">
         {left}
       </div>
       <div className="bg-foreground/10 absolute top-4 bottom-4 left-1/2 z-10 w-px sm:top-6 sm:bottom-6" aria-hidden />
-      <div className="relative z-10 flex min-w-0 w-1/2 flex-col justify-center overflow-x-auto px-12 py-20 sm:px-16 md:px-20 lg:px-24">{right}</div>
+      <div className="nxs-slide-split-col relative z-10 flex w-1/2 flex-col justify-center px-12 py-20 sm:px-16 md:px-20 lg:px-24">{right}</div>
     </div>
   );
 }
@@ -112,7 +112,7 @@ export function SlideCode({ children, className, title }: { children: string; cl
   const html = highlightCode(children, lang);
 
   return (
-    <div className={cn('min-w-0 w-full max-w-2xl', className)}>
+    <div className={cn('nxs-code-wrapper', className)}>
       {title && <div className="text-muted-foreground mb-2 text-xs font-medium tracking-wider uppercase">{title}</div>}
       <pre className="nxs-code-block">
         <code dangerouslySetInnerHTML={{ __html: html }} />

@@ -330,7 +330,6 @@ Use `className="font-pixel"` on primitives where you want the pixel display font
 
 Slide transitions use the React 19 `<ViewTransition>` component with `addTransitionType()`. The CSS in `nextjs-slides/styles.css` defines the `::view-transition-*` animations. Override them in your own CSS to customize.
 
-
 ## Troubleshooting
 
 **SlideCode syntax highlighting looks broken or colorless** — Ensure you import `nextjs-slides/styles.css` in your root layout or global CSS (see Quick Start). The `--sh-*` variables must be in scope for highlight.js tokens to display correctly.

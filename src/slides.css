@@ -33,11 +33,27 @@
   --sh-sign: #ededed;
 }
 
+/* Slide container overflow containment */
+.nxs-slide {
+  overflow: hidden;
+}
+
+.nxs-slide-split-col {
+  min-width: 0;
+  overflow-x: auto;
+}
+
+/* Code block wrapper — constrains width so code doesn't blow out the slide */
+.nxs-code-wrapper {
+  min-width: 0;
+  width: 100%;
+  max-width: 42rem;
+}
+
 /* Map highlight.js to theme variables (all overwritable via --sh-*) */
 .nxs-code-block {
   background: var(--nxs-code-bg);
   border: 1px solid var(--nxs-code-border);
-  border-radius: 0.5rem;
   color: var(--nxs-code-text);
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   font-size: clamp(0.75rem, 1.5vw + 0.5rem, 0.875rem);
