@@ -22,7 +22,7 @@ A minimal demo app lives in `examples/demo`. From the repo root:
 npm run build && cd examples/demo && npm install && npm run dev
 ```
 
-Open http://localhost:3000 and click "Open slides".
+Open http://localhost:3000 — choose "Geist deck" or "Alternate deck" (Playfair + Dracula theme).
 
 Peer dependencies: `next >=15`, `react >=19`, `tailwindcss >=4`.
 
@@ -129,14 +129,15 @@ That's it. Navigate to `/slides` and you have a full slide deck.
 
 ## `<SlideDeck>` Props
 
-| Prop           | Type              | Default      | Description                             |
-| -------------- | ----------------- | ------------ | --------------------------------------- |
-| `slides`       | `ReactNode[]`     | **required** | Your slides array                       |
-| `basePath`     | `string`          | `"/slides"`  | URL prefix for slide routes             |
-| `showProgress` | `boolean`         | `true`       | Show dot progress indicator             |
-| `showCounter`  | `boolean`         | `true`       | Show "3 / 10" counter                   |
-| `className`    | `string`          | —            | Additional class for the deck container |
-| `children`     | `React.ReactNode` | **required** | Route content (from Next.js)            |
+| Prop           | Type              | Default      | Description                                             |
+| -------------- | ----------------- | ------------ | ------------------------------------------------------- |
+| `slides`       | `ReactNode[]`     | **required** | Your slides array                                       |
+| `basePath`     | `string`          | `"/slides"`  | URL prefix for slide routes                             |
+| `exitUrl`      | `string`          | —            | URL for exit button (×). Shows in top-right when set.   |
+| `showProgress` | `boolean`         | `true`       | Show dot progress indicator                             |
+| `showCounter`  | `boolean`         | `true`       | Show "3 / 10" counter                                   |
+| `className`    | `string`          | —            | Additional class for the deck container                 |
+| `children`     | `React.ReactNode` | **required** | Route content (from Next.js)                            |
 
 ## Primitives
 
@@ -179,17 +180,17 @@ That's it. Navigate to `/slides` and you have a full slide deck.
 
 Keyboard events are ignored inside `<SlideDemo>`, inputs, and textareas so you can interact without advancing slides.
 
-## Custom Base Path
+## Custom Base Path & Multiple Decks
 
-Host slides at a different URL:
+Use `basePath` for a different URL, `exitUrl` for an exit button (×), and `className` for scoped font/syntax overrides:
 
 ```tsx
-<SlideDeck slides={slides} basePath="/deck">
+<SlideDeck slides={slides} basePath="/slides-alt" exitUrl="/" className="slides-alt-deck">
   {children}
 </SlideDeck>
 ```
 
-Then route at `/deck/[page]/page.tsx`.
+Route at `/slides-alt/[page]/page.tsx`. Keep `SlideDeck` as the direct layout child (no wrapper div) so the exit animation works.
 
 ## Breakout Pages
 
@@ -249,6 +250,8 @@ Slide transitions use the React 19 `<ViewTransition>` component with `addTransit
 **SlideCode syntax highlighting looks broken or colorless** — Ensure you import `nextjs-slides/styles.css` in your root layout or global CSS (see Quick Start). The `--sh-*` variables must be in scope for highlight.js tokens to display correctly.
 
 **`@source` path not found** — The `@source "../node_modules/nextjs-slides/dist"` path is relative to your CSS file. If your `globals.css` lives in `app/`, use `../node_modules/...`. If it lives in the project root, use `./node_modules/nextjs-slides/dist`.
+
+**Exit animation (deck-unveil) not running** — Ensure `SlideDeck` is the direct child of the layout. Wrapping it in a `<div>` can prevent the ViewTransition exit from firing. Use the `className` prop for scoped styling instead.
 
 ## For maintainers
 

@@ -15,4 +15,7 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000 and click "Open slides" to start the deck.
+Open http://localhost:3000 and choose a deck:
+
+- **Geist deck** (`/slides`) — Default theme, Geist fonts. Full primitives showcase.
+- **Alternate deck** (`/slides-alt`) — Playfair Display + JetBrains Mono, Dracula-inspired syntax.

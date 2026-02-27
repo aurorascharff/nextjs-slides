@@ -1,0 +1,29 @@
+/* Alternate deck — Dracula-inspired syntax, scoped to .slides-alt-deck */
+/* Fonts loaded via link in root layout for reliable loading */
+
+.slides-alt-deck {
+  font-family: 'Playfair Display', ui-serif, Georgia, serif;
+}
+
+.slides-alt-deck .nxs-code-block,
+.slides-alt-deck pre,
+.slides-alt-deck code {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Dracula-inspired syntax theme */
+.slides-alt-deck {
+  --nxs-code-bg: #282a36;
+  --nxs-code-border: #44475a;
+  --nxs-code-text: #f8f8f2;
+  --sh-keyword: #ff79c6;
+  --sh-string: #f1fa8c;
+  --sh-property: #50fa7b;
+  --sh-class: #bd93f9;
+  --sh-entity: #8be9fd;
+  --sh-tag: #ff79c6;
+  --sh-identifier: #f8f8f2;
+  --sh-literal: #bd93f9;
+  --sh-comment: #6272a4;
+  --sh-sign: #f8f8f2;
+}

@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { addTransitionType, useCallback, useEffect, useTransition, ViewTransition } from 'react';
 import { cn } from './cn';
@@ -9,6 +10,7 @@ export function SlideDeck({
   children,
   slides,
   basePath = '/slides',
+  exitUrl,
   showProgress = true,
   showCounter = true,
   className,
@@ -121,6 +123,19 @@ export function SlideDeck({
           <div className="text-foreground/30 fixed right-8 bottom-8 z-50 font-mono text-xs tracking-wider">
             {current + 1} / {total}
           </div>
+        )}
+
+        {isSlideRoute && exitUrl && (
+          <Link
+            href={exitUrl}
+            className="text-foreground/50 hover:text-foreground fixed top-6 right-8 z-50 flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-foreground/10"
+            aria-label="Exit presentation"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 6 6 18" />
+              <path d="m6 6 12 12" />
+            </svg>
+          </Link>
         )}
       </div>
     </ViewTransition>
