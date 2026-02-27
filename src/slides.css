@@ -44,22 +44,23 @@
   overflow-x: auto;
 }
 
-/* Split layout: stack columns below 1024px */
+/* Split layout: stack columns below 1024px — use grid to bypass flex overrides */
 @media (max-width: 1023px) {
-  .nxs-slide-split {
-    flex-direction: column;
+  #slide-deck .nxs-slide-split {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
     overflow-y: auto;
     overflow-x: hidden;
   }
 
-  .nxs-slide-split .nxs-slide-split-col {
+  #slide-deck .nxs-slide-split .nxs-slide-split-col {
     width: 100% !important;
     max-width: 100% !important;
-    flex: 1 1 auto;
+    min-width: 0 !important;
   }
 
-  .nxs-slide-split .nxs-slide-split-divider {
-    display: none;
+  #slide-deck .nxs-slide-split .nxs-slide-split-divider {
+    display: none !important;
   }
 }
 
