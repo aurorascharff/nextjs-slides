@@ -28,17 +28,6 @@ Open http://localhost:3000 — choose "Geist deck" or "Alternate deck" (Playfair
 
 Peer dependencies: `next >=15`, `react >=19`, `tailwindcss >=4`.
 
-### Enable View Transitions
-
-Add to your `next.config.ts` (merge with existing config) for slide transition animations:
-
-```ts
-const nextConfig = {
-  experimental: {
-    viewTransition: true,
-  },
-};
-```
 
 ## Quick Start
 
@@ -245,7 +234,6 @@ Use `className="font-pixel"` on primitives where you want the pixel display font
 
 Slide transitions use the React 19 `<ViewTransition>` component with `addTransitionType()`. The CSS in `nextjs-slides/styles.css` defines the `::view-transition-*` animations. Override them in your own CSS to customize.
 
-**Required:** Enable `experimental.viewTransition: true` in your Next.js config (see Install section above). Without it, transitions may not animate correctly.
 
 ## Troubleshooting
 
