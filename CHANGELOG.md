@@ -1,3 +1,10 @@
+# [0.4.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.3.3...v0.4.0) (2026-02-27)
+
+
+### Features
+
+* add avatar prop to SlideSpeaker, fix overflow in split layout ([cb6dd3e](https://github.com/aurorascharff/nextjs-slides/commit/cb6dd3e8013537ac20a8e149d15d95ae35e0d1f0))
+
 ## [0.3.3](https://github.com/aurorascharff/nextjs-slides/compare/v0.3.2...v0.3.3) (2026-02-27)
 
 
