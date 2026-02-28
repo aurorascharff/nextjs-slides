@@ -1,3 +1,10 @@
+# [0.8.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.7.0...v0.8.0) (2026-02-28)
+
+
+### Features
+
+* theme toggle, design updates, next-themes, improved docs ([84d674a](https://github.com/aurorascharff/nextjs-slides/commit/84d674a58715f97ac64758785b60013e65ca40e5))
+
 # [0.7.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.6.1...v0.7.0) (2026-02-28)
 
 ### Features
