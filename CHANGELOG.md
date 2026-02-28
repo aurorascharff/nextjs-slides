@@ -1,3 +1,10 @@
+## [0.8.1](https://github.com/aurorascharff/nextjs-slides/compare/v0.8.0...v0.8.1) (2026-02-28)
+
+
+### Bug Fixes
+
+* improve slide text contrast and align speaker notes ([5ade564](https://github.com/aurorascharff/nextjs-slides/commit/5ade5648d5db9a8d6f035ecde92559a2ad349091))
+
 # [0.8.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.7.0...v0.8.0) (2026-02-28)
 
 
