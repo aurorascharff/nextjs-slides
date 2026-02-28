@@ -282,7 +282,7 @@ export function Counter() {
     </SlideSubtitle>
     <div className="flex flex-wrap items-start justify-center gap-12">
       <div>
-        <p className="text-muted-foreground mb-4 text-center text-xs font-medium uppercase tracking-wider">
+        <p className="text-muted-foreground mb-4 text-center text-sm font-medium uppercase tracking-wider">
           SlideSpeakerGrid
         </p>
         <SlideSpeakerGrid>
@@ -291,7 +291,7 @@ export function Counter() {
         </SlideSpeakerGrid>
       </div>
       <div>
-        <p className="text-muted-foreground mb-4 text-center text-xs font-medium uppercase tracking-wider">
+        <p className="text-muted-foreground mb-4 text-center text-sm font-medium uppercase tracking-wider">
           SlideSpeakerList
         </p>
         <SlideSpeakerList>

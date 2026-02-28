@@ -260,7 +260,7 @@ export function SlideCode({
   return (
     <div className={cn('nxs-code-wrapper', className)}>
       {title && (
-        <div className="text-muted-foreground mb-2 text-xs font-medium tracking-wider uppercase">
+        <div className="text-muted-foreground mb-2 text-sm font-medium tracking-wider uppercase">
           {title}
         </div>
       )}
@@ -327,7 +327,7 @@ export function SlideNote({
   className?: string;
 }) {
   return (
-    <p className={cn('text-muted-foreground/50 text-sm', className)}>
+    <p className={cn('text-muted-foreground text-base sm:text-lg', className)}>
       {children}
     </p>
   );
@@ -364,7 +364,7 @@ export function SlideDemo({
       className={cn('min-w-0 w-full max-w-2xl', className)}
     >
       {label && (
-        <div className="text-muted-foreground mb-2 text-xs font-medium tracking-wider uppercase">
+        <div className="text-muted-foreground mb-2 text-sm font-medium tracking-wider uppercase">
           {label}
         </div>
       )}
@@ -419,7 +419,7 @@ export function SlideStatement({
         {title}
       </h3>
       {description && (
-        <p className="text-muted-foreground mt-1 text-sm sm:text-base">
+        <p className="text-muted-foreground mt-1 text-base sm:text-lg">
           {description}
         </p>
       )}
