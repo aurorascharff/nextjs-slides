@@ -1,3 +1,15 @@
+# [0.7.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.6.1...v0.7.0) (2026-02-28)
+
+
+### Features
+
+* add SlideColumns component and document all primitives ([327ca88](https://github.com/aurorascharff/nextjs-slides/commit/327ca8868fe2496a600479a5bddc3b0bd0413ee0))
+
+
+### Reverts
+
+* remove responsive split layout CSS ([4dc075b](https://github.com/aurorascharff/nextjs-slides/commit/4dc075be9b94898e5c97da2e18907fab8d756c27))
+
 ## [0.6.1](https://github.com/aurorascharff/nextjs-slides/compare/v0.6.0...v0.6.1) (2026-02-27)
 
 ### Bug Fixes
