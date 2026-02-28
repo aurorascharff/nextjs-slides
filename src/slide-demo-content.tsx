@@ -2,6 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 
+/**
+ * Client wrapper for {@link SlideDemo} content that tracks the maximum
+ * rendered height via `ResizeObserver`, preventing layout jumps when
+ * the child re-renders with different content sizes.
+ *
+ * @internal Used by `SlideDemo` — not exported from the public API.
+ */
 export function SlideDemoContent({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const [minHeight, setMinHeight] = useState<number | undefined>(undefined);

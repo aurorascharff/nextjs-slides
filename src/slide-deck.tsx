@@ -12,6 +12,35 @@ import {
 import { cn } from './cn';
 import type { SlideDeckConfig } from './types';
 
+/**
+ * Top-level slide deck provider that wraps the current slide's content.
+ *
+ * Place this in your slides layout (e.g. `app/slides/layout.tsx`). It provides:
+ * - **Keyboard navigation** — Arrow keys and Space to navigate slides.
+ * - **ViewTransition animations** — Slide-in/out with directional awareness.
+ * - **Progress UI** — Dots and a counter at the bottom of the viewport.
+ * - **Exit button** — When `exitUrl` is set, shows an × in the top-right corner.
+ * - **Presenter sync** — When `syncEndpoint` is set, POSTs the current slide
+ *   on navigation for `SlideNotesView` to poll.
+ *
+ * `SlideDeck` must be the **direct child** of the layout (no wrapper div)
+ * for the deck-unveil exit animation to work correctly.
+ *
+ * @example
+ * ```tsx
+ * // app/slides/layout.tsx
+ * import { SlideDeck } from 'nextjs-slides';
+ * import { slides } from './slides';
+ *
+ * export default function SlidesLayout({ children }: { children: React.ReactNode }) {
+ *   return (
+ *     <SlideDeck slides={slides} exitUrl="/" syncEndpoint="/api/nxs-sync">
+ *       {children}
+ *     </SlideDeck>
+ *   );
+ * }
+ * ```
+ */
 export function SlideDeck({
   children,
   slides,

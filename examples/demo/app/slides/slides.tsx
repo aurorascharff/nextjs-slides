@@ -2,6 +2,7 @@ import {
   Slide,
   SlideBadge,
   SlideCode,
+  SlideColumns,
   SlideDemo,
   SlideHeaderBadge,
   SlideLink,
@@ -77,7 +78,34 @@ export const slides: React.ReactNode[] = [
     }
   />,
 
-  // 4. SlideList
+  // 4. SlideColumns (inside Slide — title + two columns)
+  <Slide key="columns" align="left">
+    <SlideBadge>SlideColumns</SlideBadge>
+    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
+      Title + two columns
+    </SlideTitle>
+    <SlideSubtitle>
+      Use SlideColumns inside Slide when you need a spanning title above two
+      columns
+    </SlideSubtitle>
+    <SlideColumns
+      className="mt-4"
+      left={
+        <SlideCode title="server.ts">{`export async function getData() {
+  'use cache';
+  return db.query('...');
+}`}</SlideCode>
+      }
+      right={
+        <SlideCode title="client.tsx">{`const { data } = useSWR(
+  '/api/data',
+  fetcher,
+);`}</SlideCode>
+      }
+    />
+  </Slide>,
+
+  // 5. SlideList
   <Slide key="list" align="left">
     <SlideBadge>SlideList</SlideBadge>
     <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
@@ -95,7 +123,7 @@ export const slides: React.ReactNode[] = [
     </SlideList>
   </Slide>,
 
-  // 5. Typography primitives
+  // 6. Typography primitives
   <Slide key="typography" align="left">
     <SlideBadge>Typography</SlideBadge>
     <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
@@ -108,7 +136,7 @@ export const slides: React.ReactNode[] = [
     <SlideNote>SlideNote for small footnotes and annotations</SlideNote>
   </Slide>,
 
-  // 6. SlideCode
+  // 7. SlideCode
   <Slide key="code">
     <SlideBadge>SlideCode</SlideBadge>
     <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
@@ -129,7 +157,7 @@ export const slides: React.ReactNode[] = [
     </SlideNote>
   </Slide>,
 
-  // 7. SlideDemo
+  // 8. SlideDemo
   <Slide key="demo">
     <SlideBadge>SlideDemo</SlideBadge>
     <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
@@ -143,7 +171,7 @@ export const slides: React.ReactNode[] = [
     </SlideDemo>
   </Slide>,
 
-  // 8. Split: demo + code side by side
+  // 9. Split: demo + code side by side
   <SlideSplitLayout
     key="demo-code"
     left={
@@ -176,7 +204,7 @@ export function Counter() {
     }
   />,
 
-  // 9. SlideStatement
+  // 10. SlideStatement
   <SlideSplitLayout
     key="statements"
     left={
@@ -208,7 +236,7 @@ export function Counter() {
     }
   />,
 
-  // 10. SlideSpeaker
+  // 11. SlideSpeaker
   <Slide key="speakers">
     <SlideBadge>SlideSpeaker</SlideBadge>
     <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
@@ -239,7 +267,7 @@ export function Counter() {
     </div>
   </Slide>,
 
-  // 11. Navigation
+  // 12. Navigation
   <SlideSplitLayout
     key="navigation"
     left={
@@ -269,7 +297,7 @@ export function Counter() {
     }
   />,
 
-  // 12. SlideLink and routing
+  // 13. SlideLink and routing
   <Slide key="links" align="left">
     <SlideBadge>SlideLink</SlideBadge>
     <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
@@ -289,7 +317,7 @@ export function Counter() {
     </SlideNote>
   </Slide>,
 
-  // 13. Closing
+  // 14. Closing
   <Slide key="end">
     <SlideTitle className="font-pixel">
       That&apos;s the slide system.

@@ -2,6 +2,16 @@ import Link from 'next/link';
 import { cn } from './cn';
 import type { SlideLinkVariant } from './types';
 
+/**
+ * Styled Next.js `<Link>` for navigating between slides, to breakout pages,
+ * or to external URLs.
+ *
+ * @example
+ * ```tsx
+ * <SlideLink href="/slides/demo1">Breakout page →</SlideLink>
+ * <SlideLink href="/" variant="ghost">Exit deck</SlideLink>
+ * ```
+ */
 export function SlideLink({
   href,
   children,
@@ -11,6 +21,7 @@ export function SlideLink({
   href: string;
   children: React.ReactNode;
   className?: string;
+  /** Visual style. `"primary"` is a solid button; `"ghost"` is a bordered transparent button. */
   variant?: SlideLinkVariant;
 }) {
   return (

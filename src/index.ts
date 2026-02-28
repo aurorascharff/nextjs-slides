@@ -5,7 +5,7 @@ export { SlideDeck } from './slide-deck';
 export { getSlide, generateSlideParams } from './get-slide';
 
 // Primitives — Layout
-export { Slide, SlideSplitLayout } from './primitives';
+export { Slide, SlideColumns, SlideSplitLayout } from './primitives';
 
 // Primitives — Typography
 export {

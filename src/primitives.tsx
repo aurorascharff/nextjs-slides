@@ -19,12 +19,28 @@ function highlightCode(code: string, lang?: string): string {
 import { SlideDemoContent } from './slide-demo-content';
 import type { SlideAlign } from './types';
 
+/**
+ * Full-viewport slide container with centered content and a decorative border.
+ *
+ * This is the primary slide primitive — use it as a top-level element in
+ * the slides array. For a two-column layout that fills the whole viewport,
+ * use {@link SlideSplitLayout} instead.
+ *
+ * @example
+ * ```tsx
+ * <Slide align="left">
+ *   <SlideTitle>My Slide</SlideTitle>
+ *   <SlideSubtitle>Supporting text</SlideSubtitle>
+ * </Slide>
+ * ```
+ */
 export function Slide({
   children,
   align = 'center',
   className,
 }: {
   children: React.ReactNode;
+  /** Content alignment. `"center"` centers both horizontally and text; `"left"` aligns to the start. */
   align?: SlideAlign;
   className?: string;
 }) {
@@ -54,6 +70,36 @@ export function Slide({
   );
 }
 
+/**
+ * Inline two-column grid for use **inside** a `Slide`.
+ *
+ * Use this when you need a title or other content above two columns.
+ * For a full-viewport two-column slide, use `SlideSplitLayout` instead.
+ */
+export function SlideColumns({
+  left,
+  right,
+  className,
+}: {
+  left: React.ReactNode;
+  right: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <div className={cn('grid w-full grid-cols-2 gap-8', className)}>
+      <div className="flex min-w-0 flex-col gap-4">{left}</div>
+      <div className="flex min-w-0 flex-col gap-4">{right}</div>
+    </div>
+  );
+}
+
+/**
+ * Full-viewport two-column slide — a **top-level** alternative to `Slide`.
+ *
+ * Do **not** nest this inside `Slide`; it renders its own `h-dvh w-dvw`
+ * container, border, and padding. To combine a title with two columns,
+ * use `SlideColumns` inside a `Slide` instead.
+ */
 export function SlideSplitLayout({
   left,
   right,
@@ -88,6 +134,12 @@ export function SlideSplitLayout({
   );
 }
 
+/**
+ * Primary heading for a slide. Renders an `<h1>` with responsive sizing
+ * that scales from `text-4xl` to `text-7xl` across breakpoints.
+ *
+ * Override the default size with `className` (e.g. `className="text-3xl sm:text-4xl"`).
+ */
 export function SlideTitle({
   children,
   className,
@@ -108,6 +160,10 @@ export function SlideTitle({
   );
 }
 
+/**
+ * Secondary text below a title. Renders a `<p>` in a muted foreground color
+ * with responsive sizing (`text-lg` to `text-2xl`).
+ */
 export function SlideSubtitle({
   children,
   className,
@@ -127,6 +183,10 @@ export function SlideSubtitle({
   );
 }
 
+/**
+ * Small pill-shaped label, typically placed above a title to categorise
+ * the slide (e.g. component name, topic tag).
+ */
 export function SlideBadge({
   children,
   className,
@@ -146,6 +206,10 @@ export function SlideBadge({
   );
 }
 
+/**
+ * Italic accent text for slide headers — use for event names, series labels,
+ * or other branding above the title.
+ */
 export function SlideHeaderBadge({
   children,
   className,
@@ -162,17 +226,36 @@ export function SlideHeaderBadge({
   );
 }
 
+/**
+ * Syntax-highlighted code block powered by highlight.js.
+ *
+ * Pass code as a **string** child. The language is auto-detected from the
+ * `title` file extension (e.g. `"example.tsx"` → TypeScript); falls back
+ * to TypeScript when unspecified. Supports JS, TS, JSX, and TSX.
+ *
+ * Theme colours are controlled by CSS custom properties (`--sh-*` / `--nxs-code-*`)
+ * defined in `nextjs-slides/styles.css`. Override them in `:root` or `.dark`.
+ *
+ * @example
+ * ```tsx
+ * <SlideCode title="api.ts">{`export async function fetchData() {
+ *   return fetch('/api/data');
+ * }`}</SlideCode>
+ * ```
+ */
 export function SlideCode({
   children,
   className,
   title,
 }: {
+  /** Code string to highlight. Leading/trailing whitespace is trimmed automatically. */
   children: string;
   className?: string;
+  /** File name shown above the code block. Its extension determines the highlight language. */
   title?: string;
 }) {
   const lang = title?.split('.').pop();
-  const html = highlightCode(children, lang);
+  const html = highlightCode(children.trim(), lang);
 
   return (
     <div className={cn('nxs-code-wrapper', className)}>
@@ -188,6 +271,9 @@ export function SlideCode({
   );
 }
 
+/**
+ * Bullet-point list container. Wrap {@link SlideListItem} children inside this.
+ */
 export function SlideList({
   children,
   className,
@@ -202,6 +288,10 @@ export function SlideList({
   );
 }
 
+/**
+ * Single bullet item inside a {@link SlideList}. Renders a small dot
+ * followed by the content.
+ */
 export function SlideListItem({
   children,
   className,
@@ -225,6 +315,10 @@ export function SlideListItem({
   );
 }
 
+/**
+ * Small footnote text in a faded colour, typically placed at the bottom
+ * of a slide for annotations or caveats.
+ */
 export function SlideNote({
   children,
   className,
@@ -239,6 +333,21 @@ export function SlideNote({
   );
 }
 
+/**
+ * Live interactive component embed. Keyboard navigation (arrow keys, space)
+ * is disabled while focus is inside the demo area so the embedded component
+ * can handle its own input.
+ *
+ * The container tracks its maximum height to prevent layout jumps when the
+ * child re-renders with different content sizes.
+ *
+ * @example
+ * ```tsx
+ * <SlideDemo label="Live counter">
+ *   <Counter />
+ * </SlideDemo>
+ * ```
+ */
 export function SlideDemo({
   children,
   className,
@@ -246,6 +355,7 @@ export function SlideDemo({
 }: {
   children: React.ReactNode;
   className?: string;
+  /** Optional uppercase label shown above the demo area. */
   label?: string;
 }) {
   return (
@@ -265,6 +375,10 @@ export function SlideDemo({
   );
 }
 
+/**
+ * Container for {@link SlideStatement} items. Adds border separators between
+ * statements automatically.
+ */
 export function SlideStatementList({
   children,
   className,
@@ -279,12 +393,18 @@ export function SlideStatementList({
   );
 }
 
+/**
+ * Title + description pair for structured content blocks.
+ * Use inside a {@link SlideStatementList} for automatic border separators.
+ */
 export function SlideStatement({
   title,
   description,
   className,
 }: {
+  /** Bold heading text. */
   title: string;
+  /** Optional muted description below the title. */
   description?: string;
   className?: string;
 }) {
@@ -307,6 +427,13 @@ export function SlideStatement({
   );
 }
 
+/**
+ * Speaker card with an avatar circle, name, and role/title.
+ * When `avatar` is omitted a placeholder circle is shown.
+ *
+ * Use inside {@link SlideSpeakerGrid} or {@link SlideSpeakerList} to
+ * lay out multiple speakers.
+ */
 export function SlideSpeaker({
   name,
   title,
@@ -344,6 +471,10 @@ export function SlideSpeaker({
   );
 }
 
+/**
+ * Two-column responsive grid for laying out {@link SlideSpeaker} cards
+ * side by side (stacks to one column on small screens).
+ */
 export function SlideSpeakerGrid({
   children,
   className,
@@ -358,6 +489,9 @@ export function SlideSpeakerGrid({
   );
 }
 
+/**
+ * Vertical stack layout for {@link SlideSpeaker} cards.
+ */
 export function SlideSpeakerList({
   children,
   className,

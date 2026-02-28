@@ -1,7 +1,10 @@
+/** Content alignment for {@link Slide}. */
 export type SlideAlign = 'center' | 'left';
 
+/** Visual style for {@link SlideLink}. */
 export type SlideLinkVariant = 'primary' | 'ghost';
 
+/** Configuration for the {@link SlideDeck} provider. */
 export interface SlideDeckConfig {
   slides: React.ReactNode[];
   /** Speaker notes per slide (same index as slides). Use `parseSpeakerNotes()` to load from a markdown file. */

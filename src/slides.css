@@ -1,5 +1,8 @@
 /* nextjs-slides — Slide transition animations and code theme tokens */
 
+/* Ensure Tailwind v4 scans this package's component files for utility classes */
+@source "./*.js";
+
 /* Default code theme — override --sh-* and --nxs-code-* in :root or .dark */
 :root {
   --nxs-code-bg: #ffffff;
