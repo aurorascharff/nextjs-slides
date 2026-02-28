@@ -6,7 +6,7 @@
     "dev": "next dev",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "build": "cd ../.. && npm install --include=dev && npm run build && cd examples/demo && next build",
+    "build": "cd ../.. && npm install --include=dev && npm run build && cd examples/demo && next build --webpack",
     "start": "next start"
   },
   "dependencies": {

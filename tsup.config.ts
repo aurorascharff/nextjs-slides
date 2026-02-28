@@ -3,6 +3,7 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   entry: [
     'src/index.ts',
+    'src/icons.tsx',
     'src/slide-deck.tsx',
     'src/slide-demo-content.tsx',
     'src/primitives.tsx',
