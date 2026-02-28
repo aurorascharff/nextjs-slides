@@ -2,7 +2,9 @@ import hljs from 'highlight.js/lib/core';
 import javascript from 'highlight.js/lib/languages/javascript';
 import typescript from 'highlight.js/lib/languages/typescript';
 import xml from 'highlight.js/lib/languages/xml';
+import { SlideDemoContent } from './slide-demo-content';
 import { cn } from './cn';
+import type { SlideAlign } from './types';
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('typescript', typescript);
@@ -16,8 +18,6 @@ function highlightCode(code: string, lang?: string): string {
     return hljs.highlight(code, { language: 'typescript' }).value;
   return hljs.highlight(code, { language }).value;
 }
-import { SlideDemoContent } from './slide-demo-content';
-import type { SlideAlign } from './types';
 
 /**
  * Full-viewport slide container with centered content and a decorative border.

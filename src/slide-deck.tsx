@@ -6,11 +6,21 @@ import {
   addTransitionType,
   useCallback,
   useEffect,
+  useMemo,
   useTransition,
   ViewTransition,
 } from 'react';
 import { cn } from './cn';
+import { ExitIcon } from './icons';
 import type { SlideDeckConfig } from './types';
+
+const TRANSITION_FORWARD = 'slide-forward';
+const TRANSITION_BACK = 'slide-back';
+
+function getSlideIndex(pathname: string, pattern: RegExp): number {
+  const match = pathname.match(pattern);
+  return match ? Number(match[1]) - 1 : 0;
+}
 
 /**
  * Top-level slide deck provider that wraps the current slide's content.
@@ -50,39 +60,50 @@ export function SlideDeck({
   showCounter = true,
   syncEndpoint,
   className,
-  ...rest
+  speakerNotes: _speakerNotes,
 }: SlideDeckConfig & { children: React.ReactNode }) {
-  void rest; // accepts speakerNotes and other optional config
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
 
   const total = slides.length;
-  const slideRoutePattern = new RegExp(`^${basePath}/(\\d+)$`);
+  const slideRoutePattern = useMemo(
+    () =>
+      new RegExp(`^${basePath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}/(\\d+)$`),
+    [basePath]
+  );
   const isSlideRoute = slideRoutePattern.test(pathname);
-  const current = (() => {
-    const match = pathname.match(slideRoutePattern);
-    return match ? Number(match[1]) - 1 : 0;
-  })();
+  const current = useMemo(
+    () => getSlideIndex(pathname, slideRoutePattern),
+    [pathname, slideRoutePattern]
+  );
+
+  const syncSlide = useCallback(
+    (slide: number) => {
+      if (!syncEndpoint || !isSlideRoute) return;
+      fetch(syncEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ slide, total }),
+      }).catch(() => {});
+    },
+    [isSlideRoute, syncEndpoint, total]
+  );
 
   const goTo = useCallback(
     (index: number) => {
       const clamped = Math.max(0, Math.min(index, total - 1));
       if (clamped === current) return;
       const targetSlide = clamped + 1; // 1-based for sync API
-      if (syncEndpoint) {
-        fetch(syncEndpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ slide: targetSlide, total }),
-        }).catch(() => {});
-      }
+      syncSlide(targetSlide); // Immediate feedback for phone sync
       startTransition(() => {
-        addTransitionType(clamped > current ? 'slide-forward' : 'slide-back');
+        addTransitionType(
+          clamped > current ? TRANSITION_FORWARD : TRANSITION_BACK
+        );
         router.push(`${basePath}/${targetSlide}`);
       });
     },
-    [basePath, current, router, startTransition, syncEndpoint, total]
+    [basePath, current, router, startTransition, syncSlide, total]
   );
 
   useEffect(() => {
@@ -122,13 +143,10 @@ export function SlideDeck({
   }, []);
 
   useEffect(() => {
-    if (!syncEndpoint || !isSlideRoute || isPending) return;
-    fetch(syncEndpoint, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ slide: current + 1, total }),
-    }).catch(() => {});
-  }, [syncEndpoint, current, total, isSlideRoute, isPending]);
+    if (!isPending && isSlideRoute) {
+      syncSlide(current + 1);
+    }
+  }, [current, isPending, isSlideRoute, syncSlide]);
 
   return (
     <ViewTransition default="none" exit="deck-unveil">
@@ -146,13 +164,13 @@ export function SlideDeck({
             default="none"
             enter={{
               default: 'slide-from-right',
-              'slide-back': 'slide-from-left',
-              'slide-forward': 'slide-from-right',
+              [TRANSITION_BACK]: 'slide-from-left',
+              [TRANSITION_FORWARD]: 'slide-from-right',
             }}
             exit={{
               default: 'slide-to-left',
-              'slide-back': 'slide-to-right',
-              'slide-forward': 'slide-to-left',
+              [TRANSITION_BACK]: 'slide-to-right',
+              [TRANSITION_FORWARD]: 'slide-to-left',
             }}
           >
             <div>{children}</div>
@@ -188,20 +206,7 @@ export function SlideDeck({
             className="text-foreground/50 hover:text-foreground fixed top-6 right-8 z-50 flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-foreground/10"
             aria-label="Exit presentation"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M18 6 6 18" />
-              <path d="m6 6 12 12" />
-            </svg>
+            <ExitIcon />
           </Link>
         )}
       </div>

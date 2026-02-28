@@ -19,7 +19,8 @@ export function SlideDemoContent({ children }: { children: React.ReactNode }) {
 
     const observer = new ResizeObserver((entries) => {
       for (const entry of entries) {
-        const height = entry.borderBoxSize[0].blockSize;
+        const blockSize = entry.borderBoxSize?.[0]?.blockSize;
+        const height = blockSize ?? entry.contentRect?.height ?? 0;
         setMinHeight((prev) =>
           prev === undefined ? height : Math.max(prev, height)
         );

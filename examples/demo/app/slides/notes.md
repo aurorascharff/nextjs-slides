@@ -14,7 +14,7 @@ SlideColumns is the inline two-column grid for use inside Slide when you need a 
 
 ---
 
-SlideCode uses highlight.js. Language is inferred from the title extension. Theme via --sh-* and --nxs-code-* CSS variables.
+SlideCode uses highlight.js. Language is inferred from the title extension. Theme via --sh-_ and --nxs-code-_ CSS variables.
 
 ---
 
