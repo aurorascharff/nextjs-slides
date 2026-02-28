@@ -1,3 +1,10 @@
+## [0.8.2](https://github.com/aurorascharff/nextjs-slides/compare/v0.8.1...v0.8.2) (2026-02-28)
+
+
+### Bug Fixes
+
+* refactor slide-deck, extract ExitIcon, improve demo content and config ([30fefa0](https://github.com/aurorascharff/nextjs-slides/commit/30fefa093361c66b02e7b4e18081766182b532a0))
+
 ## [0.8.1](https://github.com/aurorascharff/nextjs-slides/compare/v0.8.0...v0.8.1) (2026-02-28)
 
 
