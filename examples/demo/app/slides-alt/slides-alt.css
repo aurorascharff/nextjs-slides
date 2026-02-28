@@ -2,13 +2,13 @@
 /* Fonts loaded via link in root layout for reliable loading */
 
 .slides-alt-deck {
-  font-family: 'Playfair Display', ui-serif, Georgia, serif;
+  font-family: var(--font-playfair-display), ui-serif, Georgia, serif;
 }
 
 .slides-alt-deck .nxs-code-block,
 .slides-alt-deck pre,
 .slides-alt-deck code {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
 /* Dracula-inspired syntax theme */

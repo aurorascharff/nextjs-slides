@@ -30,7 +30,7 @@ export const slides: React.ReactNode[] = [
       blocks
     </SlideSubtitle>
     <SlideNote>
-      Override --font-sans and --font-mono via CSS to customize
+      Fonts and syntax theme applied via deck className in slides-alt.css
     </SlideNote>
   </Slide>,
 
@@ -38,7 +38,7 @@ export const slides: React.ReactNode[] = [
     <SlideBadge>SlideCode</SlideBadge>
     <SlideTitle>Custom syntax highlighting</SlideTitle>
     <SlideSubtitle>
-      Dracula-inspired theme — purple, cyan, green, orange
+      Dracula-inspired theme: purple, cyan, green, orange
     </SlideSubtitle>
     <SlideCode title="example.tsx">{`function Greeting({ name }: Props) {
   return (
@@ -58,8 +58,8 @@ export const slides: React.ReactNode[] = [
     left={
       <>
         <SlideBadge>Split layout</SlideBadge>
-        <SlideTitle className="mt-6">Same primitives</SlideTitle>
-        <SlideSubtitle className="mt-4">
+        <SlideTitle>Same primitives</SlideTitle>
+        <SlideSubtitle>
           SlideSplitLayout, SlideStatement — all work the same
         </SlideSubtitle>
       </>
@@ -82,12 +82,12 @@ export const slides: React.ReactNode[] = [
   <Slide key="end">
     <SlideTitle>That&apos;s the alternate deck</SlideTitle>
     <SlideSubtitle>Compose your own fonts and themes</SlideSubtitle>
-    <SlideList className="mt-6">
+    <SlideList>
       <SlideListItem>Override --sh-* for syntax colors</SlideListItem>
       <SlideListItem>Override --nxs-code-* for block styling</SlideListItem>
       <SlideListItem>Use font-* classes or CSS variables</SlideListItem>
     </SlideList>
-    <SlideLink href="/" className="mt-6 inline-block" variant="ghost">
+    <SlideLink href="/" className="inline-block" variant="ghost">
       ← Back to home
     </SlideLink>
   </Slide>,

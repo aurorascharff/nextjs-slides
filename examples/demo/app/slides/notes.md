@@ -26,6 +26,10 @@ SlideDemo wraps interactive components. Keyboard navigation is automatically dis
 
 ---
 
+Theme toggle demo. Toggle and watch the whole deck update. Slides inherit your app CSS variables. No scoping or isolation.
+
+---
+
 A common pattern: show the live component on the left and its source code on the right.
 
 ---

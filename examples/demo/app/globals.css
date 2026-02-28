@@ -85,6 +85,32 @@
   --sh-sign: #ededed;
 }
 
+.light {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.15 0 0);
+  --primary: oklch(0.2 0 0);
+  --primary-foreground: oklch(1 0 0);
+  --muted: oklch(0.88 0 0);
+  --muted-foreground: oklch(0.4 0 0);
+  --border: oklch(0.88 0 0);
+  --code-bg: #fafafa;
+  --code-border: #eaeaea;
+  --code-text: #171717;
+  --nxs-code-bg: #ffffff;
+  --nxs-code-border: #eaeaea;
+  --nxs-code-text: #24292e;
+  --sh-keyword: #d73a49;
+  --sh-string: #032f62;
+  --sh-property: #005cc5;
+  --sh-class: #6f42c1;
+  --sh-entity: #6f42c1;
+  --sh-tag: #22863a;
+  --sh-identifier: #24292e;
+  --sh-literal: #005cc5;
+  --sh-comment: #6a737d;
+  --sh-sign: #24292e;
+}
+
 @layer base {
   * {
     @apply border-border;

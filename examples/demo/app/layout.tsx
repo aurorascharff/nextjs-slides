@@ -1,8 +1,22 @@
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import { GeistPixelSquare } from 'geist/font/pixel';
+import { JetBrains_Mono, Playfair_Display } from 'next/font/google';
 import Link from 'next/link';
+import { Providers } from './providers';
 import './globals.css';
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-jetbrains-mono',
+});
+const playfairDisplay = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-playfair-display',
+});
 
 export default function RootLayout({
   children,
@@ -12,22 +26,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelSquare.variable}`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${GeistPixelSquare.variable} ${jetbrainsMono.variable} ${playfairDisplay.variable}`}
+      suppressHydrationWarning
     >
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
-        />
-      </head>
       <body className={GeistSans.className}>
-        {children}
+        <Providers>
+          {children}
         <div
           style={{ viewTransitionName: 'global-controls' }}
           className="text-muted-foreground hover:text-foreground fixed bottom-4 left-4 z-[60] flex items-center gap-2 transition-colors"
@@ -49,6 +53,7 @@ export default function RootLayout({
             </svg>
           </Link>
         </div>
+        </Providers>
       </body>
     </html>
   );

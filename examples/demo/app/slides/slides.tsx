@@ -19,77 +19,79 @@ import {
   SlideTitle,
 } from 'nextjs-slides';
 import { Counter } from '@/app/slides/_components/Counter';
+import { ThemeToggle } from '@/app/slides/_components/ThemeToggle';
 
 export const slides: React.ReactNode[] = [
   // 1. Title slide
   <Slide key="title" align="left">
-    <SlideHeaderBadge className="font-pixel">Slide System</SlideHeaderBadge>
-    <SlideTitle className="font-pixel">Composable Slide Primitives</SlideTitle>
+    <SlideHeaderBadge>nextjs-slides</SlideHeaderBadge>
+    <SlideTitle>Composable Slide Primitives</SlideTitle>
     <SlideSubtitle>Build presentations with React components</SlideSubtitle>
-    <SlideSpeakerGrid className="mt-8">
+    <SlideSpeakerGrid>
       <SlideSpeaker name="Your Name" title="Your Title" />
     </SlideSpeakerGrid>
   </Slide>,
 
-  // 2. Slide component
+  // 2. Slide — the base container
   <Slide key="slide-component">
     <SlideBadge>Slide</SlideBadge>
     <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
       The base container
     </SlideTitle>
     <SlideSubtitle>
-      Full-screen layout with automatic centering and a decorative border frame
+      Full-viewport layout with vertical centering, responsive padding, and a
+      decorative border frame
     </SlideSubtitle>
     <SlideNote>
-      This slide uses align=&quot;center&quot; (default) · Set
-      align=&quot;left&quot; for left-aligned content
+      Props: align (&quot;center&quot; or &quot;left&quot;), className · This
+      slide uses center alignment (default)
     </SlideNote>
   </Slide>,
 
-  // 3. SlideSplitLayout
+  // 3. SlideSplitLayout — full-viewport two-column alternative to Slide
   <SlideSplitLayout
     key="split-layout"
     left={
       <>
         <SlideBadge>SlideSplitLayout</SlideBadge>
-        <SlideTitle className="mt-6 text-3xl sm:text-4xl md:text-5xl">
-          Two-column layout
+        <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
+          Full-viewport split
         </SlideTitle>
-        <SlideSubtitle className="mt-4">
-          Perfect for comparing concepts or pairing visuals with text
+        <SlideSubtitle>
+          A top-level alternative to Slide. Renders its own viewport container
+          with a vertical divider. Do not nest inside Slide.
         </SlideSubtitle>
       </>
     }
     right={
       <SlideStatementList>
         <SlideStatement
-          title="left prop"
-          description="Content for the left column"
+          title="left / right props"
+          description="Each side is a flex column with vertical centering and consistent padding"
         />
         <SlideStatement
-          title="right prop"
-          description="Content for the right column"
+          title="Top-level only"
+          description="Renders h-dvh w-dvw. Use it as a direct slide, not inside Slide"
         />
         <SlideStatement
-          title="Divider"
-          description="Automatic vertical separator"
+          title="Need a title above columns?"
+          description="Use SlideColumns inside a Slide instead"
         />
       </SlideStatementList>
     }
   />,
 
-  // 4. SlideColumns (inside Slide — title + two columns)
+  // 4. SlideColumns — inline two-column grid inside Slide
   <Slide key="columns" align="left">
     <SlideBadge>SlideColumns</SlideBadge>
     <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
       Title + two columns
     </SlideTitle>
     <SlideSubtitle>
-      Use SlideColumns inside Slide when you need a spanning title above two
-      columns
+      Inline two-column grid for use inside Slide, when you need a spanning
+      title above the columns
     </SlideSubtitle>
     <SlideColumns
-      className="mt-4"
       left={
         <SlideCode title="server.ts">{`export async function getData() {
   'use cache';
@@ -103,40 +105,13 @@ export const slides: React.ReactNode[] = [
 );`}</SlideCode>
       }
     />
+    <SlideNote>
+      Props: left, right, className · Unlike SlideSplitLayout, this is a child
+      component, not a full-viewport slide
+    </SlideNote>
   </Slide>,
 
-  // 5. SlideList
-  <Slide key="list" align="left">
-    <SlideBadge>SlideList</SlideBadge>
-    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
-      Bullet lists
-    </SlideTitle>
-    <SlideSubtitle>
-      SlideList and SlideListItem for structured bullet points
-    </SlideSubtitle>
-    <SlideList className="mt-6">
-      <SlideListItem>First item with consistent spacing</SlideListItem>
-      <SlideListItem>Second item — supports any content</SlideListItem>
-      <SlideListItem>
-        Third item with custom styling via className
-      </SlideListItem>
-    </SlideList>
-  </Slide>,
-
-  // 6. Typography primitives
-  <Slide key="typography" align="left">
-    <SlideBadge>Typography</SlideBadge>
-    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
-      SlideTitle
-    </SlideTitle>
-    <SlideSubtitle>
-      SlideSubtitle for secondary text with muted styling
-    </SlideSubtitle>
-    <SlideHeaderBadge>SlideHeaderBadge for italic accent text</SlideHeaderBadge>
-    <SlideNote>SlideNote for small footnotes and annotations</SlideNote>
-  </Slide>,
-
-  // 7. SlideCode
+  // 5. SlideCode — syntax-highlighted code blocks
   <Slide key="code">
     <SlideBadge>SlideCode</SlideBadge>
     <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
@@ -153,37 +128,95 @@ export const slides: React.ReactNode[] = [
   );
 }`}</SlideCode>
     <SlideNote>
-      Powered by highlight.js · Automatically adapts to light and dark themes
+      Language inferred from title extension (.ts, .tsx, .js, .jsx) · Theme via
+      --sh-* and --nxs-code-* CSS variables · Whitespace is auto-trimmed
     </SlideNote>
   </Slide>,
 
-  // 8. SlideDemo
+  // 6. SlideList — bullet points
+  <Slide key="list" align="left">
+    <SlideBadge>SlideList</SlideBadge>
+    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
+      Bullet lists
+    </SlideTitle>
+    <SlideSubtitle>
+      SlideList wraps SlideListItem children with consistent spacing and bullet
+      dots
+    </SlideSubtitle>
+    <SlideList>
+      <SlideListItem>Each item renders a dot and responsive text</SlideListItem>
+      <SlideListItem>Supports any React content as children</SlideListItem>
+      <SlideListItem>
+        Override styling with className on either component
+      </SlideListItem>
+    </SlideList>
+  </Slide>,
+
+  // 7. Typography primitives
+  <Slide key="typography" align="left">
+    <SlideBadge>Typography</SlideBadge>
+    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
+      Typography primitives
+    </SlideTitle>
+    <SlideSubtitle>
+      SlideSubtitle: muted secondary text, responsive lg to 2xl
+    </SlideSubtitle>
+    <SlideHeaderBadge>
+      SlideHeaderBadge: italic accent for event names or series labels
+    </SlideHeaderBadge>
+    <SlideNote>
+      SlideNote: small faded footnote for annotations and caveats
+    </SlideNote>
+  </Slide>,
+
+  // 8. SlideDemo — interactive component embed
   <Slide key="demo">
     <SlideBadge>SlideDemo</SlideBadge>
     <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
       Interactive components
     </SlideTitle>
     <SlideSubtitle>
-      Embed live React components — keyboard navigation is disabled inside
+      Embed live React components. Arrow keys and space are disabled inside so
+      inputs work without advancing slides
     </SlideSubtitle>
     <SlideDemo label="Live counter">
       <Counter />
     </SlideDemo>
+    <SlideNote>
+      Props: label (uppercase header), className · Container tracks max height
+      to prevent layout jumps on re-render
+    </SlideNote>
   </Slide>,
 
-  // 9. Split: demo + code side by side
+  // 9. Theme toggle and inheritance
+  <Slide key="theme">
+    <SlideBadge>Theme inheritance</SlideBadge>
+    <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
+      Slides inherit your app theme
+    </SlideTitle>
+    <SlideSubtitle>
+      The deck, code blocks, and all primitives use your app CSS variables:
+      --foreground, --background, --muted-foreground, --nxs-code-*, --sh-*, etc.
+      No scoping. Slides follow whatever theme your layout defines.
+    </SlideSubtitle>
+    <SlideDemo label="Toggle theme">
+      <ThemeToggle />
+    </SlideDemo>
+  </Slide>,
+
+  // 10. Pattern: demo + code side by side
   <SlideSplitLayout
     key="demo-code"
     left={
       <>
-        <SlideBadge>Demo + Code</SlideBadge>
-        <SlideTitle className="mt-6 text-3xl sm:text-4xl md:text-5xl">
-          Side by side
+        <SlideBadge className="font-pixel">Pattern</SlideBadge>
+        <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
+          Demo + source
         </SlideTitle>
-        <SlideSubtitle className="mt-4">
-          Pair a live component with its source using SlideSplitLayout
+        <SlideSubtitle>
+          Pair a live component with its source code using SlideSplitLayout
         </SlideSubtitle>
-        <SlideDemo label="Try it" className="mt-6">
+        <SlideDemo label="Try it">
           <Counter />
         </SlideDemo>
       </>
@@ -204,17 +237,18 @@ export function Counter() {
     }
   />,
 
-  // 10. SlideStatement
+  // 10. SlideStatement — structured title + description blocks
   <SlideSplitLayout
     key="statements"
     left={
       <>
         <SlideBadge>SlideStatement</SlideBadge>
-        <SlideTitle className="mt-6 text-3xl sm:text-4xl md:text-5xl">
-          Structured content blocks
+        <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
+          Structured blocks
         </SlideTitle>
-        <SlideSubtitle className="mt-4">
-          Title and description pairs with consistent styling
+        <SlideSubtitle>
+          Title + description pairs with border separators. Wrap in
+          SlideStatementList for automatic dividers
         </SlideSubtitle>
       </>
     }
@@ -226,26 +260,27 @@ export function Counter() {
         />
         <SlideStatement
           title="description prop"
-          description="Optional muted text below"
+          description="Optional muted text below the title"
         />
         <SlideStatement
           title="SlideStatementList"
-          description="Wrapper with border separators"
+          description="Container that adds border-t on each item and border-b on the last"
         />
       </SlideStatementList>
     }
   />,
 
-  // 11. SlideSpeaker
+  // 11. SlideSpeaker — avatar + name + role
   <Slide key="speakers">
     <SlideBadge>SlideSpeaker</SlideBadge>
     <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
       Speaker components
     </SlideTitle>
     <SlideSubtitle>
-      SlideSpeakerGrid for side-by-side · SlideSpeakerList for vertical stacking
+      Avatar + name + role — use SlideSpeakerGrid for side-by-side or
+      SlideSpeakerList for vertical stacking
     </SlideSubtitle>
-    <div className="mt-8 flex flex-wrap items-start justify-center gap-12">
+    <div className="flex flex-wrap items-start justify-center gap-12">
       <div>
         <p className="text-muted-foreground mb-4 text-center text-xs font-medium uppercase tracking-wider">
           SlideSpeakerGrid
@@ -265,67 +300,79 @@ export function Counter() {
         </SlideSpeakerList>
       </div>
     </div>
+    <SlideNote>
+      Props: name, title, avatar (optional image URL — placeholder circle when
+      omitted)
+    </SlideNote>
   </Slide>,
 
-  // 12. Navigation
+  // 12. Navigation — keyboard controls and deck chrome
   <SlideSplitLayout
     key="navigation"
     left={
       <>
-        <SlideBadge>Navigation</SlideBadge>
-        <SlideTitle className="mt-6 text-3xl sm:text-4xl md:text-5xl">
-          Keyboard controls
+        <SlideBadge className="font-pixel">SlideDeck</SlideBadge>
+        <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
+          Navigation and deck chrome
         </SlideTitle>
-        <SlideSubtitle className="mt-4">
-          Built-in navigation with ViewTransition animations
+        <SlideSubtitle>
+          SlideDeck wraps your layout — provides keyboard nav, progress dots,
+          counter, exit button, and ViewTransition animations
         </SlideSubtitle>
       </>
     }
     right={
       <SlideStatementList>
-        <SlideStatement title="→ or Space" description="Go to next slide" />
-        <SlideStatement title="←" description="Go to previous slide" />
+        <SlideStatement title="→ or Space" description="Next slide" />
+        <SlideStatement title="←" description="Previous slide" />
         <SlideStatement
-          title="Progress dots"
-          description="Visual indicator at the bottom"
+          title="showProgress / showCounter"
+          description="Toggle the dot indicator and slide counter"
         />
         <SlideStatement
-          title="Slide counter"
-          description="Current / total in bottom right"
+          title="exitUrl"
+          description="Shows an × button in the top-right corner"
+        />
+        <SlideStatement
+          title="syncEndpoint"
+          description="POST slide state for phone-based speaker notes"
         />
       </SlideStatementList>
     }
   />,
 
-  // 13. SlideLink and routing
+  // 13. SlideLink — styled navigation links
   <Slide key="links" align="left">
     <SlideBadge>SlideLink</SlideBadge>
     <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
       Links and routing
     </SlideTitle>
     <SlideSubtitle>
-      Navigate between slides, to breakout pages, or external URLs
+      Styled Next.js Link for navigating between slides, to breakout pages, or
+      external URLs
     </SlideSubtitle>
-    <div className="mt-6 flex flex-wrap items-center gap-4">
+    <div className="flex flex-wrap items-center gap-4">
       <SlideLink href="/slides/demo1">Breakout page →</SlideLink>
       <SlideLink href="/" variant="ghost">
         Exit deck
       </SlideLink>
     </div>
     <SlideNote>
-      Breakout routes live inside /slides but render without the deck chrome
+      Props: href, variant (&quot;primary&quot; solid or &quot;ghost&quot;
+      bordered), className · Breakout routes render without deck chrome
     </SlideNote>
   </Slide>,
 
   // 14. Closing
   <Slide key="end">
+    <SlideHeaderBadge>nextjs-slides</SlideHeaderBadge>
     <SlideTitle className="font-pixel">
       That&apos;s the slide system.
     </SlideTitle>
     <SlideSubtitle>
       Compose these primitives to build any presentation
     </SlideSubtitle>
-    <div className="mt-6 flex items-center gap-4">
+    <div className="flex items-center gap-4">
       <SlideLink href="/">Back to app →</SlideLink>
     </div>
   </Slide>,

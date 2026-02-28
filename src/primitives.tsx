@@ -59,7 +59,7 @@ export function Slide({
       />
       <div
         className={cn(
-          'relative z-10 flex max-w-4xl flex-col gap-10',
+          'relative z-10 flex max-w-4xl flex-col gap-6',
           align === 'center' && 'items-center',
           align === 'left' && 'items-start'
         )}
@@ -120,14 +120,14 @@ export function SlideSplitLayout({
         className="border-foreground/10 pointer-events-none absolute inset-4 border sm:inset-6"
         aria-hidden
       />
-      <div className="nxs-slide-split-col relative z-10 flex w-1/2 flex-col justify-center px-12 py-20 sm:px-16 md:px-20 lg:px-24">
+      <div className="nxs-slide-split-col relative z-10 flex w-1/2 flex-col justify-center gap-6 px-12 py-16 sm:px-16 md:px-20 lg:px-24">
         {left}
       </div>
       <div
         className="nxs-slide-split-divider bg-foreground/10 absolute top-4 bottom-4 left-1/2 z-10 w-px sm:top-6 sm:bottom-6"
         aria-hidden
       />
-      <div className="nxs-slide-split-col relative z-10 flex w-1/2 flex-col justify-center px-12 py-20 sm:px-16 md:px-20 lg:px-24">
+      <div className="nxs-slide-split-col relative z-10 flex w-1/2 flex-col justify-center gap-6 px-12 py-16 sm:px-16 md:px-20 lg:px-24">
         {right}
       </div>
     </div>
@@ -150,7 +150,7 @@ export function SlideTitle({
   return (
     <h1
       className={cn(
-        'text-foreground text-4xl font-extrabold sm:text-5xl md:text-6xl lg:text-7xl',
+        'text-foreground text-4xl font-black sm:text-5xl md:text-6xl lg:text-7xl',
         className
       )}
       style={{ letterSpacing: '-0.04em' }}
@@ -327,7 +327,7 @@ export function SlideNote({
   className?: string;
 }) {
   return (
-    <p className={cn('text-muted-foreground/50 mt-4 text-sm', className)}>
+    <p className={cn('text-muted-foreground/50 text-sm', className)}>
       {children}
     </p>
   );
@@ -411,7 +411,7 @@ export function SlideStatement({
   return (
     <div
       className={cn(
-        'border-foreground/10 border-t px-8 py-8 last:border-b sm:px-12 md:px-16',
+        'border-foreground/10 border-t px-8 py-6 last:border-b sm:px-12 md:px-16',
         className
       )}
     >
