@@ -37,11 +37,9 @@ In your root layout or global CSS:
 ```css
 @import 'tailwindcss';
 @import 'nextjs-slides/styles.css';
-
-@source "../node_modules/nextjs-slides/dist";
 ```
 
-The `@source` directive tells Tailwind v4 to scan the library for class names — without it, slide styles won't apply.
+The stylesheet includes an `@source` directive that tells Tailwind v4 to scan the library's component files for utility classes — no extra configuration needed.
 
 ### 2. Define your slides
 
@@ -136,7 +134,8 @@ That's it. Navigate to `/slides` and you have a full slide deck.
 ### Layout
 
 - **`<Slide>`** — Full-screen slide container with decorative border. Props: `align` (`"center"` | `"left"`), `className`.
-- **`<SlideSplitLayout>`** — Two-column layout with vertical divider. Stacks vertically below 1024px. Props: `left`, `right`, `className`.
+- **`<SlideColumns>`** — Inline two-column grid for use **inside** `<Slide>` when you need a spanning title above two columns. Props: `left`, `right`, `className`.
+- **`<SlideSplitLayout>`** — Full-viewport two-column layout with vertical divider — a **top-level** alternative to `<Slide>` (do not nest inside `<Slide>`). Props: `left`, `right`, `className`.
 
 ### Typography
 
@@ -361,9 +360,11 @@ Slide transitions use the React 19 `<ViewTransition>` component with `addTransit
 
 **Split layout not stacking on small screens** — Import `nextjs-slides/styles.css` without a layer: `@import "nextjs-slides/styles.css"` (not `layer(base)`). Layered imports can be overridden by Tailwind utilities. Also ensure the library CSS loads after Tailwind.
 
-**`@source` path not found** — The `@source "../node_modules/nextjs-slides/dist"` path is relative to your CSS file. If your `globals.css` lives in `app/`, use `../node_modules/...`. If it lives in the project root, use `./node_modules/nextjs-slides/dist`.
+**Slide utility classes not applying** — The library's stylesheet includes `@source "./*.js"` so Tailwind v4 automatically scans the library's component files. If styles still don't apply, make sure `nextjs-slides/styles.css` is imported *after* `tailwindcss` in your CSS. As a fallback, you can manually add `@source "../node_modules/nextjs-slides/dist"` (path relative to your CSS file) in your global CSS.
 
 **SlideCode error "Could not find the language '…'"** — Only JavaScript, TypeScript, and HTML/XML are registered. Unrecognized file extensions in the `title` prop (e.g. `.terminal`, `.sh`, `.py`) will fall back to TypeScript highlighting. If you previously saw this error, update the package — the fix gracefully handles unknown languages instead of throwing.
+
+**`SlideSplitLayout` nested inside `Slide` breaks layout** — `SlideSplitLayout` is a full-viewport component (`h-dvh w-dvw`) that replaces `Slide`, not a child of it. Nesting it inside `Slide` creates a viewport-sized container inside another viewport-sized container with padding, which overflows. If you need a title above two columns, use `<SlideColumns>` inside `<Slide>` instead.
 
 **Exit animation (deck-unveil) not running** — Ensure `SlideDeck` is the direct child of the layout. Wrapping it in a `<div>` can prevent the ViewTransition exit from firing. Use the `className` prop for scoped styling instead.
 
