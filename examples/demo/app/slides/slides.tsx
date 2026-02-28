@@ -93,16 +93,19 @@ export const slides: React.ReactNode[] = [
     </SlideSubtitle>
     <SlideColumns
       left={
-        <SlideCode title="server.ts">{`export async function getData() {
-  'use cache';
-  return db.query('...');
-}`}</SlideCode>
+        <SlideCode title="slide.tsx">{`<Slide>
+  <SlideTitle>Two columns</SlideTitle>
+  <SlideColumns
+    left={...}
+    right={...}
+  />
+</Slide>`}</SlideCode>
       }
       right={
-        <SlideCode title="client.tsx">{`const { data } = useSWR(
-  '/api/data',
-  fetcher,
-);`}</SlideCode>
+        <SlideCode title="slide.tsx">{`<SlideColumns
+  left={<SlideCode>...</SlideCode>}
+  right={<SlideList>...</SlideList>}
+/>`}</SlideCode>
       }
     />
     <SlideNote>
@@ -117,16 +120,11 @@ export const slides: React.ReactNode[] = [
     <SlideTitle className="text-3xl sm:text-4xl md:text-5xl">
       Syntax highlighting
     </SlideTitle>
-    <SlideCode title="example.tsx">{`export function Button({ children, onClick }: ButtonProps) {
-  return (
-    <button
-      className="rounded-md bg-primary px-4 py-2"
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  );
-}`}</SlideCode>
+    <SlideCode title="slide.tsx">{`<Slide>
+  <SlideBadge>SlideCode</SlideBadge>
+  <SlideTitle>Syntax highlighting</SlideTitle>
+  <SlideCode title="example.tsx">{code}</SlideCode>
+</Slide>`}</SlideCode>
     <SlideNote>
       Language inferred from title extension (.ts, .tsx, .js, .jsx) · Theme via
       --sh-* and --nxs-code-* CSS variables · Whitespace is auto-trimmed
