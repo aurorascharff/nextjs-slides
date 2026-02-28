@@ -1,3 +1,10 @@
+## [0.8.3](https://github.com/aurorascharff/nextjs-slides/compare/v0.8.2...v0.8.3) (2026-02-28)
+
+
+### Bug Fixes
+
+* demo build - add icons to tsup, use webpack, remove turbopack.root ([d76da79](https://github.com/aurorascharff/nextjs-slides/commit/d76da79784393a2ebafcb149c42be44895cbc6e5))
+
 ## [0.8.2](https://github.com/aurorascharff/nextjs-slides/compare/v0.8.1...v0.8.2) (2026-02-28)
 
 
