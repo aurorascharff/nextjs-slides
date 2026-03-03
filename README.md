@@ -309,6 +309,29 @@ app/slides/
   demo/page.tsx       ← Breakout page (no deck chrome)
 ```
 
+## Project structure
+
+You can put all slide-related routes in a **route group** like `(demo)` or `(internal)` to keep them separate from your main app. Route groups use parentheses and do not affect the URL. You can have two `api` folders — one for your main app, one inside the group:
+
+```
+app/
+  api/
+    ...your main app routes
+  (demo)/
+    api/
+      nxs-sync/
+        route.ts
+    slides/
+      layout.tsx
+      slides.tsx
+      notes.md
+      [page]/page.tsx
+    notes/
+      page.tsx
+```
+
+URLs stay `/slides`, `/notes`, `/api/nxs-sync` — the `(demo)` segment is invisible. Update paths in `parseSpeakerNotes` and `basePath` if you move things.
+
 ## Styling & CSS
 
 The library **inherits** your app's theme. Primitives use Tailwind utilities that resolve to CSS variables: `--foreground`, `--background`, `--muted-foreground`, `--primary`, `--primary-foreground`, `--border`, `--muted`. Compatible with shadcn/ui and any Tailwind v4 setup that defines these.
