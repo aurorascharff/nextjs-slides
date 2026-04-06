@@ -79,5 +79,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aurorascharff/nextjs-slides.git"
+  },
+  "homepage": "https://github.com/aurorascharff/nextjs-slides#readme",
+  "bugs": {
+    "url": "https://github.com/aurorascharff/nextjs-slides/issues"
   }
 }
