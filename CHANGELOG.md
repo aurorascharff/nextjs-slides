@@ -1,3 +1,10 @@
+# [0.9.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.8.5...v0.9.0) (2026-04-06)
+
+
+### Features
+
+* add homepage and bugs metadata to package.json ([8c91bb0](https://github.com/aurorascharff/nextjs-slides/commit/8c91bb093976a12404955c95340fd90554d90e5a))
+
 ## [0.8.5](https://github.com/aurorascharff/nextjs-slides/compare/v0.8.4...v0.8.5) (2026-04-06)
 
 
