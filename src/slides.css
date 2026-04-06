@@ -158,13 +158,6 @@
   }
 }
 
-/* Reset default view transition animations */
-::view-transition-old(*) {
-  animation: none;
-}
-::view-transition-new(*) {
-  animation: none;
-}
 
 /* Slide forward */
 ::view-transition-new(.slide-from-right) {
