@@ -22,6 +22,7 @@
     "README.md"
   ],
   "scripts": {
+    "prepare": "tsup",
     "build": "tsup",
     "dev": "tsup --watch",
     "format": "prettier --write .",
