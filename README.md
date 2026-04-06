@@ -126,6 +126,7 @@ That's it. Navigate to `/slides` and you have a full slide deck.
 | `exitUrl`      | `string`                          | —            | URL for exit button (×). Shows in top-right when set.  |
 | `showProgress` | `boolean`                         | `true`       | Show dot progress indicator                            |
 | `showCounter`  | `boolean`                         | `true`       | Show "3 / 10" counter                                  |
+| `transition`   | `boolean`                         | `true`       | Enable default slide animations. Set `false` for custom morphs. |
 | `className`    | `string`                          | —            | Additional class for the deck container                |
 | `children`     | `React.ReactNode`                 | **required** | Route content (from Next.js)                           |
 
@@ -376,6 +377,44 @@ Use `className="font-pixel"` on primitives where you want the pixel display font
 ## Animations
 
 Slide transitions use the React 19 `<ViewTransition>` component with `addTransitionType()`. The CSS in `nextjs-slides/styles.css` defines the `::view-transition-*` animations. Override them in your own CSS to customize.
+
+### Magic Move (custom morphs)
+
+Set `transition={false}` on `<SlideDeck>` to disable the default directional slide animation. Then add inline `viewTransitionName` styles to elements that should morph between slides:
+
+```tsx
+function CycleBox({ children, name }: { children: React.ReactNode; name: string }) {
+  return (
+    <div
+      className="rounded-xl border px-7 py-3.5 text-xl font-semibold"
+      style={{ viewTransitionName: name }}
+    >
+      {children}
+    </div>
+  );
+}
+
+export const slides = [
+  <Slide key="basic">
+    <SlideTitle>Render Cycle</SlideTitle>
+    <div className="flex gap-4">
+      <CycleBox name="box-a">Event</CycleBox>
+      <CycleBox name="box-b">Commit</CycleBox>
+    </div>
+  </Slide>,
+
+  <Slide key="expanded">
+    <SlideTitle>Render Cycle</SlideTitle>
+    <div className="flex gap-4">
+      <CycleBox name="box-a">Event</CycleBox>
+      <span>loading</span>
+      <CycleBox name="box-b">Commit</CycleBox>
+    </div>
+  </Slide>,
+];
+```
+
+Elements with matching `viewTransitionName` values across consecutive slides morph their position, size, and opacity automatically. New elements fade in, removed elements fade out. Requires `viewTransition: true` in your `next.config`.
 
 ## Troubleshooting
 

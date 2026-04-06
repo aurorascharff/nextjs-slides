@@ -19,6 +19,10 @@ export interface SlideDeckConfig {
   showCounter?: boolean;
   /** API endpoint for presenter ↔ phone sync. See `SlideNotesView` and the sync route handlers. */
   syncEndpoint?: string;
+  /** Control the slide transition animation.
+   *  - `true` (default) — directional slide-in/out
+   *  - `false` — no wrapper animation (use with inline `viewTransitionName` for magic-move morphs) */
+  transition?: boolean;
   /** Additional className for the deck container */
   className?: string;
 }

@@ -60,6 +60,7 @@ export function SlideDeck({
   showCounter = true,
   syncEndpoint,
   className,
+  transition = true,
   speakerNotes: _speakerNotes,
 }: SlideDeckConfig & { children: React.ReactNode }) {
   const router = useRouter();
@@ -162,16 +163,16 @@ export function SlideDeck({
           <ViewTransition
             key={pathname}
             default="none"
-            enter={{
+            enter={transition ? {
               default: 'slide-from-right',
               [TRANSITION_BACK]: 'slide-from-left',
               [TRANSITION_FORWARD]: 'slide-from-right',
-            }}
-            exit={{
+            } : undefined}
+            exit={transition ? {
               default: 'slide-to-left',
               [TRANSITION_BACK]: 'slide-to-right',
               [TRANSITION_FORWARD]: 'slide-to-left',
-            }}
+            } : undefined}
           >
             <div>{children}</div>
           </ViewTransition>
