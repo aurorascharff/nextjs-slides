@@ -1,3 +1,10 @@
+# [0.10.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.9.0...v0.10.0) (2026-04-06)
+
+
+### Features
+
+* add transition prop for magic-move morphs ([6d43670](https://github.com/aurorascharff/nextjs-slides/commit/6d43670bd0cbc9f9f789c8d13b1839e066c90c4e))
+
 # [0.9.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.8.3...v0.9.0) (2026-04-06)
 
 
