@@ -1,3 +1,10 @@
+## [0.8.4](https://github.com/aurorascharff/nextjs-slides/compare/v0.8.3...v0.8.4) (2026-04-06)
+
+
+### Bug Fixes
+
+* remove global view-transition animation reset ([8f9d124](https://github.com/aurorascharff/nextjs-slides/commit/8f9d124fc485b505bd30e08969eaa1163e83acb8))
+
 ## [0.8.3](https://github.com/aurorascharff/nextjs-slides/compare/v0.8.2...v0.8.3) (2026-02-28)
 
 
