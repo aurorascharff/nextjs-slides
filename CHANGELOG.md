@@ -1,3 +1,16 @@
+# [0.9.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.8.3...v0.9.0) (2026-04-06)
+
+
+### Bug Fixes
+
+* normalize repository URL to suppress npm publish warnings ([d8287bd](https://github.com/aurorascharff/nextjs-slides/commit/d8287bd8afa35ae279485bf1c6a3bd3fc72c2c69))
+* remove global view-transition animation reset ([8f9d124](https://github.com/aurorascharff/nextjs-slides/commit/8f9d124fc485b505bd30e08969eaa1163e83acb8))
+
+
+### Features
+
+* add homepage and bugs metadata to package.json ([8c91bb0](https://github.com/aurorascharff/nextjs-slides/commit/8c91bb093976a12404955c95340fd90554d90e5a))
+
 # [0.9.0](https://github.com/aurorascharff/nextjs-slides/compare/v0.8.5...v0.9.0) (2026-04-06)
 
 
