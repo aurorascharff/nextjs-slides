@@ -1,3 +1,10 @@
+## [0.8.5](https://github.com/aurorascharff/nextjs-slides/compare/v0.8.4...v0.8.5) (2026-04-06)
+
+
+### Bug Fixes
+
+* normalize repository URL to suppress npm publish warnings ([d8287bd](https://github.com/aurorascharff/nextjs-slides/commit/d8287bd8afa35ae279485bf1c6a3bd3fc72c2c69))
+
 ## [0.8.4](https://github.com/aurorascharff/nextjs-slides/compare/v0.8.3...v0.8.4) (2026-04-06)
 
 
