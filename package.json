@@ -78,6 +78,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/aurorascharff/nextjs-slides"
+    "url": "git+https://github.com/aurorascharff/nextjs-slides.git"
   }
 }
