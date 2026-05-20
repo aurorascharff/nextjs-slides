@@ -21,7 +21,7 @@ pnpm build && cd examples/demo && pnpm install && pnpm dev
 
 Open http://localhost:3000 — choose "Geist deck" or "Alternate deck" (Playfair + Dracula theme).
 
-**Demo build** (used by Vercel): The demo's `build` script builds the library first (`cd ../.. && pnpm install --include=dev && pnpm build`), then runs `next build`. This is required because `dist/` is gitignored and the library must be built before the demo can use it.
+**Demo build** (used by Vercel): The demo's `build` script builds the library first (`cd ../.. && pnpm install && pnpm build`), then runs `next build`. This is required because `dist/` is gitignored and the library must be built before the demo can use it.
 
 ## Deployment & release
 

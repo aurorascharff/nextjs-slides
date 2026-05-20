@@ -11,7 +11,7 @@ Build full presentations from React components with URL-based routing, keyboard 
 ## Install
 
 ```bash
-pnpm install nextjs-slides
+pnpm add nextjs-slides
 ```
 
 ## Demo

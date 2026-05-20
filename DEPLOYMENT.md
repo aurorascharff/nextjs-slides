@@ -14,7 +14,7 @@ The demo at [nextjs-slides.vercel.app](https://nextjs-slides.vercel.app) is depl
 | **Output directory** | `.next` (default)                                           |
 | **Build command**    | Uses the demo's `build` script                              |
 
-The demo's `build` script builds the library first (`cd ../.. && pnpm install --include=dev && pnpm build`), then runs `next build`. This is required because `dist/` is gitignored.
+The demo's `build` script builds the library first (`cd ../.. && pnpm install && pnpm build`), then runs `next build`. This is required because `dist/` is gitignored.
 
 ### Local run
 
