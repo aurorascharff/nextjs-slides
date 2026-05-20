@@ -11,7 +11,7 @@ Build full presentations from React components with URL-based routing, keyboard 
 ## Install
 
 ```bash
-npm install nextjs-slides
+pnpm add nextjs-slides
 ```
 
 ## Demo
@@ -21,7 +21,7 @@ npm install nextjs-slides
 A minimal demo app lives in `examples/demo`. From the repo root:
 
 ```bash
-npm run build && cd examples/demo && npm install && npm run dev
+pnpm build && cd examples/demo && pnpm install && pnpm dev
 ```
 
 Open http://localhost:3000 — choose "Geist deck" or "Alternate deck" (Playfair + Dracula theme).
