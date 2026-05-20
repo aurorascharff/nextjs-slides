@@ -32,7 +32,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
     "next": ">=15.0.0",
@@ -84,5 +84,6 @@
   "homepage": "https://github.com/aurorascharff/nextjs-slides#readme",
   "bugs": {
     "url": "https://github.com/aurorascharff/nextjs-slides/issues"
-  }
+  },
+  "packageManager": "pnpm@10.33.0"
 }

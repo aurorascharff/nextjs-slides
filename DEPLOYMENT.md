@@ -14,12 +14,12 @@ The demo at [nextjs-slides.vercel.app](https://nextjs-slides.vercel.app) is depl
 | **Output directory** | `.next` (default)                                           |
 | **Build command**    | Uses the demo's `build` script                              |
 
-The demo's `build` script builds the library first (`cd ../.. && npm install --include=dev && npm run build`), then runs `next build`. This is required because `dist/` is gitignored.
+The demo's `build` script builds the library first (`cd ../.. && pnpm install --include=dev && pnpm build`), then runs `next build`. This is required because `dist/` is gitignored.
 
 ### Local run
 
 ```bash
-npm run build && cd examples/demo && npm install && npm run dev
+pnpm build && cd examples/demo && pnpm install && pnpm dev
 ```
 
 Open http://localhost:3000 and click "Open slides".

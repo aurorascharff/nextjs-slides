@@ -9,10 +9,10 @@ A minimal demo app showcasing the nextjs-slides library. Matches the original [n
 From the repo root:
 
 ```bash
-npm run build          # build the library first
+pnpm build          # build the library first
 cd examples/demo
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Open http://localhost:3000 and choose a deck:

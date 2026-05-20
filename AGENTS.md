@@ -6,22 +6,22 @@
 
 ## Setup commands
 
-- Install deps: `npm install`
-- Build library: `npm run build`
-- Run tests: `npm run test`
-- Lint: `npm run lint` (or `npm run lint:fix`)
+- Install deps: `pnpm install`
+- Build library: `pnpm build`
+- Run tests: `pnpm test`
+- Lint: `pnpm lint` (or `pnpm lint:fix`)
 
 ## Demo app
 
 The demo in `examples/demo` uses the library via `file:../..`. To run it:
 
 ```bash
-npm run build && cd examples/demo && npm install && npm run dev
+pnpm build && cd examples/demo && pnpm install && pnpm dev
 ```
 
 Open http://localhost:3000 — choose "Geist deck" or "Alternate deck" (Playfair + Dracula theme).
 
-**Demo build** (used by Vercel): The demo's `build` script builds the library first (`cd ../.. && npm install --include=dev && npm run build`), then runs `next build`. This is required because `dist/` is gitignored and the library must be built before the demo can use it.
+**Demo build** (used by Vercel): The demo's `build` script builds the library first (`cd ../.. && pnpm install --include=dev && pnpm build`), then runs `next build`. This is required because `dist/` is gitignored and the library must be built before the demo can use it.
 
 ## Deployment & release
 
@@ -44,4 +44,4 @@ See **[DEPLOYMENT.md](DEPLOYMENT.md)** for Vercel deployment, release workflow (
 
 ## Before committing
 
-Run `npm run lint` and `npm run test` in the library root. If editing the demo, run `cd examples/demo && npm run lint` as well.
+Run `pnpm lint` and `pnpm test` in the library root. If editing the demo, run `cd examples/demo && pnpm lint` as well.

@@ -1,0 +1,12 @@
+packages:
+  - .
+  - examples/*
+
+minimumReleaseAge: 2880 # 48 hrs
+minimumReleaseAgeExclude:
+  - '@next/*'
+  - next
+onlyBuiltDependencies:
+  - esbuild
+  - sharp
+  - unrs-resolver
